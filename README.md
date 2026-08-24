@@ -67,6 +67,15 @@ Starting narrowly keeps the treatment and disease setting coherent. Later phases
 
 Combining datasets will mean **harmonizing definitions and validating across sources**, not blindly appending rows from incompatible studies.
 
+## Research foundations
+
+The curated literature layer is in [`literature/`](literature/README.md):
+
+- [`STUDY_CATALOG.md`](literature/STUDY_CATALOG.md) maps 22 studies to variables, outcomes, methods and limitations.
+- [`references.bib`](literature/references.bib) contains reusable citations.
+- [`download_manifest.csv`](literature/download_manifest.csv) records full-text access and validation status.
+- Full-text PDFs and extracted text stay in the ignored local `literature/papers/` folder.
+
 ## Required data
 
 ### Essential identifiers and timing
@@ -135,6 +144,12 @@ At least two observations are needed for a slope. At least three are required fo
 prostate-lab-trajectories/
 ├── README.md
 ├── RESEARCH_LOG.md
+├── literature/
+│   ├── README.md
+│   ├── STUDY_CATALOG.md
+│   ├── references.bib
+│   ├── download_manifest.csv
+│   └── papers/           # Local only; ignored by Git
 ├── data/
 │   ├── README.md
 │   ├── raw/              # Never committed
@@ -164,15 +179,16 @@ prostate-lab-trajectories/
 
 ## Immediate next steps
 
-1. Obtain the PDS DREAM files and official data dictionary.
-2. Produce a source-by-source coverage matrix for laboratory, treatment and outcome fields.
-3. Confirm whether serial laboratory dates can be aligned to chemotherapy cycles.
-4. Request the linked CHAARTED submissions.
-5. Send variable-availability enquiries to Vivli and Flatiron.
-6. Freeze the pre-cycle window, endpoints and validation split before modeling.
+1. Convert the literature findings into a field-coverage checklist.
+2. Obtain the PDS DREAM files and official data dictionary.
+3. Produce a source-by-source coverage matrix for laboratory, treatment and outcome fields.
+4. Confirm whether serial laboratory dates can be aligned to chemotherapy cycles.
+5. Freeze the first data-cleaning and restructuring specification before running transformations.
+6. Prepare the CHAARTED and independent-validation access requests.
 
 ## Project status
 
-**Current stage:** Repository setup and dataset-access preparation.
+**Current stage:** Literature foundation complete; dataset-access and field-audit preparation.
 
 See [`RESEARCH_LOG.md`](RESEARCH_LOG.md) for the active plan, decisions and dated progress history.
+
