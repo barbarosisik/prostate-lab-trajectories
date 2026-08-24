@@ -1,0 +1,24 @@
+study_id,local_filename,status,source_url,access_note
+LIT-001,LIT-001_pcwg4_2026.pdf,downloaded_validated,https://pmc.ncbi.nlm.nih.gov/articles/PMC13132095/,28 pages; local PDF and extracted text; ignored by Git
+LIT-002,LIT-002_pcwg3_2016.pdf,downloaded_validated,https://pmc.ncbi.nlm.nih.gov/articles/PMC4872347/,25 pages; local PDF and extracted text; ignored by Git
+LIT-003,,link_only,https://pmc.ncbi.nlm.nih.gov/articles/PMC4010133/,Full text is available online; local PDF endpoint failed validation
+LIT-004,,link_only,https://pubmed.ncbi.nlm.nih.gov/15470213/,Publisher full text was not copied
+LIT-005,LIT-005_dream_overall_survival_2017.pdf,downloaded_validated,https://pmc.ncbi.nlm.nih.gov/articles/PMC5217180/,34 pages; local PDF and extracted text; ignored by Git
+LIT-006,LIT-006_dream_early_discontinuation_2017.pdf,downloaded_validated,https://pmc.ncbi.nlm.nih.gov/articles/PMC6874023/,15 pages; local PDF and extracted text; ignored by Git
+LIT-007,LIT-007_halabi_prognostic_model_2014.pdf,downloaded_validated,https://pmc.ncbi.nlm.nih.gov/articles/PMC3927736/,9 pages; local PDF and extracted text; ignored by Git
+LIT-008,LIT-008_dream_labvalue_model_2016.pdf,downloaded_validated,https://pmc.ncbi.nlm.nih.gov/articles/PMC6556990/,18 pages; local PDF and extracted text; ignored by Git
+LIT-009,LIT-009_dream_tolerance_model_2020.pdf,downloaded_validated,https://pmc.ncbi.nlm.nih.gov/articles/PMC6976944/,22 pages; local PDF and extracted text; ignored by Git
+LIT-010,,link_only,https://pubmed.ncbi.nlm.nih.gov/17975152/,Abstract and metadata available; publisher full text was not copied
+LIT-011,,link_only,https://doi.org/10.1200/JCO.2007.11.4769,Abstract and metadata available; publisher full text was not copied
+LIT-012,,link_only,https://pubmed.ncbi.nlm.nih.gov/20888271/,Abstract and metadata available; publisher full text was not copied
+LIT-013,,link_only,https://pubmed.ncbi.nlm.nih.gov/11948112/,Full article is readable online; local PDF was not required
+LIT-014,LIT-014_persistent_nlr_2016.pdf,downloaded_validated,https://pmc.ncbi.nlm.nih.gov/articles/PMC4951050/,12 pages; local PDF and extracted text; ignored by Git
+LIT-015,,link_only,https://doi.org/10.1111/j.1467-9469.2006.00529.x,Publisher full text was not copied
+LIT-016,,link_only,https://pmc.ncbi.nlm.nih.gov/articles/PMC7502505/,Full text is available online; local PDF endpoint was throttled
+LIT-017,LIT-017_rsf_landmarking_2021.pdf,downloaded_validated,https://pmc.ncbi.nlm.nih.gov/articles/PMC8520610/,14 pages; local PDF and extracted text; ignored by Git
+LIT-018,,link_only,https://pmc.ncbi.nlm.nih.gov/articles/PMC3445625/,Full text is available online; local PDF endpoint was throttled
+LIT-019,LIT-019_docetaxel_neutropenia_2019.pdf,downloaded_validated,https://pmc.ncbi.nlm.nih.gov/articles/PMC6488109/,10 pages; local PDF and extracted text; ignored by Git
+LIT-020,,link_only,https://pubmed.ncbi.nlm.nih.gov/25743937/,Source-trial paper; publisher full text was not copied
+LIT-021,,link_only,https://pubmed.ncbi.nlm.nih.gov/23742877/,Source-trial paper; publisher full text was not copied
+LIT-022,,link_only,https://pubmed.ncbi.nlm.nih.gov/21483004/,Source-trial paper; publisher full text was not copied
+
