@@ -1,0 +1,36 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+
+# Restricted or patient-level data
+data/raw/
+data/interim/
+data/restricted/
+*.sas7bdat
+*.xpt
+*.dta
+*.rds
+
+# Python / notebooks
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated model artifacts and temporary files
+models/
+tmp/
+work/
