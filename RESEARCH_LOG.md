@@ -127,7 +127,7 @@ This file should be updated whenever we:
 
 | Priority | Task | Status | Completion evidence |
 |---|---|---|---|
-| 1 | Create the private GitHub repository with `README.md` and this log. | In progress | Repository URL and initial commit |
+| 1 | Create the private GitHub repository with `README.md` and this log. | Completed | Private repository created; initial commit `d38740c` |
 | 2 | Obtain and inspect the PDS DREAM data dictionary. | Planned | Saved field inventory and coverage matrix |
 | 3 | Define exact primary and secondary outcomes. | Planned | Statistical analysis plan section approved |
 | 4 | Define pre-cycle timing and repeated-measure eligibility rules. | Planned | Frozen configuration and sensitivity windows |
@@ -169,10 +169,10 @@ This file should be updated whenever we:
 - Selected PDS DREAM, CHAARTED and Vivli/Flatiron as the initial dataset path.
 - Selected repository name `prostate-lab-trajectories` and private visibility.
 - Created the initial README and living research log.
+- Created the private GitHub repository and committed `README.md`, `RESEARCH_LOG.md` and `.gitignore`.
 
 **Next**
 
-- Create and push the private GitHub repository.
 - Obtain the PDS DREAM data dictionary.
 - Convert the dataset requirements into a field-coverage checklist.
 
