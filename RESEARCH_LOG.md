@@ -14,11 +14,11 @@ This file should be updated whenever we:
 
 **Last updated:** 2026-08-24
 
-**Project stage:** Setup and dataset-access preparation
+**Project stage:** Literature foundation and dataset-access preparation
 
 **Repository visibility:** Private
 
-**Active objective:** Confirm that PDS DREAM supports serial pre-chemotherapy laboratory trajectories linked to the required outcomes.
+**Active objective:** Convert the curated evidence into a field checklist, then confirm that PDS DREAM supports serial pre-chemotherapy laboratory trajectories linked to the required outcomes.
 
 ## Fixed research question
 
@@ -38,6 +38,8 @@ This file should be updated whenever we:
 | D-008 | 2026-08-24 | Use CHAARTED/E3805 mainly to broaden longitudinal PSA and treatment-exposure findings. | Its linked submissions explicitly include longitudinal PSA, treatment and outcome components, but not necessarily all laboratory values. | Pending access |
 | D-009 | 2026-08-24 | Use Vivli trials or Flatiron only after confirming exact variable availability. | Access and advertised scope do not guarantee every required CBC/CMP, timing or outcome field. | Pending enquiry |
 | D-010 | 2026-08-24 | Never commit patient-level or restricted data to GitHub. | Privacy, licensing and data-use agreements take priority. | Active |
+| D-011 | 2026-08-24 | Maintain a curated literature catalog, BibTeX file and download manifest in the repository. | Each study must map to a concrete variable, outcome, method or data decision. | Active |
+| D-012 | 2026-08-24 | Keep downloaded papers and extracted full text local and excluded from Git. | Avoid redistributing publisher files while preserving a searchable working library. | Active |
 
 ## Master plan
 
@@ -48,6 +50,7 @@ This file should be updated whenever we:
 - [x] Select project name and private visibility.
 - [x] Create research blueprint.
 - [x] Create living research log.
+- [x] Build the initial literature evidence map and bibliography.
 - [ ] Add the data dictionary template.
 - [ ] Draft the statistical analysis plan.
 - [ ] Define outcome hierarchy and pre-cycle timing windows.
@@ -128,10 +131,12 @@ This file should be updated whenever we:
 | Priority | Task | Status | Completion evidence |
 |---|---|---|---|
 | 1 | Create the private GitHub repository with `README.md` and this log. | Completed | Private repository created; initial commit `d38740c` |
-| 2 | Obtain and inspect the PDS DREAM data dictionary. | Planned | Saved field inventory and coverage matrix |
-| 3 | Define exact primary and secondary outcomes. | Planned | Statistical analysis plan section approved |
-| 4 | Define pre-cycle timing and repeated-measure eligibility rules. | Planned | Frozen configuration and sensitivity windows |
-| 5 | Prepare CHAARTED and external-validation access requests. | Planned | Submitted requests or documented access route |
+| 2 | Build the initial curated literature library. | Completed | 22-study catalog, BibTeX file, manifest and 10 validated local PDFs |
+| 3 | Convert the literature map into a field-coverage checklist. | In progress | Checklist covering laboratories, timing, outcomes, covariates and tolerance fields |
+| 4 | Obtain and inspect the PDS DREAM data dictionary. | Planned | Saved field inventory and coverage matrix |
+| 5 | Define exact primary and secondary outcomes. | Planned | Statistical analysis plan section approved |
+| 6 | Define pre-cycle timing and repeated-measure eligibility rules. | Planned | Frozen configuration and sensitivity windows |
+| 7 | Prepare CHAARTED and external-validation access requests. | Planned | Submitted requests or documented access route |
 
 ## Open questions
 
@@ -176,6 +181,34 @@ This file should be updated whenever we:
 - Obtain the PDS DREAM data dictionary.
 - Convert the dataset requirements into a field-coverage checklist.
 
+### 2026-08-24 — Literature foundation added
+
+**Completed**
+
+- Curated 22 core, direct, supporting, methodological and source-trial studies.
+- Created a study-to-analysis evidence map and a reusable BibTeX bibliography.
+- Downloaded and validated 10 legitimate full-text PDFs locally and extracted searchable text.
+- Added an access manifest for downloaded and link-only studies.
+- Excluded the local paper library from Git while keeping its catalog and metadata tracked.
+
+**Decisions**
+
+- D-011: Every retained paper must change or justify a concrete analysis decision.
+- D-012: PDFs and extracted full text remain local; the catalog, bibliography and manifest are versioned.
+
+**Evidence / files**
+
+- `literature/README.md`
+- `literature/STUDY_CATALOG.md`
+- `literature/references.bib`
+- `literature/download_manifest.csv`
+
+**Next**
+
+- Turn the evidence map into a dataset field-coverage checklist.
+- Obtain and audit the PDS DREAM data dictionary and source files.
+- Draft the first cleaning and restructuring specification only after the available columns are verified.
+
 ## Update template
 
 Copy this block for each future working session:
@@ -203,3 +236,4 @@ Copy this block for each future working session:
 
 -
 ```
+
