@@ -12,6 +12,10 @@ data/restricted/
 *.dta
 *.rds
 
+# Local literature PDFs and extracted text
+# The catalog, bibliography and download manifest remain tracked.
+literature/papers/
+
 # Python / notebooks
 __pycache__/
 *.py[cod]
@@ -34,3 +38,4 @@ Thumbs.db
 models/
 tmp/
 work/
+
