@@ -4,7 +4,7 @@ A longitudinal data-science study of blood-test patterns measured before chemoth
 
 ## Research question
 
-> Among patients with stage-IV metastatic prostate cancer receiving chemotherapy, how are serial pre-chemotherapy blood-test trajectories—individually and in combination—associated with survival, disease progression, treatment response and treatment tolerance, and how early can favorable or unfavorable patterns be detected?
+> Among patients with stage-IV metastatic prostate cancer receiving chemotherapy, how are serial pre-chemotherapy blood-test trajectories, individually and in combination, associated with survival, disease progression, treatment response and treatment tolerance, and how early can favorable or unfavorable patterns be detected?
 
 ## What this project will produce
 
@@ -44,7 +44,7 @@ Starting narrowly keeps the treatment and disease setting coherent. Later phases
 
 **Dataset:** CHAARTED / E3805 linked submissions.
 
-**Work:** Re-test the findings that are available—especially longitudinal PSA—in metastatic hormone-sensitive prostate cancer. Link longitudinal PSA, treatment exposure, progression and survival through the shared deidentified patient IDs.
+**Work:** Re-test the findings that are available, especially longitudinal PSA, in metastatic hormone-sensitive prostate cancer. Link longitudinal PSA, treatment exposure, progression and survival through the shared deidentified patient IDs.
 
 **Result:** Evidence showing which signals generalize beyond the narrower discovery population and which appear disease-setting-specific.
 
@@ -75,6 +75,29 @@ The curated literature layer is in [`literature/`](literature/README.md):
 - [`references.bib`](literature/references.bib) contains reusable citations.
 - [`download_manifest.csv`](literature/download_manifest.csv) records full-text access and validation status.
 - Full-text PDFs and extracted text stay in the ignored local `literature/papers/` folder.
+
+The active dataset-audit layer is in [`docs/`](docs/):
+
+- [`dataset-field-coverage-checklist.md`](docs/dataset-field-coverage-checklist.md) defines every field, count and feasibility gate that must be checked.
+- [`pds-dream-access-audit.md`](docs/pds-dream-access-audit.md) records the official PDS/Synapse package, file IDs, public table semantics and current access blocker.
+- [`source-coverage-matrix.md`](docs/source-coverage-matrix.md) separates verified, partial, unknown and not-yet-audited coverage by source and PDS trial.
+- [`chaarted-public-field-audit.md`](docs/chaarted-public-field-audit.md) records what the public CHAARTED submissions can and cannot support.
+- [`dream-public-code-audit.md`](docs/dream-public-code-audit.md) records schema clues from public DREAM code without treating it as patient data.
+- [`raw-data-inventory-tool.md`](docs/raw-data-inventory-tool.md) explains the read-only, aggregate inspection tool prepared for the approved files.
+
+The project continuity layer is:
+
+- [`PROJECT_CONTINUITY_LOG.md`](PROJECT_CONTINUITY_LOG.md), the operational memory, reminder queue, current blocker and exact execution plan.
+- [`NEXT_AGENT_ONBOARDING_PROMPT.md`](NEXT_AGENT_ONBOARDING_PROMPT.md), the ready-to-paste prompt for the next GPT-5.6 Sol agent.
+- [`RESEARCH_LOG.md`](RESEARCH_LOG.md), the formal research decisions, phase plan and dated scientific progress.
+
+## Canonical project home
+
+The canonical project is the private GitHub repository:
+
+`https://github.com/barbarosisik/prostate-lab-trajectories`
+
+No permanent local path should be assumed. Future agents should use an authenticated working copy in their active task workspace and treat GitHub `main` as the project record. Raw data remains outside GitHub.
 
 ## Required data
 
@@ -144,6 +167,8 @@ At least two observations are needed for a slope. At least three are required fo
 prostate-lab-trajectories/
 ├── README.md
 ├── RESEARCH_LOG.md
+├── PROJECT_CONTINUITY_LOG.md
+├── NEXT_AGENT_ONBOARDING_PROMPT.md
 ├── literature/
 │   ├── README.md
 │   ├── STUDY_CATALOG.md
@@ -156,11 +181,15 @@ prostate-lab-trajectories/
 │   ├── interim/          # Never committed if patient-level
 │   └── processed/        # Only non-sensitive or approved outputs
 ├── docs/
-│   ├── data-dictionary.md
-│   ├── dataset-audit.md
-│   └── statistical-analysis-plan.md
+│   ├── dataset-field-coverage-checklist.md
+│   ├── pds-dream-access-audit.md
+│   ├── source-coverage-matrix.md
+│   ├── chaarted-public-field-audit.md
+│   ├── dream-public-code-audit.md
+│   └── raw-data-inventory-tool.md
 ├── notebooks/
 ├── src/
+│   ├── audit/
 │   ├── cleaning/
 │   ├── features/
 │   ├── models/
@@ -176,19 +205,22 @@ prostate-lab-trajectories/
 - Follow the data-use agreement for every source.
 - Commit only aggregated outputs after disclosure checks.
 - Record every material methodological decision in [`RESEARCH_LOG.md`](RESEARCH_LOG.md).
+- Record every operational development, blocker, reminder and exact next action in [`PROJECT_CONTINUITY_LOG.md`](PROJECT_CONTINUITY_LOG.md).
 
 ## Immediate next steps
 
-1. Convert the literature findings into a field-coverage checklist.
-2. Obtain the PDS DREAM files and official data dictionary.
-3. Produce a source-by-source coverage matrix for laboratory, treatment and outcome fields.
-4. Confirm whether serial laboratory dates can be aligned to chemotherapy cycles.
-5. Freeze the first data-cleaning and restructuring specification before running transformations.
-6. Prepare the CHAARTED and independent-validation access requests.
+1. When the user is home, manually download `AllProvidedFiles_149.zip` from the approved PDS DREAM page.
+2. Verify the file, checksum and ZIP member safety before extraction.
+3. Inspect every sheet of the official data dictionary.
+4. Run the tested aggregate inventory tool against every supplied CSV.
+5. Confirm whether serial laboratory dates can be aligned to actual chemotherapy administrations rather than only nominal visits.
+6. Explain the verified feasibility results in plain language and obtain user approval before cleaning.
+7. Freeze the first data-cleaning and restructuring specification only after the actual columns are verified.
+8. Prepare the CHAARTED patient-data request using the completed public compatibility audit.
 
 ## Project status
 
-**Current stage:** Literature foundation complete; dataset-access and field-audit preparation.
+**Current stage:** PDS access approved and signed in; approved files visible; large manual download pending until the user is home or has suitable protected storage.
 
-See [`RESEARCH_LOG.md`](RESEARCH_LOG.md) for the active plan, decisions and dated progress history.
+Read [`PROJECT_CONTINUITY_LOG.md`](PROJECT_CONTINUITY_LOG.md) first for the current blocker, reminders and exact next action. See [`RESEARCH_LOG.md`](RESEARCH_LOG.md) for research decisions and dated scientific progress.
 
