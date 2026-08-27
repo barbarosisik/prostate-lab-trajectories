@@ -12,13 +12,13 @@ This file should be updated whenever we:
 
 ## Current snapshot
 
-**Last updated:** 2026-08-25
+**Last updated:** 2026-08-27
 
-**Project stage:** PDS access approved, dataset acquisition pending
+**Project stage:** PDS package secured and verified in approved private Google Cloud Storage; protected real-file audit pending
 
 **Repository visibility:** Private
 
-**Active objective:** Obtain the approved PDS package when the user is home or has suitable protected storage, then verify the package, inspect the dictionary and run the tested aggregate inventory tool.
+**Active objective:** Prepare a private Google Cloud computing environment, then inspect the dictionary and run the tested aggregate inventory tool without returning restricted patient data to this computer or GitHub.
 
 ## Fixed research question
 
@@ -44,8 +44,11 @@ This file should be updated whenever we:
 | D-014 | 2026-08-25 | Do not select ENTHUSE-33 as an independent validation set until the current PDS final-scoring package is audited for longitudinal data and outcome visibility. | The original challenge withheld non-baseline longitudinal data and dependent outcomes from participants. | Active |
 | D-015 | 2026-08-25 | Use public DREAM analysis code only as documentary schema evidence, not as a replacement for the official dictionary or source files. | The repository exposes useful column names but intentionally contains no raw patient data. | Active |
 | D-016 | 2026-08-25 | Run an aggregate-only, read-only inventory before writing any cleaning transformations. | This proves what was received and prevents premature assumptions while keeping patient identifiers and laboratory values out of the report. | Active |
-| D-017 | 2026-08-25 | Acquire the complete PDS bundle first, preserve it unchanged and verify checksum and ZIP safety before extraction. | The full bundle provides one traceable acquisition artifact while safe verification protects source integrity and the local filesystem. | Pending download |
+| D-017 | 2026-08-25 | Acquire the complete PDS bundle first, preserve it unchanged and verify checksum and ZIP safety before extraction. | The full bundle provides one traceable acquisition artifact while safe verification protects source integrity and the local filesystem. | Completed for acquisition; extraction pending audit approval |
 | D-018 | 2026-08-25 | Maintain `PROJECT_CONTINUITY_LOG.md` as the operational memory and reminder queue, with methodological decisions also recorded in this research log. | The user needs durable cross-agent continuity, reminders and an exact account of developments while working away from home. | Active |
+| D-019 | 2026-08-27 | Store the unchanged restricted package only in the PDS-approved private Google Cloud bucket with public access prevention and uniform bucket access. | This keeps the source outside GitHub and ordinary file-sharing services while preserving controlled access. | Active |
+| D-020 | 2026-08-27 | Remove local restricted copies only after remote existence, size, checksum and access controls are verified and the user gives fresh action-time confirmation. | A verified cloud source must exist before local restricted data is removed. | Completed for the two Downloads copies |
+| D-021 | 2026-08-27 | Perform the real-file audit only inside an approved protected environment and keep patient-level data out of chat, GitHub and ordinary logs. | Google Cloud Storage is storage, so protected compute is required to inspect the dictionary and CSV files without downloading them locally. | Pending compute approval |
 
 ## Master plan
 
@@ -68,7 +71,8 @@ This file should be updated whenever we:
 **Goal:** Prove which requested analyses are actually supported by the available fields.
 
 - [x] Complete PDS authorization and access requirements.
-- [ ] Obtain the PDS DREAM data dictionary and supplied files. **Approved; manual download pending.**
+- [x] Obtain and verify the PDS DREAM package in approved private cloud storage.
+- [ ] Inspect every PDS dictionary sheet and supplied table inside approved protected cloud compute.
 - [ ] Inventory tables, columns, join keys and date variables.
 - [ ] Count patients and repeated observations per laboratory test and trial.
 - [ ] Audit survival, progression, response and tolerance endpoints.
@@ -141,7 +145,8 @@ This file should be updated whenever we:
 | 1 | Create the private GitHub repository with `README.md` and this log. | Completed | Private repository created; initial commit `d38740c` |
 | 2 | Build the initial curated literature library. | Completed | 22-study catalog, BibTeX file, manifest and 10 validated local PDFs |
 | 3 | Convert the literature map into a field-coverage checklist. | Completed | `docs/dataset-field-coverage-checklist.md` |
-| 4 | Obtain and inspect the PDS DREAM data dictionary. | Approved, download pending | User signed in and verified the PDS file listing; manual download is deferred until the user is home or has suitable protected storage |
+| 4 | Secure and verify the PDS DREAM package. | Completed | Private cloud object exists with verified size, checksums and access controls; local restricted ZIP copies were removed after confirmation |
+| 4A | Inspect the PDS dictionary and real tables in protected cloud compute. | Pending approval | Every dictionary sheet, schema, join key, repeated-lab count and outcome field audited without patient-level output |
 | 5 | Define exact primary and secondary outcomes. | Planned | Statistical analysis plan section approved |
 | 6 | Define pre-cycle timing and repeated-measure eligibility rules. | Planned | Frozen configuration and sensitivity windows |
 | 7 | Prepare CHAARTED and external-validation access requests. | Planned | Submitted requests or documented access route |
@@ -359,6 +364,41 @@ This file should be updated whenever we:
 - Verify the completed file path, size and SHA-256 checksum.
 - Inspect ZIP members for unsafe paths before extraction.
 - Inspect the dictionary and run the aggregate inventory before any cleaning specification.
+
+### 2026-08-27 - PDS package secured and local restricted copies removed
+
+**Completed**
+
+- Recorded the user's confirmation that Craig at PDS permitted private Google Cloud storage.
+- Verified the unchanged source package at `gs://pds-dream-secure-storage-eu-20260827/prostate-lab-trajectories/data/raw/pds_dream/source/AllProvidedFiles_149 (1).zip`.
+- Verified remote size 6,227,480 bytes, SHA-256 `AB3ECA19C5D0CC4106C96AC04E665DD1A5C9DF58F66328ECD24E8E1067932391`, matching MD5 and Google Cloud CRC32C metadata.
+- Verified a Netherlands regional bucket, enforced public-access prevention, uniform bucket-level access, Google-managed encryption and no public principals.
+- Permanently removed the two exact verified Downloads copies after fresh user confirmation and found no matching copies or partial downloads in the targeted rescan.
+- Cloned and verified the private GitHub repository on `main` at `d02eed8359229d19008efb60ba60a4cb3c08e903`.
+- Re-ran all three invented-data inventory tests successfully.
+
+**Decisions**
+
+- D-019: Use only the approved private Google Cloud bucket for the unchanged restricted source package.
+- D-020: Local restricted files can be removed only after complete remote verification and fresh deletion confirmation.
+- D-021: Use protected cloud compute for the dictionary and real-file audit so the restricted source is not downloaded back to this computer.
+
+**Evidence / files**
+
+- Project and bucket metadata recorded in `PROJECT_CONTINUITY_LOG.md`.
+- Local restricted-data rescan found zero matching files in Windows Downloads.
+- Test command: `python -m unittest discover -s tests -v`, three tests passed.
+
+**Problems or blockers**
+
+- No private cloud computing resource has been selected or created.
+- Exact source columns, joins, repeated laboratory counts and actual chemotherapy timing remain unaudited.
+
+**Next**
+
+- Explain protected Google Cloud computing options, costs, access controls and shutdown requirements.
+- Obtain explicit approval before creating paid computing resources or beginning the real-file audit.
+- Stop again for approval after the audit before writing cleaning and restructuring transformations.
 
 ## Update template
 

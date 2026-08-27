@@ -29,9 +29,9 @@ Every agent continuing this project must read this file first, then read `RESEAR
 
 ## Current snapshot
 
-**Last updated:** 2026-08-25
+**Last updated:** 2026-08-27
 
-**Project stage:** PDS access approved, dataset acquisition pending
+**Project stage:** Restricted package secured in approved private Google Cloud Storage; protected real-file audit pending approval
 
 **Primary source:** Project Data Sphere Prostate Cancer DREAM Challenge
 
@@ -39,13 +39,13 @@ Every agent continuing this project must read this file first, then read `RESEAR
 
 **Current dataset ID:** `Prostat_na_2006_149`
 
-**Current user situation:** The user is away from home and cannot complete the large download on the current computer. The user expects to download it later at home or use suitable protected storage.
+**Current storage state:** Craig at PDS confirmed that private Google Cloud storage is permitted. The unchanged package is stored in a dedicated private bucket in the Netherlands region. The two verified local restricted ZIP copies were permanently removed after cloud verification and fresh user confirmation.
 
-**Immediate blocker:** No PDS file has been downloaded yet. The signed-in page shows the approved files, but automated activation of the Download links did not start a browser download. Manual download is required unless the site behavior changes.
+**Immediate blocker:** Google Cloud Storage stores the package but does not run the audit. A protected Google Cloud computing environment must be selected, costed, created with private access controls and approved by the user before the restricted package is extracted or inspected.
 
-**Immediate next action:** When the user is home, remind them to sign in to PDS and manually click Download beside `AllProvidedFiles_149.zip`. If local space is insufficient, review the access terms before choosing any alternative storage. Do not place restricted patient data in public or ordinary personal cloud storage.
+**Immediate next action:** Explain the protected cloud-computing plan and costs, then obtain explicit approval before creating computing resources or beginning the real-file audit.
 
-**After download:** Locate the file, verify its name and size, calculate a SHA-256 checksum, list its contents without extracting, check for unsafe ZIP paths, store it under ignored restricted storage, then inspect the dictionary and run the aggregate inventory tool.
+**After approval:** Create or use an approved private computing environment, extract only inside protected storage, inspect every dictionary sheet, run the synthetic tests and aggregate inventory, check the report for privacy, and stop for user approval before writing cleaning transformations.
 
 ## User communication requirements
 
@@ -93,12 +93,12 @@ Every agent continuing this project must read this file first, then read `RESEAR
 
 | Type | Filename | Current state |
 |---|---|---|
-| Complete package | `AllProvidedFiles_149.zip` | Visible, not downloaded |
-| Data dictionary | `Challenge_data_dictionary v2.xlsx` | Visible, not downloaded |
-| Training package | `prostate_cancer_challenge_data_training.zip` | Visible, not downloaded |
-| Leaderboard package | `prostate_cancer_challenge_data_leaderboard.zip` | Visible, not downloaded |
-| Final-scoring package | `prostate_cancer_challenge_data_finalscoringset.zip` | Visible, not downloaded |
-| CRF location document | `PCDC Protocol, CRF Location.docx` | Visible, not downloaded |
+| Complete package | `AllProvidedFiles_149.zip` | Secured and verified in private Google Cloud Storage; not extracted |
+| Data dictionary | `Challenge_data_dictionary v2.xlsx` | Verified as a bundle member; not yet inspected |
+| Training package | `prostate_cancer_challenge_data_training.zip` | Verified as a bundle member; not yet extracted |
+| Leaderboard package | `prostate_cancer_challenge_data_leaderboard.zip` | Verified as a bundle member; not yet extracted |
+| Final-scoring package | `prostate_cancer_challenge_data_finalscoringset.zip` | Verified as a bundle member; not yet extracted |
+| CRF location document | `PCDC Protocol, CRF Location.docx` | Verified as a bundle member; not yet opened |
 
 ### Verified training files listed inside the package
 
@@ -110,13 +110,42 @@ Every agent continuing this project must read this file first, then read `RESEAR
 - `VitalSign_training.csv`
 - `Challenge_data_dictionary v2.xlsx`
 
-### Browser download issue
+### Historical browser download issue and resolution
 
-The correct page and Download controls were verified. Automated attempts used the page's semantic link, visible DOM control and physical browser click. No browser download event occurred and no new file appeared in the Windows Downloads folder. Do not report the package as downloaded.
+The correct page and Download controls were verified. Earlier automated attempts used the page's semantic link, visible DOM control and physical browser click, but no browser download event occurred at that time.
 
-The user was therefore asked to manually download `AllProvidedFiles_149.zip` later at home. The dataset page was left open for handoff during the session, but future agents must not assume the browser tab or signed-in session still exists.
+This blocker was resolved on 2026-08-27. The user downloaded the complete package, it passed local integrity and ZIP path checks, Craig approved private Google Cloud storage, and the unchanged bytes were uploaded and verified there. The local restricted copies were removed only after complete cloud verification.
 
 ## Storage and privacy rules
+
+### Verified private Google Cloud storage
+
+- PDS approval for private Google Cloud storage was confirmed by the user on 2026-08-27.
+- Google Cloud project: `pds-dream-secure-storage`.
+- Private bucket: `pds-dream-secure-storage-eu-20260827`.
+- Bucket location: `europe-west4`, Netherlands.
+- Object: `gs://pds-dream-secure-storage-eu-20260827/prostate-lab-trajectories/data/raw/pds_dream/source/AllProvidedFiles_149 (1).zip`.
+- Object size: 6,227,480 bytes.
+- SHA-256: `AB3ECA19C5D0CC4106C96AC04E665DD1A5C9DF58F66328ECD24E8E1067932391`.
+- MD5: `D4Yz5HS1gTF8tm8Xg6hK2A==` in Google Cloud metadata, matching local MD5 hex `0F8633E474B581317CB66F1783A84AD8`.
+- CRC32C in Google Cloud metadata: `gx71ow==`.
+- Public Access Prevention is enforced and Uniform Bucket-Level Access is enabled.
+- No public principals were found. Access is through the approved project identity.
+- Encryption uses Google-managed encryption keys.
+- Object versioning is off. Soft delete is enabled for seven days. No retention policy or lifecycle deletion rule was added.
+- Metadata-only authorized access was tested successfully. No patient row or laboratory value was displayed.
+- The earlier empty United States multi-region bucket `pds-dream-secure-storage-raw-20260827` was deleted after explicit authorization.
+
+### Verified local restricted-file cleanup
+
+- Two identical restricted ZIP copies were found in the Windows Downloads folder.
+- Both copies matched the verified cloud object size and MD5, and both had the expected SHA-256.
+- Exact files removed permanently after fresh confirmation:
+  - `C:\Users\BarbarosIsikGreenhou\Downloads\AllProvidedFiles_149 (1).zip`
+  - `C:\Users\BarbarosIsikGreenhou\Downloads\AllProvidedFiles_149.zip`
+- A fresh targeted Downloads scan found no remaining matching dataset files, extraction folders or partial browser downloads.
+- Ordinary deletion on an SSD cannot guarantee forensic erasure because SSD wear-leveling may retain inaccessible physical remnants.
+- No extraction occurred on this computer.
 
 ### Required rules
 
@@ -232,9 +261,11 @@ Read these before making source or analysis decisions:
 
 **Canonical branch:** `main`
 
-**Permanent local path:** None. The former path `C:\Users\BarbarosIsikGreenhou\Documents\Codex\2026-08-24\s\prostate-lab-trajectories` is retired and must not be treated as the project home.
+**Current working copy:** `C:\Users\BarbarosIsikGreenhou\Desktop\prostate-lab-trajectories`.
 
-**Future working copies:** Use a fresh authenticated clone in the active task workspace when needed. Verify the remote, branch and current GitHub commit before editing.
+**Verified state on 2026-08-27:** Remote is `https://github.com/barbarosisik/prostate-lab-trajectories.git`, branch is `main`, working tree was clean before this documentation update, and HEAD matched remote commit `d02eed8359229d19008efb60ba60a4cb3c08e903`.
+
+**Retired copy pending exact cleanup review:** `C:\Users\BarbarosIsikGreenhou\Documents\Codex\2026-08-24\s\prostate-lab-trajectories` still exists and must not be used for new work. It may contain local-only literature files and an older dirty working tree. Do not delete it until its exact contents are compared and the user receives an exact deletion list with a fresh action-time confirmation.
 
 **Authorization boundary:** The user explicitly authorized publishing the current permitted project files and deleting the former local folder in the 2026-08-25 migration session. Future commits, pushes, history changes or repository-setting changes still require fresh explicit authorization.
 
@@ -382,17 +413,17 @@ Define only after the audit:
 
 ### Highest priority reminder
 
-When the user is back home:
+Before real-file inspection:
 
-> Please download `AllProvidedFiles_149.zip` from the approved PDS DREAM dataset page. Tell me the completed file path and whether the computer has enough space for safe extraction. Do not upload it to ordinary cloud storage.
+> Explain and approve the private Google Cloud computing environment, its cost, access controls and shutdown procedure. Do not extract or inspect the restricted package in ordinary local or shared storage.
 
-### After the user says downloaded
+### After cloud computing is approved
 
-- Verify the file exists before taking any other action.
-- Ask before moving it if the destination changes the user's storage arrangement.
-- Inspect and checksum before extraction.
-- Review any applicable PDS conditions.
-- Run dictionary audit and aggregate inventory before cleaning.
+- Verify the private compute identity can read only the approved bucket and object.
+- Extract in protected cloud storage only after ZIP path checks are repeated there.
+- Read every dictionary sheet before creating cleaning rules.
+- Run tests and the aggregate inventory before cleaning.
+- Verify that the aggregate report contains no patient identifiers or laboratory values.
 
 ### Later reminders
 
@@ -448,6 +479,21 @@ When the user is back home:
 - Created this project continuity log at the user's request.
 - Created `NEXT_AGENT_ONBOARDING_PROMPT.md` as a reusable handoff prompt.
 - Updated core project status documents to reflect PDS approval and acquisition pending.
+
+### 2026-08-27: Private cloud transfer and local restricted-file cleanup
+
+- User reported that Craig at PDS approved private Google Cloud storage.
+- Created and verified the dedicated private Netherlands-region bucket and protected object path listed above.
+- Verified remote existence, exact size, matching MD5, CRC32C metadata, enforced public-access prevention, uniform bucket access and absence of public principals.
+- Permanently removed only the two exact restricted ZIP copies from Windows Downloads after fresh user confirmation.
+- Rechecked Downloads and found no matching dataset files, extraction folders or partial downloads.
+- Authenticated Git securely through the normal browser flow and cloned the current private `main` branch to the actual Windows Desktop.
+- Verified the clone at commit `d02eed8359229d19008efb60ba60a4cb3c08e903` and read every required onboarding, research, audit and literature record.
+- Re-ran all three invented-data inventory tests successfully.
+- No patient-level file was opened, extracted, downloaded from cloud or placed in GitHub.
+- User explicitly authorized committing and pushing the current privacy-safe documentation and onboarding updates to `main`.
+- This authorization does not approve creating paid cloud compute or beginning the real-file audit.
+- Next gate is explicit approval for a protected cloud computing environment and the real-file audit.
 
 ## Session update template
 

@@ -209,18 +209,19 @@ prostate-lab-trajectories/
 
 ## Immediate next steps
 
-1. When the user is home, manually download `AllProvidedFiles_149.zip` from the approved PDS DREAM page.
-2. Verify the file, checksum and ZIP member safety before extraction.
-3. Inspect every sheet of the official data dictionary.
-4. Run the tested aggregate inventory tool against every supplied CSV.
-5. Confirm whether serial laboratory dates can be aligned to actual chemotherapy administrations rather than only nominal visits.
-6. Explain the verified feasibility results in plain language and obtain user approval before cleaning.
-7. Freeze the first data-cleaning and restructuring specification only after the actual columns are verified.
-8. Prepare the CHAARTED patient-data request using the completed public compatibility audit.
+1. The complete package is secured and checksum-verified in PDS-approved private Google Cloud Storage.
+2. Obtain explicit approval before creating a paid private Google Cloud computing environment.
+3. Extract and inspect the restricted package only inside that protected environment.
+4. Inspect every sheet of the official data dictionary.
+5. Run the tested aggregate inventory tool against every supplied CSV.
+6. Confirm whether serial laboratory dates can be aligned to actual chemotherapy administrations rather than only nominal visits.
+7. Explain the verified feasibility results in plain language and obtain user approval before cleaning.
+8. Freeze the first data-cleaning and restructuring specification only after the actual columns are verified.
+9. Prepare the CHAARTED patient-data request using the completed public compatibility audit.
 
 ## Project status
 
-**Current stage:** PDS access approved and signed in; approved files visible; large manual download pending until the user is home or has suitable protected storage.
+**Current stage:** PDS package secured in approved private Google Cloud Storage; local restricted copies removed after complete verification; protected cloud-computing audit pending approval.
 
 Read [`PROJECT_CONTINUITY_LOG.md`](PROJECT_CONTINUITY_LOG.md) first for the current blocker, reminders and exact next action. See [`RESEARCH_LOG.md`](RESEARCH_LOG.md) for research decisions and dated scientific progress.
 

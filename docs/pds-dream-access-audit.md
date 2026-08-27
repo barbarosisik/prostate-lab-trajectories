@@ -2,9 +2,25 @@
 
 ## Current result
 
-The official PDS DREAM contribution and the official Synapse challenge metadata are located. PDS approved the user's access request on 2026-08-25, the user signed in successfully, and the contribution is marked Available for Download. Public documentation proves that the training release includes event-level laboratory results through day 84, but the six-file challenge release does not list an actual chemotherapy-administration table or an adverse-event event table.
+The official PDS DREAM contribution and the official Synapse challenge metadata are located. PDS approved the user's access request on 2026-08-25, the user signed in successfully, and Craig at PDS later confirmed that private Google Cloud storage is permitted. The complete unchanged package was uploaded to a dedicated private Netherlands-region Google Cloud Storage bucket and verified on 2026-08-27. Public documentation proves that the training release includes event-level laboratory results through day 84, but the six-file challenge release does not list an actual chemotherapy-administration table or an adverse-event event table.
 
-The source files and dictionary have **not** yet been treated as obtained or column-verified because the large package still requires a manual download when the user is home or has suitable protected storage.
+The source package is now obtained and integrity-verified, but its dictionary and CSV columns are **not** yet source-verified. No patient row or laboratory value has been opened. The real-file audit awaits explicit approval and a protected Google Cloud computing environment.
+
+## Secured acquisition record
+
+| Item | Verified value |
+|---|---|
+| Google Cloud project | `pds-dream-secure-storage` |
+| Private bucket | `pds-dream-secure-storage-eu-20260827` |
+| Region | `europe-west4`, Netherlands |
+| Object path | `prostate-lab-trajectories/data/raw/pds_dream/source/AllProvidedFiles_149 (1).zip` |
+| Size | 6,227,480 bytes |
+| SHA-256 | `AB3ECA19C5D0CC4106C96AC04E665DD1A5C9DF58F66328ECD24E8E1067932391` |
+| MD5 | Local hex `0F8633E474B581317CB66F1783A84AD8`; cloud base64 `D4Yz5HS1gTF8tm8Xg6hK2A==` |
+| CRC32C | Cloud base64 `gx71ow==` |
+| Access controls | Public Access Prevention enforced; Uniform Bucket-Level Access enabled; no public principals found |
+| Encryption | Google-managed encryption keys |
+| Local restricted copies | Two exact Downloads copies permanently removed after full verification and fresh confirmation; targeted rescan found zero matches |
 
 ## Official dataset identity
 
@@ -108,7 +124,7 @@ Consequently:
 
 No cleaning/restructuring specification will be frozen until the dictionary and all source columns are inspected.
 
-## Access test and exact blocker
+## Historical access test and current blocker
 
 Checked on 2026-08-25:
 
@@ -123,17 +139,31 @@ Checked on 2026-08-25:
 - The separately tested anonymous Synapse route still returns no read/download permission for `syn3348062` and reports unmet requirement `3325885`.
 - This Synapse state does not cancel the verified PDS approval or visible PDS downloads. Use the approved PDS page as the current acquisition route unless the user separately completes Synapse access.
 
-## Acquisition and verification procedure after access
+Resolved on 2026-08-27:
 
-1. When the user is home, manually download `AllProvidedFiles_149.zip` from the approved PDS contribution.
-2. If local space is insufficient, review the PDS terms before using encrypted external or institution-approved protected storage. Do not use ordinary cloud storage.
-3. Preserve the original ZIP unchanged under ignored `data/raw/pds_dream/source/` storage.
-4. Record the source URL/Synapse ID, acquisition timestamp, size and SHA-256 checksum in a local restricted manifest; commit only non-sensitive metadata.
-5. List ZIP members before extraction and reject unsafe paths.
-6. Read all columns as strings for the raw inventory so mixed numeric/text values are preserved.
-7. Produce row/column counts, column types, distinct-value summaries and join diagnostics without committing patient-level values.
-8. Enumerate every laboratory test and unit before any inclusion filter.
-9. Test actual cycle linkage before writing cleaning rules.
+- The complete PDS package was downloaded successfully and verified without extraction.
+- Craig at PDS confirmed that private Google Cloud storage is permitted.
+- The unchanged source bytes were uploaded to the secured bucket recorded above.
+- Cloud existence, size, MD5, CRC32C and access controls were verified.
+- The exact restricted local ZIP copies were removed after fresh confirmation.
+
+Current blocker:
+
+- Google Cloud Storage is not a computing environment.
+- A private cloud computing resource, cost estimate, access policy and shutdown plan must be explained and approved before the dictionary and CSV files are inspected.
+
+## Protected real-file audit procedure
+
+1. Obtain explicit approval for the protected cloud computing resource and expected cost.
+2. Limit access to approved identities and the minimum necessary bucket permissions.
+3. Repeat ZIP path checks inside the protected environment before extraction.
+4. Preserve the original cloud object unchanged and extract only to protected temporary storage.
+5. Read all columns as strings for the raw inventory so mixed numeric/text values are preserved.
+6. Produce row/column counts, column types, aggregate missingness and join diagnostics without committing patient-level values.
+7. Enumerate every laboratory test and unit before any inclusion filter.
+8. Test actual cycle linkage before writing cleaning rules.
+9. Verify the report contains no patient identifiers or laboratory result values.
+10. Stop the computing resource when it is not needed and stop for user approval before cleaning.
 
 ## Material sources
 

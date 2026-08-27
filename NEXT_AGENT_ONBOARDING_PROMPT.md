@@ -15,7 +15,7 @@ https://github.com/barbarosisik/prostate-lab-trajectories
 
 Canonical branch: main
 
-Do not assume that the project has a permanent local folder. The former physical project path was retired after the permitted project files were published to GitHub.
+Do not assume that the project has a permanent local folder. The verified working copy on 2026-08-27 was `C:\Users\BarbarosIsikGreenhou\Desktop\prostate-lab-trajectories`, but GitHub `main` remains canonical.
 
 At the start of a future task:
 
@@ -24,7 +24,8 @@ At the start of a future task:
 3. If it does not, obtain a fresh authenticated copy in the current task workspace.
 4. Prefer an available GitHub connector, GitHub CLI, or normal Git authentication.
 5. If those methods cannot access the private repository, use the signed-in GitHub browser only as a fallback.
-6. Do not recreate or rely on the retired path C:\Users\BarbarosIsikGreenhou\Documents\Codex\2026-08-24\s\prostate-lab-trajectories.
+6. Do not recreate or rely on the retired path `C:\Users\BarbarosIsikGreenhou\Documents\Codex\2026-08-24\s\prostate-lab-trajectories`.
+7. That retired folder still existed at the last targeted check. It contained local-only research PDFs and extracted text, but no PDS dataset copy. Do not delete it unless the exact paths are presented and the user gives fresh action-time confirmation.
 
 NEW WINDOWS COMPUTER SETUP
 
@@ -92,7 +93,7 @@ NON-NEGOTIABLE RESEARCH SCOPE
 - Do not claim causation from associations.
 - Report positive, negative, null, contradictory and failed results.
 
-CURRENT VERIFIED STATE AS OF 2026-08-25
+CURRENT VERIFIED STATE AS OF 2026-08-27
 
 - Project Data Sphere approved the user's registration and access request.
 - The user successfully signed in.
@@ -103,14 +104,40 @@ CURRENT VERIFIED STATE AS OF 2026-08-25
 - The page reports 2,070 patients and Available for Download.
 - The page lists AllProvidedFiles_149.zip, Challenge_data_dictionary v2.xlsx, the training ZIP, leaderboard ZIP, final-scoring ZIP and CRF location document.
 - The training package lists CoreTable, LabValue, LesionMeasure, MedHistory, PriorMed and VitalSign CSV files.
-- No package has been successfully downloaded yet.
-- Automated browser attempts to activate the PDS Download links did not produce a download event or a new file in Windows Downloads.
-- The user is currently away from home and cannot perform the large download on the current computer.
-- The user intends to download at home or use suitable protected storage.
+- Craig at PDS confirmed that private Google Cloud storage is permitted.
+- The complete package was downloaded, verified without extraction and uploaded unchanged to private Google Cloud Storage.
+- The Google Cloud project is `pds-dream-secure-storage`.
+- The private bucket is `pds-dream-secure-storage-eu-20260827` in `europe-west4`, Netherlands.
+- The protected object is `prostate-lab-trajectories/data/raw/pds_dream/source/AllProvidedFiles_149 (1).zip`.
+- The object size is 6,227,480 bytes and SHA-256 is `AB3ECA19C5D0CC4106C96AC04E665DD1A5C9DF58F66328ECD24E8E1067932391`.
+- Local MD5 hex is `0F8633E474B581317CB66F1783A84AD8`; matching cloud MD5 base64 is `D4Yz5HS1gTF8tm8Xg6hK2A==`; cloud CRC32C base64 is `gx71ow==`.
+- Remote existence, exact size, checksums, public-access prevention, uniform bucket access and absence of public principals were verified.
+- The bucket uses Google-managed encryption keys, Standard storage, seven-day soft delete, no object versioning, no retention policy and no lifecycle deletion rule.
+- The two exact restricted ZIP copies in Windows Downloads were permanently removed after fresh confirmation, and a targeted rescan found no remaining dataset or partial-download matches.
+- No package has been extracted and no patient row or laboratory value has been opened.
+- The raw dataset is not in GitHub.
+- The private GitHub repository was freshly cloned to the Windows Desktop, and all required records were read before the documentation update.
+- The 2026-08-27 cloud-transfer, verification, local-cleanup and next-stage records were authorized for commit and push to `main`.
+- The current blocker is the need for an approved protected Google Cloud computing environment before the real-file audit.
 
 HIGHEST PRIORITY REMINDER
 
-When the user is back home, remind them to manually download AllProvidedFiles_149.zip from the approved PDS dataset page. Ask them to tell you the completed file path and whether there is enough free space to extract it safely.
+Explain that Google Cloud Storage stores the package but does not run analysis. The recommended next resource is a private Compute Engine VM, meaning a temporary computer inside the user's Google Cloud account, with this proposed configuration:
+
+- Name: `pds-dream-audit-vm`.
+- Zone: `europe-west4-a`, Netherlands, matching the bucket region.
+- Machine: `e2-small`, with 2 virtual processors and 2 GB memory.
+- Operating system: Debian Linux.
+- Boot disk: 10 GB standard persistent disk.
+- No external internet address.
+- Identity-Aware Proxy and OS Login for controlled access.
+- Dedicated service account with read-only access to this bucket only.
+- No downloadable service-account JSON key.
+- Stop immediately after audit work. The processor is not billed while stopped, but the boot disk remains billable until deleted.
+
+The current official on-demand list price recorded on 2026-08-27 for `e2-small` was approximately USD 0.016752855 per running hour, excluding disk, taxes and currency conversion. Recheck the current console estimate before creation because cloud prices can change.
+
+Creating this VM changes the user's cloud account and can incur charges. Obtain explicit user approval immediately before creating it. The earlier upload and deletion approvals do not replace this approval.
 
 Do not suggest ordinary public or personal cloud storage for convenience. Review the data-use terms before placing the package anywhere except protected local or institution-approved storage. An encrypted external drive or the secure PDS SAS environment may be considered if local space is insufficient, subject to the access terms.
 
@@ -132,27 +159,24 @@ CURRENT IMPLEMENTATION
 - It reports schema, row counts, missingness, recognized fields and aggregate repeated-lab counts.
 - It does not output patient identifiers or laboratory result values.
 - tests/test_inventory_raw_data.py contains three unit tests using invented data.
-- All three tests passed on 2026-08-25.
+- All three tests passed again on 2026-08-27.
 - Do not treat the tool as a cleaning pipeline. It is only the first inventory step.
 
-WHAT TO DO AFTER THE USER SAYS THE PACKAGE IS DOWNLOADED
+WHAT TO DO AFTER PROTECTED CLOUD COMPUTE IS APPROVED
 
-1. Locate the exact completed file using a read-only check.
-2. Verify name, size and timestamp.
-3. Calculate SHA-256.
-4. List ZIP members without extracting.
-5. Reject unsafe paths such as absolute paths or parent-directory traversal.
-6. Confirm expected dictionary and CSV files.
-7. Review the applicable PDS terms before copying to another location.
-8. Store the original package unchanged under ignored protected storage.
-9. Extract safely into an ignored raw-data folder.
-10. Read the entire Excel dictionary using the spreadsheet skill if it is available and applicable.
-11. Run the existing synthetic tests.
-12. Run the aggregate inventory tool on the real CSV directory.
-13. Verify the report contains no patient IDs or result values.
-14. Produce a plain-language feasibility summary for the user.
-15. Update PROJECT_CONTINUITY_LOG.md and RESEARCH_LOG.md.
-16. Stop for user approval before writing the cleaning specification.
+1. Confirm the computing resource is private, in the approved region and accessible only through approved identities.
+2. Confirm its service identity has only the minimum required bucket access.
+3. Repeat safe ZIP member checks before protected extraction.
+4. Extract only into protected cloud storage that is not synchronized to the local computer.
+5. Read the entire Excel dictionary using the spreadsheet skill if it is available and applicable.
+6. Run the existing synthetic tests.
+7. Run the aggregate inventory tool on the real CSV directory.
+8. Save its report only in ignored protected storage until a privacy check is complete.
+9. Verify the report contains no patient IDs or result values.
+10. Produce a plain-language feasibility summary for the user.
+11. Update PROJECT_CONTINUITY_LOG.md and RESEARCH_LOG.md.
+12. Stop the computing resource when it is not needed to limit cost.
+13. Stop for user approval before writing the cleaning specification.
 
 CRITICAL SCIENTIFIC GATE
 
@@ -190,12 +214,14 @@ The private GitHub main branch is canonical. Verify its current commit at the be
 
 Any local clone is temporary working storage, not the canonical project home. Preserve any working-copy changes you discover. Do not reset, delete or overwrite them. Do not commit, push or rewrite history without explicit authorization.
 
+The user authorized the 2026-08-27 documentation update to be committed and pushed to `main`. That authorization applies to that completed documentation change only. Obtain fresh permission for later commits or pushes.
+
 ONGOING LOGGING DUTY
 
 PROJECT_CONTINUITY_LOG.md is the operational memory for all future agents. Update its Current snapshot, Reminder queue and Dated operational history whenever anything meaningful changes. Record verified evidence, failures and exact next actions. Put methodological decisions in RESEARCH_LOG.md as well.
 
 YOUR FIRST RESPONSE AFTER READING
 
-Give the user a short, understandable status summary. Confirm whether the package is still pending download. If the user is still away from home, remind them what to download later and do not pressure them to use unsafe storage. Continue only with safe work that does not require the restricted package or a new consequential choice.
+Give the user a short, understandable status summary. Confirm that the complete package is secured and verified in private Google Cloud Storage, the restricted local ZIP copies were removed, the raw data is not in GitHub, and the next decision is whether to create the proposed private Compute Engine VM for the protected real-file audit. Do not create paid compute or open the restricted package without explicit approval.
 ```
 
