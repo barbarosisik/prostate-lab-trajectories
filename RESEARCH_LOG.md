@@ -447,6 +447,7 @@ Historical unapproved proposal, superseded by the later same-day local-processin
 ### 2026-08-31 - Specific local audit approved; tracked execution started
 
 - Recorded D-025 and the user's approval of the concrete local audit/upload plan plus corrected data-free GitHub publication. Added the detailed A0-A10 execution tracker to the continuity log.
+- Published the corrected ten data-free documents at `9843e5b86a89c4f5ca583a60f1906c69032ee9c8`, independently verified remote main at that SHA and confirmed all required document paths in the matching commit. All three invented-data tests passed again; no source/test code or scientific definitions changed.
 - Local encryption remains unverified after the permitted command retry returned access denied. No patient data was downloaded to work around this prerequisite, and no Windows security setting was changed.
 - The approved audit remains read-only and covers every repeated lab, full joins, exact administration timing, four separate outcome families and ENTHUSE-33 availability. No source-derived cleaning definition, treatment window or model has been established.
 - Continue routine approved audit steps once local security passes. Prepare the cleaning specification from verified fields afterward, then obtain separate approval before transformations. Scientific analysis remains a later approval gate.

@@ -10,7 +10,7 @@ Private Google Cloud Storage is the permanent home for original and derived rest
 
 | Item | Location | Verified state |
 |---|---|---|
-| Code and safe documentation | `https://github.com/barbarosisik/prostate-lab-trajectories`, branch `main` | Pre-publication remote baseline verified at `fb059b91df2fd38740ab305fb17058204e7d9096`; corrected data-free instruction publication approved; completion evidence is tracked in continuity step A1 |
+| Code and safe documentation | `https://github.com/barbarosisik/prostate-lab-trajectories`, branch `main` | Corrected data-free instructions/tracker published and remote verified at `9843e5b86a89c4f5ca583a60f1906c69032ee9c8`; continuity A1 is done. Later receipt commits may follow; verify current main at onboarding |
 | Cloud project | `pds-dream-secure-storage` | Existing approved storage project |
 | Private bucket | `gs://pds-dream-secure-storage-eu-20260827` | Netherlands `europe-west4`; access controls refreshed 2026-08-31 |
 | Original package | `gs://pds-dream-secure-storage-eu-20260827/prostate-lab-trajectories/data/raw/pds_dream/source/AllProvidedFiles_149 (1).zip` | Exists in live console; 6,227,480 bytes and hashes verified 2026-08-27; exact metadata refresh before next download |
@@ -43,7 +43,7 @@ A detailed manifest belongs with the restricted cloud run bundle if filenames or
 
 | Exact folder | Purpose and state |
 |---|---|
-| `C:\Users\BarbarosIsikGreenhou\Desktop\prostate-lab-trajectories` | Temporary code/documentation clone; safe instruction publication approved and tracked in continuity step A1; no restricted dataset downloaded here in this session |
+| `C:\Users\BarbarosIsikGreenhou\Desktop\prostate-lab-trajectories` | Temporary code/documentation clone; initial safe instruction publication verified and continuity A1 complete; no restricted dataset downloaded here in this session |
 | `C:\Users\BarbarosIsikGreenhou\Documents\Codex\2026-08-24\s\prostate-lab-trajectories` | Retired folder, do not use; existence rechecked; historical local-only papers/text remain subject to the unresolved all-files-backup condition |
 
 Do not delete these folders or upload their publisher files under the dataset-processing approval. Their original backup condition and fresh exact-target confirmation still apply.
