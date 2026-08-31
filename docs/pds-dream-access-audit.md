@@ -4,7 +4,7 @@
 
 The official PDS DREAM contribution and the official Synapse challenge metadata are located. PDS approved the user's access request on 2026-08-25, the user signed in successfully, and Craig at PDS later confirmed that private Google Cloud storage is permitted. The complete unchanged package was uploaded to a dedicated private Netherlands-region Google Cloud Storage bucket and verified on 2026-08-27. Public documentation proves that the training release includes event-level laboratory results through day 84, but the six-file challenge release does not list an actual chemotherapy-administration table or an adverse-event event table.
 
-The source package is obtained and integrity-verified, but its dictionary and CSV columns are **not** yet source-verified. No patient row or laboratory value has been opened by this workflow. On 2026-08-31 the user confirmed that private Google Cloud use and proceeding toward protected computing and the real-file audit are approved. The next agent should propose the exact setup-and-audit execution plan for approval, then implement it. Provider/storage permission is not a current blocker.
+The source package is obtained and integrity-verified, but its dictionary and CSV columns are **not** yet source-verified. No patient row or laboratory value has been opened by this workflow. The latest 2026-08-31 user direction requires cloud storage only and local processing, followed by verified cloud uploads and local cleanup. The user approved `local-processing-and-cloud-storage-plan.md`; local encryption verification remains pending before download. Track execution in the continuity log under `LOCAL-AUDIT-2026-08-31-01`. Provider/private-storage permission is not a current blocker.
 
 ## Secured acquisition record
 
@@ -149,21 +149,21 @@ Resolved on 2026-08-27:
 
 Current implementation step, updated 2026-08-31:
 
-- Google Cloud Storage is not a computing environment.
-- The user approved moving forward with protected cloud computing and the real-file audit. Present the exact resource, current costs, access policy, audit outputs and shutdown plan for plan-level approval before execution. Do not ask again whether private Google Cloud use is permitted.
+- Google Cloud is the permanent file store; the user explicitly requires all computation and tests to run locally.
+- Execute the approved local audit plan after its security checks pass. Track each step in the continuity log. Do not create cloud compute or ask again for the same plan/private-storage permission.
 
 ## Protected real-file audit procedure
 
-1. Prepare the specific protected setup-and-audit execution plan, including the computing resource and current costs, and obtain approval for that plan. General cloud-use approval is already recorded.
+1. The specific local audit plan is approved. Verify local encryption, permissions and lack of synchronization, then register every actual local path before download. Private storage permission is already recorded.
 2. Limit access to approved identities and the minimum necessary bucket permissions.
 3. Repeat ZIP path checks inside the protected environment before extraction.
-4. Preserve the original cloud object unchanged and extract only to protected temporary storage.
+4. Preserve the original cloud object unchanged, download and verify its checksum, and extract only to the registered protected local run folder.
 5. Read all columns as strings for the raw inventory so mixed numeric/text values are preserved.
 6. Produce row/column counts, column types, aggregate missingness and join diagnostics without committing patient-level values.
 7. Enumerate every laboratory test and unit before any inclusion filter.
 8. Test actual cycle linkage before writing cleaning rules.
 9. Verify the report contains no patient identifiers or laboratory result values.
-10. Stop the computing resource when it is not needed and stop for user approval before cleaning.
+10. Upload new output bundles/manifests to the versioned private cloud run prefix, verify all required uploads and update the data-location register. Stop local processes, obtain fresh exact-target cleanup confirmation, remove the approved local copies and check absence. Obtain separate approval before cleaning.
 
 ## Material sources
 

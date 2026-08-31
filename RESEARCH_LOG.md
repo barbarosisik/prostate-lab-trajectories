@@ -14,11 +14,11 @@ This file should be updated whenever we:
 
 **Last updated:** 2026-08-31
 
-**Project stage:** PDS package secured and verified in private Google Cloud Storage; proceeding to protected compute and the real-file audit approved; specific execution plan next
+**Project stage:** Specific local read-only audit and verified cloud output uploads approved; local encryption verification required before execution
 
 **Repository visibility:** Private
 
-**Active objective:** Present a concrete private cloud setup-and-audit plan with current costs and safeguards for approval, then implement the approved plan, inspect the dictionary and run the aggregate inventory without returning restricted patient data to this computer or GitHub. General permission to use Google Cloud is settled; historical pending-approval entries below are not the current state.
+**Active objective:** Execute the approved `docs/local-processing-and-cloud-storage-plan.md` after verifying the local security prerequisites. Track progress in `PROJECT_CONTINUITY_LOG.md` under `LOCAL-AUDIT-2026-08-31-01` and exact paths in `docs/data-location-register.md`. The user approved publishing the corrected data-free instructions. Encryption remains unverified; no real-file audit has started. D-024 supersedes earlier cloud-compute interpretations; cleaning and scientific analysis each require later approval.
 
 ## Fixed research question
 
@@ -46,11 +46,13 @@ This file should be updated whenever we:
 | D-016 | 2026-08-25 | Run an aggregate-only, read-only inventory before writing any cleaning transformations. | This proves what was received and prevents premature assumptions while keeping patient identifiers and laboratory values out of the report. | Active |
 | D-017 | 2026-08-25 | Acquire the complete PDS bundle first, preserve it unchanged and verify checksum and ZIP safety before extraction. | The full bundle provides one traceable acquisition artifact while safe verification protects source integrity and the local filesystem. | Acquisition complete; protected extraction follows approved execution plan |
 | D-018 | 2026-08-25 | Maintain `PROJECT_CONTINUITY_LOG.md` as the operational memory and reminder queue, with methodological decisions also recorded in this research log. | The user needs durable cross-agent continuity, reminders and an exact account of developments while working away from home. | Active |
-| D-019 | 2026-08-27 | Store the unchanged restricted package only in the PDS-approved private Google Cloud bucket with public access prevention and uniform bucket access. | This keeps the source outside GitHub and ordinary file-sharing services while preserving controlled access. | Active |
+| D-019 | 2026-08-27 | Keep the permanent unchanged restricted package in the PDS-approved private Google Cloud bucket with public access prevention and uniform bucket access. | This keeps the source outside GitHub and ordinary file-sharing services while preserving controlled access. | Active; temporary local processing clarified by D-024 |
 | D-020 | 2026-08-27 | Remove local restricted copies only after remote existence, size, checksum and access controls are verified and the user gives fresh action-time confirmation. | A verified cloud source must exist before local restricted data is removed. | Completed for the two Downloads copies |
-| D-021 | 2026-08-27 | Perform the real-file audit only inside an approved protected environment and keep patient-level data out of chat, GitHub and ordinary logs. | Google Cloud Storage is storage, so protected compute is required to inspect the dictionary and CSV files without downloading them locally. | Proceeding approved on 2026-08-31; specific setup-and-audit plan next |
+| D-021 | 2026-08-27 | Perform the real-file audit only inside an approved protected environment and keep patient-level data out of chat, GitHub and ordinary logs. | Earlier interpretation was protected cloud compute without local download. | Cloud-compute interpretation superseded by D-024; privacy rule retained |
 | D-022 | 2026-08-31 | Treat an onboarding or next-agent handoff request as a trigger to publish approved permitted work and clean up temporary local project folders after remote verification and fresh exact-target confirmation. Honor every backup condition attached to deletion approval. | The user wants GitHub as the permanent permitted project record and does not want local working copies retained after handoff. Restricted data remains in its approved private cloud storage, never GitHub. | Active; current all-files-backup condition unresolved |
-| D-023 | 2026-08-31 | Record private Google Cloud use and moving forward to protected compute and audit as approved. Ask for approval of concrete execution plans and later research stages, not repeated generic cloud permission. | The user explicitly clarified approval and wants the next agent to propose actionable steps, explain choices and proceed within approved plans. | Active |
+| D-023 | 2026-08-31 | Record private Google Cloud use and moving forward to protected compute and audit as approved. Ask for approval of concrete execution plans and later research stages, not repeated generic cloud permission. | Earlier documentation interpreted this as cloud computation. | Cloud-compute interpretation superseded by D-024; concrete approval gates retained |
+| D-024 | 2026-08-31 | Use cloud storage only as the permanent restricted-data home; perform computations, tests, audits, cleaning and analysis locally in a recorded protected temporary run folder. Upload new versioned outputs, verify them, then obtain fresh confirmation and delete local copies after each stage. | The user explicitly corrected the compute location and wants future agents to resume from verified cloud versions without forgotten local data. | Active; specific local audit plan approved, local security checks pending |
+| D-025 | 2026-08-31 | Execute the first local read-only audit under `LOCAL-AUDIT-2026-08-31-01`, track each step and evidence in the continuity log, and publish the approved corrected data-free instructions. | The user explicitly approved the concrete plan and requested a persistent completion tracker. | Approved; real-file execution awaits local security verification; cleaning/modeling excluded |
 
 ## Master plan
 
@@ -419,6 +421,35 @@ This file should be updated whenever we:
 - The next agent should propose concrete resources, access controls, current costs, audit outputs and shutdown arrangements, then execute the approved plan. A later cleaning plan and analysis plan follow the actual-field audit.
 - No source field, outcome definition, inclusion rule or model was changed. This was a documentation update only, explicitly authorized for publication to `main`.
 - Local-folder cleanup retains the separate all-files-backup condition and remains unperformed.
+
+### 2026-08-31 - Concrete protected-audit plan prepared
+
+Historical unapproved proposal, superseded by the later same-day local-processing correction. No VM was created.
+
+- Verified current local and remote `main` at `fb059b91df2fd38740ab305fb17058204e7d9096`, read all required records and re-ran the three invented-data tests successfully.
+- Refreshed cloud storage/access metadata without reading patient content. Compute Engine is not enabled in the console; the asset inventory displayed no compute resources and the service-account list was empty. No setup or audit was executed.
+- Prepared an uncommitted small-VM proposal. The user subsequently corrected execution to local processing; that file was withdrawn and replaced by `docs/local-processing-and-cloud-storage-plan.md`.
+- The proposed audit separates source-observed repetitions from dictionary-supported numeric-valid repetitions; it does not silently treat every nonempty result as valid or every nonpositive study day as baseline. It adds aggregate join checks and checks every dictionary-defined field rather than relying only on fixed aliases.
+- Proposed export safeguards include verified metadata labels, no patient IDs or lab result values, suppression of nonzero patient groups below 10 and complementary disclosure checks. These are proposed project safeguards, not an assertion of a PDS-prescribed disclosure threshold.
+- Exact administration linkage remains the critical scientific gate, including trial/table reference dates and ambiguity when only same-day dates are available. Survival, progression, response and tolerance remain separate. ENTHUSE-33 is assessed for availability only, not used for model fitting.
+- No source-defined outcome, cleaning rule, final measurement eligibility rule, timing window, discovery population or model was approved or changed. Audit code extensions, later cleaning and later analysis are not implemented.
+- New records remain uncommitted. Next action is approval of the specific setup-and-audit plan, followed by the separately approved cleaning and analysis stages.
+
+### 2026-08-31 - Local processing and cloud-storage continuity clarified
+
+- Added D-024 after the user explicitly rejected cloud computation. All tests and data processes are to run locally; private cloud storage preserves immutable source files and new versioned outputs, including later cleaned datasets.
+- Proposed one registered local audit folder, local encryption/access checks, local-only dictionary/CSV inspection, read-only audit extensions and privacy-reviewed outputs. No download is allowed before the local security gates and specific plan approval.
+- Added a data-location register and per-run manifests to connect source hashes, exact code versions, cloud generations and local cleanup. Verified upload is required before local removal, with fresh exact-target deletion confirmation.
+- Existing audit limitations, actual-administration timing gate, all sufficiently repeated tests and all four separate outcome families remain unchanged. This workflow correction does not authorize cleaning transformations or modeling.
+- Encryption status could not be read through the available Windows command context and remains unverified. No data was exposed or processed to work around that check.
+- New documentation is local and uncommitted. No real-file audit, cleaned dataset, output upload, commit/push or local deletion has occurred. The exact local audit plan is next; cleaning and scientific analysis each require later approval.
+
+### 2026-08-31 - Specific local audit approved; tracked execution started
+
+- Recorded D-025 and the user's approval of the concrete local audit/upload plan plus corrected data-free GitHub publication. Added the detailed A0-A10 execution tracker to the continuity log.
+- Local encryption remains unverified after the permitted command retry returned access denied. No patient data was downloaded to work around this prerequisite, and no Windows security setting was changed.
+- The approved audit remains read-only and covers every repeated lab, full joins, exact administration timing, four separate outcome families and ENTHUSE-33 availability. No source-derived cleaning definition, treatment window or model has been established.
+- Continue routine approved audit steps once local security passes. Prepare the cleaning specification from verified fields afterward, then obtain separate approval before transformations. Scientific analysis remains a later approval gate.
 
 ## Update template
 

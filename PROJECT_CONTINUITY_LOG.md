@@ -31,7 +31,7 @@ Every agent continuing this project must read this file first, then read `RESEAR
 
 **Last updated:** 2026-08-31
 
-**Project stage:** Restricted package secured in approved private Google Cloud Storage; cloud-computing and audit direction approved; concrete execution plan next
+**Project stage:** Specific local audit, verified cloud output upload and publication of corrected data-free instructions approved on 2026-08-31; execution waiting for local encryption verification
 
 **Primary source:** Project Data Sphere Prostate Cancer DREAM Challenge
 
@@ -41,13 +41,33 @@ Every agent continuing this project must read this file first, then read `RESEAR
 
 **Current storage state:** Craig at PDS confirmed that private Google Cloud storage is permitted. The unchanged package is stored in a dedicated private bucket in the Netherlands region. The two verified local restricted ZIP copies were permanently removed after cloud verification and fresh user confirmation.
 
-**Current approval state:** On 2026-08-31 the user confirmed that private Google Cloud use is approved and the project can proceed toward protected computing and the real-file audit. Provider/storage permission is not a current blocker. The next agent must present exact implementation details and costs for plan-level approval, then execute the approved scope.
+**Current approval state:** The user approved the concrete plan in `docs/local-processing-and-cloud-storage-plan.md` and publication of the corrected data-free project instructions to private GitHub `main`. The user also asked for the plan to be tracked in this log until done. Cloud is STORAGE ONLY; tests and processes run locally. The approved scope covers local setup, first read-only audit and verified output uploads. Local encryption/access gates still apply. Cleaning, scientific analysis, material scope changes and fresh exact-target deletion confirmation remain separate. Do not ask again for this plan's approval or for settled PDS private-storage permission.
 
-**Immediate next action:** Read the required records, verify repository and cloud metadata, and propose a concrete setup-and-audit execution plan covering resources, permissions, current costs, protected paths, outputs and shutdown. Ask for approval of that plan rather than asking again whether Google Cloud is allowed.
+**Immediate next action:** Publish and independently verify the approved data-free instructions and tracked plan. Obtain a permitted manual confirmation of drive C: encryption status before any download: the retried read-only `manage-bde -status C:` still returned access denied. Do not request recovery keys or change encryption settings. Then complete the local security/setup checks and execute the already-approved audit. Exact paths are in `docs/data-location-register.md`; the run folder and cloud output prefix have not been created.
 
-**Current session priority:** Publish the user's approval clarification and actionable next-agent plan. The separate local-folder deletion condition is unchanged: all local files must first be backed up as approved. Ignored papers, text copies, temporary downloads and generated caches are not backed up in GitHub, so neither folder may be deleted without an approved alternative backup or explicit exception. This cleanup issue does not block preparation of the cloud-work plan.
+**Current session priority:** Maintain the approved-plan tracker below, with evidence for every completed step and explicit blockers. Publication of these corrected data-free records is authorized; verify remote state before marking it done. The older project-folder all-files-backup condition remains unchanged and separate: ignored papers/text/downloads/caches are not backed up in GitHub, and no alternative backup or deletion is authorized here.
 
-**After execution-plan approval:** Create or use the specified private computing environment, extract only inside protected storage, inspect every dictionary sheet, run the synthetic tests and aggregate inventory, check the report for privacy, and propose a cleaning plan for approval. Setup and audit can share one approval when the plan explicitly covers both. Historical dated entries below retain older approval states and do not override this current snapshot.
+**Approved execution sequence:** Verify local security, create/register the dedicated run directory, download and verify the source, extract safely, inspect every dictionary sheet and run the read-only audit locally. Privacy-check outputs, upload and verify them in the existing private bucket, record exact versions, then obtain fresh confirmation and clean up the local run. Propose cleaning separately. Do not create cloud compute. Historical pending-approval entries are superseded by this snapshot.
+
+## Approved local-audit plan tracker
+
+Plan ID: `LOCAL-AUDIT-2026-08-31-01`. Run ID: `2026-08-31-audit-001`. Approved by the user's direct response, "I approve, please go on", to the specific local-audit and safe-GitHub-publication question on 2026-08-31. The subsequent retry request concerned a refused tool approval; it did not cancel the plan approval. Update this table after every meaningful step, not only at handoff. Full details: `docs/local-processing-and-cloud-storage-plan.md`. Exact paths and transfer receipts: `docs/data-location-register.md`.
+
+| Step | Work and completion evidence | Status |
+|---|---|---|
+| A0 | Record approval of local setup, first read-only audit, verified cloud output upload and corrected data-free instruction publication | DONE: direct user approval recorded |
+| A1 | Commit only the ten reviewed data-free project documents to main, push normally and verify remote commit and required file contents | IN PROGRESS: publication authorized; fresh remote baseline matches local HEAD `fb059b91df2fd38740ab305fb17058204e7d9096` |
+| A2 | Verify drive encryption, sufficient capacity, actual path containment, non-synchronization and restricted local access | WAITING FOR USER CHECK: encryption status command denied after approved retry; not evidence that encryption is off |
+| A3 | Register/create the exact local run root, configure its permissions and process temp paths, prepare local Google Cloud CLI sign-in and isolated Python dependencies | NOT STARTED: no run directory or restricted files created |
+| A4 | Refresh source/bucket security metadata, pin object generation, download to the registered path and verify exact bytes/SHA-256 | NOT STARTED: retain the original cloud object unchanged |
+| A5 | Safely validate/extract archives; inspect every dictionary sheet; run synthetic tests and read-only schema/join/all-lab repetition/timing/four-outcome checks | NOT STARTED: no real-file audit or cleaning |
+| A6 | Apply disclosure checks and create feasibility, coverage, limitations and reproducibility reports | NOT STARTED: no patient IDs/results/free text may leave restricted storage |
+| A7 | Upload new audit outputs/manifests to the private run prefix, re-download for checksum comparison and record all verified object generations | NOT STARTED: do not infer upload success from an unverified command |
+| A8 | Stop processes, inventory exact local copies, obtain fresh deletion confirmation, remove only approved targets and verify absence | NOT STARTED: no run copies exist; old project-folder backup issue remains separate |
+| A9 | Present the data-cleaning/restructuring plan based on audited fields, supported timing and four distinct outcome families | LATER APPROVAL REQUIRED: do not implement cleaning yet |
+| A10 | After approved cleaning and checks, propose the scientific analysis plan before modeling | LATER APPROVAL REQUIRED: no modeling authorized now |
+
+Approved first-run limits: one local audit session, up to four hours of active work before checkpointing; no unattended recurring job; at most 100 MiB of output/verification data and 1,000 cloud operations in each priced class for the cost estimate. Expected first-audit/first-month cloud cost below USD 0.05; pause above the USD 0.10 projected incremental threshold or for a material change. No cloud computation. This tracker is not a billing cap or automatic background monitor.
 
 ## User communication requirements
 
@@ -153,26 +173,26 @@ This blocker was resolved on 2026-08-27. The user downloaded the complete packag
 
 - Never commit patient-level or restricted data to GitHub.
 - Never paste patient rows into chat, logs, issues, commits or public documents.
-- Never upload the package to ordinary cloud storage without first confirming the PDS terms permit it and the destination is appropriately protected.
+- Use the existing PDS-approved private bucket as the permanent data home. A different destination needs its own authorization; do not repeat the already-settled permission question for this bucket.
 - Never expose passwords, security codes, SAS credentials, session cookies or private signed URLs.
 - Keep the original package unchanged.
 - Keep checksums and acquisition metadata separate from patient values.
 - Commit only aggregated, disclosure-checked outputs when permitted.
 
-### Preferred local layout after download
+### Required temporary local layout after approved download
 
 ```text
-data/
-  raw/
-    pds_dream/
-      source/
-        AllProvidedFiles_149.zip
-      extracted/
-  interim/
-    pds_inventory.json
+C:\Users\BarbarosIsikGreenhou\PDS-Restricted-Work\prostate-lab-trajectories\runs\2026-08-31-audit-001\
+  data\raw\pds_dream\source\
+  data\raw\pds_dream\extracted\
+  data\interim\
+  reports\reviewed\
+  tmp\
+  logs\
+  manifest.json
 ```
 
-Both `data/raw/` and `data/interim/` are ignored by Git. Before moving or copying the downloaded package, verify the exact source and destination paths. Preserve the original ZIP.
+This first-run path is proposed, not created. It is outside the Git clone, Desktop, Documents and Downloads. The repository's ignored `data/raw/` and `data/interim/` rules remain defense in depth, not permission to scatter copies. Verify actual encryption, permissions, synchronization settings, containment and ZIP safety before download/extraction. Register all temporary and verification copies. Preserve the original cloud ZIP. See `docs/data-location-register.md` for transfer and cleanup state.
 
 ### If the user's home computer lacks space
 
@@ -180,8 +200,8 @@ Follow this order:
 
 1. Check the actual download size and available disk space.
 2. Consider an encrypted external drive controlled by the user.
-3. Consider the secure PDS SAS environment if the data-use agreement and workflow support analysis there.
-4. Consider another institution-approved protected location only after confirming authorization.
+3. Pause for approval of an adequate protected local volume if necessary.
+4. Do not substitute cloud computing or another remote analysis environment for the user's local-processing direction.
 5. Do not use a public link, shared personal drive or ordinary cloud folder merely for convenience.
 
 ## Work completed so far
@@ -292,18 +312,18 @@ No cleaning specification or scientific conclusion may be finalized before these
 
 ## Execution plan from the current point
 
-### Stage 1: Acquire the approved package
+### Stage 1: Prepare the approved temporary local run
 
-**Trigger:** User is home or has authorized protected storage.
+**Trigger:** The specific local audit plan is approved and local security checks pass. The original PDS acquisition is already complete; do not restart acquisition from PDS.
 
 **Actions:**
 
-1. Remind the user to sign in to PDS.
-2. Open the approved DREAM contribution.
-3. Manually download `AllProvidedFiles_149.zip`.
-4. Confirm the actual completed file path and size.
-5. Check available storage before copying or extracting.
-6. Review any download terms or restrictions shown by PDS.
+1. Read the data-location register and resolve any prior incomplete run or pending local cleanup.
+2. Verify encryption, effective folder permissions, non-synchronization and available local capacity.
+3. Record the exact run root before creating it or downloading files.
+4. Refresh approved bucket access and pin the source object generation.
+5. Download the unchanged source directly to the protected registered path with normal approved authentication.
+6. Verify size and checksums against the recorded source before extraction.
 
 **Completion evidence:** A real file exists at a verified path and has a nonzero size.
 
@@ -316,7 +336,7 @@ No cleaning specification or scientific conclusion may be finalized before these
 3. List ZIP members without extraction.
 4. Reject absolute paths, parent-directory paths and other unsafe ZIP members.
 5. Confirm expected dictionary and CSV names.
-6. Extract only into ignored `data/raw/pds_dream/extracted/` after path validation.
+6. Extract only into `data/raw/pds_dream/extracted/` inside the registered protected local run folder after path and ZIP validation.
 
 **Completion evidence:** Safe member list, checksum and expected files verified.
 
@@ -340,6 +360,9 @@ No cleaning specification or scientific conclusion may be finalized before these
 3. Save aggregate JSON only to ignored interim storage.
 4. Check that no patient identifiers or result values appear in the report.
 5. Summarize counts in plain language for the user.
+6. Complete the supplemental read-only join, repetition-validity, timing and outcome checks in the approved local plan.
+7. Upload new audit outputs to their versioned private-cloud run prefix and verify the uploaded bytes before any local removal.
+8. Update the data-location register, obtain fresh exact-path deletion confirmation, remove the approved local run folder and verify absence. Apply this workflow again after each later approved stage.
 
 **Completion evidence:** Aggregate inventory report, verified privacy properties and test results.
 
@@ -421,15 +444,20 @@ Define only after the audit:
 
 Before real-file inspection:
 
-> Google Cloud use is approved. Present the exact private setup-and-audit execution plan, current cost, access controls, outputs and shutdown procedure for plan-level approval, then proceed within that approved scope. Keep restricted files in protected cloud storage.
+> The specific local audit plan and corrected data-free GitHub publication are approved. Next resolve drive C: encryption verification, then complete the already-approved local setup and audit. Register all locations, verify stage-output uploads and seek fresh exact-target confirmation for cleanup. Do not ask again for this plan's approval or create cloud compute.
 
-### After the specific setup-and-audit execution plan is approved
+### Execution reminders for the approved plan
 
-- Verify the private compute identity can read only the approved bucket and object.
-- Extract in protected cloud storage only after ZIP path checks are repeated there.
+- Verify local encryption and permissions; the status command was denied, not evidence of encryption being off. Do not download while this check is unresolved.
+- Prepare a non-synchronized local run folder and local dependencies, with exact paths recorded before transfer. No cloud-compute API enablement is needed.
+- Refresh bucket access/source checksums and use only approved user authentication. Existing Owner rights exceed transfer needs; no access expansion is included.
+- Extract locally only after source integrity and ZIP path checks pass.
 - Read every dictionary sheet before creating cleaning rules.
 - Run tests and the aggregate inventory before cleaning.
 - Verify that the aggregate report contains no patient identifiers or laboratory values.
+- Upload new restricted outputs and verification metadata to the run's private cloud prefix. Verify every required output; then record cleanup as pending until fresh confirmation and post-deletion checks.
+- Keep the first-audit cloud expectation below USD 0.05 under the plan's size/operation assumptions; pause above the USD 0.10 incremental approval threshold. No cloud-compute charge is planned.
+- Corrected data-free instruction/log publication is now explicitly authorized. Verify remote state before marking tracker A1 done. This is not blanket permission for unrelated or future-stage publication.
 
 ### Later reminders
 
@@ -527,6 +555,44 @@ Before real-file inspection:
 - This session changes and publishes documentation only. It creates no VM and starts no real-file inspection or modeling. Resource creation by another session must be checked live rather than assumed.
 - Local-folder deletion remains conditional on the unresolved backup requirement; no alternative backup or deletion was authorized by this clarification.
 - User explicitly authorized this documentation update to be committed and pushed to `main`.
+
+### 2026-08-31: Live cloud onboarding and concrete audit proposal
+
+Historical proposal only. The later same-day local-processing correction below supersedes the cloud-compute proposal; no such resources were created.
+
+- Read all mandatory project records and the current code/tests. Verified a clean Desktop clone on `main` at `fb059b91df2fd38740ab305fb17058204e7d9096`, matching a fresh authenticated remote-main check.
+- Re-ran all three invented-data tests successfully without generating Python caches in the clone. No real patient data was used.
+- Refreshed bucket configuration and permissions through the signed-in Cloud Console: Netherlands, Standard, public access prevention, uniform access, Google-managed encryption, seven-day soft delete, versioning off and no lifecycle/retention policy remain visible.
+- Confirmed the source object exists, is Not public, displays rounded size 6.2 MB and retains its August 27 last-modified timestamp. The console did not expose exact bytes or checksums, so those remain the historical acquisition values pending a metadata and protected SHA-256 refresh before extraction.
+- Compute Engine showed an API Enable screen. Asset Inventory listed 30 resources without a compute, disk, network or notebook type, and the service-account list was empty. No API was enabled and no resource or permission was changed. Billing-enabled status and exact account charges were not verified.
+- Verified Netherlands pricing through explicit region selection: `e2-small` USD 0.01844301/hour, standard disk USD 0.000060274/GiB-hour and Standard object storage USD 0.000027397/GiB-hour. Private DNS adds about USD 0.20/month plus queries. Proposed eight-hour base subtotal is about USD 0.1546; retained 10 GiB disk plus DNS is about USD 0.64/month.
+- Drafted an uncommitted cloud setup plan covering private networking, identity, extraction, audit and shutdown. It was withdrawn and replaced with `docs/local-processing-and-cloud-storage-plan.md` after the user's correction.
+- Identified limits in the existing first-pass script: no complete join audit, fixed aliases/missing markers, nonempty-result rather than fully numeric-valid repetition, inferred baseline labels and no small-group suppression. No code was changed. Proposed supplemental read-only checks are part of the approval request, not an implemented cleaning pipeline.
+- Both known project folders still exist. The retired path was checked for existence only. No backup or deletion was performed or authorized.
+- New documentation remains local and uncommitted. No commit, push, restricted transfer, extraction, real-file audit, cleaning or modeling was performed.
+- Exact next action: approve or revise the specific setup-and-audit plan. General cloud-use permission remains settled.
+
+### 2026-08-31: User corrected execution to local processing and cloud storage only
+
+- The user explicitly said computations, tests and processes must run on the local computer. Cloud storage is for permanent access across computers, including later cleaned data and outputs. Do not reinterpret storage approval as cloud-compute permission.
+- Adopted the per-stage cycle: register local path, download, verify, process locally, upload new versioned outputs, verify uploads, obtain fresh exact-path confirmation, delete local copies and verify absence. Original cloud source bytes remain unchanged; no redundant original re-upload is required.
+- Added `docs/data-location-register.md` and replaced the unapproved VM proposal with `docs/local-processing-and-cloud-storage-plan.md`. Updated the agent instructions, onboarding, current snapshots and audit references. All proposed paths and unimplemented steps are labeled pending.
+- Proposed local run: `C:\Users\BarbarosIsikGreenhou\PDS-Restricted-Work\prostate-lab-trajectories\runs\2026-08-31-audit-001`. The parent restricted-work directory did not exist at the check. No folder or restricted data was created there.
+- Local C: capacity was checked at 266,093,146,112 free bytes. Encryption inspection via `manage-bde -status C:` was denied in both ordinary and escalated contexts; CIM RAM inspection was denied. Encryption remains a pre-download verification gate, not a claim that the device is unencrypted.
+- Refreshed official Storage internet-transfer pricing: first-tier download to the Netherlands USD 0.12/GiB, incoming traffic free, regional Standard operations USD 0.005/1,000 Class A and USD 0.0004/1,000 Class B. Netherlands Standard storage had been verified at USD 0.000027397/GiB-hour. No cloud-compute resources or charges are proposed.
+- The user explicitly requested remembering this workflow. Saved a small correction through the permitted memory-note mechanism; the project logs/register remain the authoritative detailed state.
+- Verification after the correction: all three invented-data unit tests passed; `git diff --check` passed; all ten revised/new project documents contain no em dashes and have balanced code fences. No source or test code changed. The withdrawn cloud-plan file and proposed restricted-work directory are absent.
+- No restricted download, extraction, real-file audit, cleaning, modeling, cloud output upload, commit, push or folder deletion occurred. The older local-only-paper backup condition remains separate and unresolved.
+- Exact next action: approve the specific local audit/upload plan and explicitly authorize safe documentation publication if desired; then resolve local encryption verification and execute only the approved stage.
+
+### 2026-08-31: Local audit approved and log-based execution tracking requested
+
+- The user approved the specific local-audit plan and publishing the corrected data-free instructions to private GitHub main. The user asked for the plan to be written in this log and tracked until complete. Added tracker `LOCAL-AUDIT-2026-08-31-01` with explicit evidence/status and later approval gates.
+- The first remote Git check failed after a tool approval was refused. The user explicitly requested a retry; the authenticated retry succeeded and remote main still matched local HEAD `fb059b91df2fd38740ab305fb17058204e7d9096`. No reset, overwrite or history rewrite was used.
+- Retried `manage-bde -status C:` with the requested tool approval. It still returned access denied and requested administrative rights. Disk encryption remains unverified; no recovery key was queried or displayed.
+- Read the Windows computer-use skill and required guidance. Its mandatory safety rules prohibit automation of Windows security apps, so no automated security-app inspection or settings change was attempted. The remaining encryption check needs a permitted manual user check, not an automation workaround.
+- No restricted-work directory exists. No source download, extraction, real-file audit, cleaned dataset, cloud output upload or deletion has occurred. The source remains in the approved private bucket.
+- Safe documentation publication is in progress; do not mark it verified until the push and independent remote/file checks succeed. Continue the approved plan after the local security gate passes, without reopening generic cloud-storage or plan permission.
 
 ## Session update template
 

@@ -90,6 +90,8 @@ The project continuity layer is:
 - [`PROJECT_CONTINUITY_LOG.md`](PROJECT_CONTINUITY_LOG.md), the operational memory, reminder queue, current status and exact execution plan.
 - [`NEXT_AGENT_ONBOARDING_PROMPT.md`](NEXT_AGENT_ONBOARDING_PROMPT.md), the ready-to-paste prompt for the next GPT-5.6 Sol agent.
 - [`RESEARCH_LOG.md`](RESEARCH_LOG.md), the formal research decisions, phase plan and dated scientific progress.
+- [`data-location-register.md`](docs/data-location-register.md), exact local/cloud locations, run versions, upload verification and cleanup state.
+- [`local-processing-and-cloud-storage-plan.md`](docs/local-processing-and-cloud-storage-plan.md), the proposed local audit workflow and stage approval gates.
 
 ## Canonical project home
 
@@ -97,7 +99,7 @@ The canonical project is the private GitHub repository:
 
 `https://github.com/barbarosisik/prostate-lab-trajectories`
 
-No permanent local project copy should remain after an approved session closeout. Agents may use an authenticated temporary clone while working, but GitHub `main` is the project record. Raw data remains outside GitHub in approved protected storage.
+No permanent local project copy should remain after an approved session closeout. Agents may use an authenticated temporary clone while working, but GitHub `main` is the project record. Cloud storage is the permanent home for restricted source and derived data. The latest user direction is local computation: download to a registered protected temporary run folder, process locally, upload new versioned outputs, verify uploads and then remove local copies after fresh confirmation. Do not use cloud computation or store restricted data in GitHub.
 
 When the user requests an onboarding prompt or next-agent handoff, also begin the publication-and-cleanup workflow in `NEXT_AGENT_ONBOARDING_PROMPT.md`. Verify the remote record, disclose local-only files, obtain fresh confirmation for exact deletion targets, remove the approved temporary project folders and recheck the filesystem. Future sessions can clone again. See `AGENTS.md` for the automatic agent entry point. This rule does not authorize publishing restricted files or deleting shared app history.
 
@@ -212,18 +214,18 @@ prostate-lab-trajectories/
 ## Immediate next steps
 
 1. The complete package is secured and checksum-verified in PDS-approved private Google Cloud Storage.
-2. Private Google Cloud use and proceeding to protected compute/audit are approved. Present the exact setup-and-audit execution plan, current costs and safeguards for plan-level approval.
-3. Extract and inspect the restricted package only inside that protected environment.
+2. The user approved the specific local audit/upload plan and corrected data-free instruction publication. Follow the A0-A10 tracker in the continuity log; resolve local disk-encryption verification before download. Cloud remains storage only.
+3. Register the exact protected non-synchronized local run directory, download and verify the source, then safely extract locally. Do not create cloud compute.
 4. Inspect every sheet of the official data dictionary.
 5. Run the tested aggregate inventory tool against every supplied CSV.
 6. Confirm whether serial laboratory dates can be aligned to actual chemotherapy administrations rather than only nominal visits.
-7. Explain the verified feasibility results in plain language and obtain user approval before cleaning.
+7. Privacy-review and explain feasibility results, upload new outputs to the private cloud run prefix, verify uploads, record locations and obtain fresh confirmation for local cleanup. Obtain separate approval before cleaning.
 8. Freeze the first data-cleaning and restructuring specification only after the actual columns are verified.
 9. Prepare the CHAARTED patient-data request using the completed public compatibility audit.
 
 ## Project status
 
-**Current stage:** PDS package secured in approved private Google Cloud Storage; local restricted ZIP copies removed after complete verification; proceeding to protected cloud computing and the real-file audit approved on 2026-08-31. The next agent should propose the exact execution plan and ask for its approval, not reopen general cloud permission.
+**Current stage:** The user approved the specific local audit and verified cloud-output plan on 2026-08-31, plus publication of the corrected data-free instructions. Completion is tracked in `PROJECT_CONTINUITY_LOG.md` under `LOCAL-AUDIT-2026-08-31-01`. Encryption verification is still required before downloading; no real-file audit has run. No cloud computation is planned. Cleaning and scientific analysis remain later approval stages.
 
 Read [`PROJECT_CONTINUITY_LOG.md`](PROJECT_CONTINUITY_LOG.md) first for the current status, reminders and exact next action. See [`RESEARCH_LOG.md`](RESEARCH_LOG.md) for research decisions and dated scientific progress.
 
