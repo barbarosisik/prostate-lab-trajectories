@@ -29,7 +29,7 @@ Every agent continuing this project must read this file first, then read `RESEAR
 
 ## Current snapshot
 
-**Last updated:** 2026-08-27
+**Last updated:** 2026-08-31
 
 **Project stage:** Restricted package secured in approved private Google Cloud Storage; protected real-file audit pending approval
 
@@ -44,6 +44,8 @@ Every agent continuing this project must read this file first, then read `RESEAR
 **Immediate blocker:** Google Cloud Storage stores the package but does not run the audit. A protected Google Cloud computing environment must be selected, costed, created with private access controls and approved by the user before the restricted package is extracted or inspected.
 
 **Immediate next action:** Explain the protected cloud-computing plan and costs, then obtain explicit approval before creating computing resources or beginning the real-file audit.
+
+**Current session priority:** The user authorized publishing the cleanup rule to `main` and conditionally approved removal of both exact local project folders only if all local files were pushed to GitHub first. The ignored papers, text copies, temporary downloads and generated cache files are not backed up there. The backup condition is unmet, so neither folder may be deleted without an approved alternative backup or explicit exception. The scientific next action above remains pending and is not authorized by the cleanup request.
 
 **After approval:** Create or use an approved private computing environment, extract only inside protected storage, inspect every dictionary sheet, run the synthetic tests and aggregate inventory, check the report for privacy, and stop for user approval before writing cleaning transformations.
 
@@ -261,13 +263,17 @@ Read these before making source or analysis decisions:
 
 **Canonical branch:** `main`
 
-**Current working copy:** `C:\Users\BarbarosIsikGreenhou\Desktop\prostate-lab-trajectories`.
+**Temporary working copy pending cleanup:** `C:\Users\BarbarosIsikGreenhou\Desktop\prostate-lab-trajectories`. The user does not want it retained merely for future work.
 
 **Verified state on 2026-08-27:** Remote is `https://github.com/barbarosisik/prostate-lab-trajectories.git`, branch is `main`, working tree was clean before this documentation update, and HEAD matched remote commit `d02eed8359229d19008efb60ba60a4cb3c08e903`.
+
+**Fresh repository verification on 2026-08-31:** Before editing the cleanup policy, the Desktop clone was clean on `main` at `b4187a2b59286f81d5b2f9d6770c90cb71046d31`, matching a fresh `git ls-remote` check. The two known project folders contained 58 files / 318,578 bytes and 79 files / 19,305,428 bytes respectively, including local Git metadata. No directory links were found.
 
 **Retired copy pending exact cleanup review:** `C:\Users\BarbarosIsikGreenhou\Documents\Codex\2026-08-24\s\prostate-lab-trajectories` still exists and must not be used for new work. It may contain local-only literature files and an older dirty working tree. Do not delete it until its exact contents are compared and the user receives an exact deletion list with a fresh action-time confirmation.
 
 **Authorization boundary:** The user explicitly authorized publishing the current permitted project files and deleting the former local folder in the 2026-08-25 migration session. Future commits, pushes, history changes or repository-setting changes still require fresh explicit authorization.
+
+**Session-closeout rule:** An onboarding or next-agent handoff request also starts the verified local-cleanup workflow in `NEXT_AGENT_ONBOARDING_PROMPT.md` and `AGENTS.md`. Publish approved permitted work, verify remote `main`, show exact deletion targets and local-only-file consequences, obtain fresh confirmation, delete the approved temporary project folders and recheck them. Do not retain a local clone just for future programming. Task history and shared app files require a separate supported app workflow.
 
 ## Core feasibility questions that remain unanswered
 
@@ -427,6 +433,7 @@ Before real-file inspection:
 
 ### Later reminders
 
+- Complete the user-requested local project-folder closeout after the new policy is published and exact deletions are confirmed. Do not recreate a permanent local folder afterward.
 - Explain timing feasibility to the user before cleaning.
 - Ask for approval before finalizing outcome definitions.
 - Request CHAARTED only after the PDS coverage gaps are known.
@@ -494,6 +501,21 @@ Before real-file inspection:
 - User explicitly authorized committing and pushing the current privacy-safe documentation and onboarding updates to `main`.
 - This authorization does not approve creating paid cloud compute or beginning the real-file audit.
 - Next gate is explicit approval for a protected cloud computing environment and the real-file audit.
+
+### 2026-08-31: Onboarding-triggered local cleanup requested
+
+- User clarified that permitted project files should live in private GitHub, with no permanent local project working folders after handoff.
+- Added a session-closeout workflow to the onboarding prompt and an automatic agent entry point in `AGENTS.md`.
+- Verified remote `main` and the clean Desktop clone at `b4187a2b59286f81d5b2f9d6770c90cb71046d31` before editing.
+- Compared the retired folder to the Desktop clone using normalized text without printing data. Its code, tests, fixture files and literature metadata matched; its five older documents were found in commits reachable from remote `main`.
+- Identified 10 research PDFs, 10 extracted-text copies, five temporary downloads and two Python cache files only in the retired copy. These are not backed up in GitHub and must be included in the explicit deletion warning. Do not upload their contents to GitHub as part of cleanup.
+- Rechecked Windows Downloads and found zero matches for the known PDS dataset filename prefixes.
+- Both exact project folders still exist. No project folder or Codex task-history file was deleted in this session at the time of this entry.
+- Subsequent user decision: publishing the cleanup policy to `main` is explicitly approved. Deletion of both exact folders is conditional on all local files being pushed to GitHub first.
+- That condition is not satisfied by the existing GitHub code/documentation backup: ignored full-text papers, text copies, temporary downloads and generated caches remain local only. Do not force-add excluded files or reinterpret bibliography links as file backups.
+- Both project folders must remain until the user approves a permitted alternative backup or explicitly changes the condition. No alternative cloud transfer is authorized by a GitHub-only backup condition.
+- Next action after publishing the rule: explain this remaining backup gap and request direction. Delete nothing while the condition is unresolved.
+- Paid cloud compute, real-file inspection, cleaning and modeling remain unstarted by this session.
 
 ## Session update template
 

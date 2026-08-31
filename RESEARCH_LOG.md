@@ -12,7 +12,7 @@ This file should be updated whenever we:
 
 ## Current snapshot
 
-**Last updated:** 2026-08-27
+**Last updated:** 2026-08-31
 
 **Project stage:** PDS package secured and verified in approved private Google Cloud Storage; protected real-file audit pending
 
@@ -49,6 +49,7 @@ This file should be updated whenever we:
 | D-019 | 2026-08-27 | Store the unchanged restricted package only in the PDS-approved private Google Cloud bucket with public access prevention and uniform bucket access. | This keeps the source outside GitHub and ordinary file-sharing services while preserving controlled access. | Active |
 | D-020 | 2026-08-27 | Remove local restricted copies only after remote existence, size, checksum and access controls are verified and the user gives fresh action-time confirmation. | A verified cloud source must exist before local restricted data is removed. | Completed for the two Downloads copies |
 | D-021 | 2026-08-27 | Perform the real-file audit only inside an approved protected environment and keep patient-level data out of chat, GitHub and ordinary logs. | Google Cloud Storage is storage, so protected compute is required to inspect the dictionary and CSV files without downloading them locally. | Pending compute approval |
+| D-022 | 2026-08-31 | Treat an onboarding or next-agent handoff request as a trigger to publish approved permitted work and clean up temporary local project folders after remote verification and fresh exact-target confirmation. Honor every backup condition attached to deletion approval. | The user wants GitHub as the permanent permitted project record and does not want local working copies retained after handoff. Restricted data remains in its approved private cloud storage, never GitHub. | Active; current all-files-backup condition unresolved |
 
 ## Master plan
 
@@ -399,6 +400,16 @@ This file should be updated whenever we:
 - Explain protected Google Cloud computing options, costs, access controls and shutdown requirements.
 - Obtain explicit approval before creating paid computing resources or beginning the real-file audit.
 - Stop again for approval after the audit before writing cleaning and restructuring transformations.
+
+### 2026-08-31 - Session-closeout and local-working-copy policy
+
+- Added D-022 and documented its safe execution order in the onboarding prompt and `AGENTS.md`.
+- Verified the existing GitHub backup and identified local-only full-text literature before proposing deletion.
+- No research question, source priority, field definition or analysis method changed.
+- No restricted patient data was opened or transferred in this session.
+- The user explicitly approved publication of the new policy. Approval to delete both exact folders is conditional on every local project file being backed up in GitHub first.
+- Full-text papers, extracted text, temporary downloads and generated caches remain excluded from GitHub. No folder deletion is permitted while that condition is unmet. Obtain approval for an alternative backup or explicit exception; do not silently relax the condition.
+- Do not record local cleanup as completed before a fresh filesystem check.
 
 ## Update template
 

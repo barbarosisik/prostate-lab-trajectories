@@ -15,13 +15,15 @@ https://github.com/barbarosisik/prostate-lab-trajectories
 
 Canonical branch: main
 
-Do not assume that the project has a permanent local folder. The verified working copy on 2026-08-27 was `C:\Users\BarbarosIsikGreenhou\Desktop\prostate-lab-trajectories`, but GitHub `main` remains canonical.
+Do not maintain a permanent local project folder. GitHub `main` is the permanent project record. A local clone is temporary and must enter the verified cleanup workflow when the user requests an onboarding prompt or end-of-session handoff.
+
+On 2026-08-31, the temporary Desktop copy still existed at `C:\Users\BarbarosIsikGreenhou\Desktop\prostate-lab-trajectories`. The user approved publishing the cleanup rule and conditionally approved deletion of both known project folders only if all local files were pushed to GitHub first. Ignored papers, extracted text, temporary downloads and caches are not backed up there, so that deletion condition remains unmet. Do not delete either folder or describe it as deleted while the condition is unresolved.
 
 At the start of a future task:
 
 1. Check whether the current task already contains a clone or working copy of the repository.
 2. If it does, verify its remote and branch before using it.
-3. If it does not, obtain a fresh authenticated copy in the current task workspace.
+3. If it does not and local work is needed, obtain a fresh authenticated temporary copy in a dedicated project subfolder. Record its exact path for end-of-session cleanup. Do not make a broad task-workspace root a recursive deletion target.
 4. Prefer an available GitHub connector, GitHub CLI, or normal Git authentication.
 5. If those methods cannot access the private repository, use the signed-in GitHub browser only as a fallback.
 6. Do not recreate or rely on the retired path `C:\Users\BarbarosIsikGreenhou\Documents\Codex\2026-08-24\s\prostate-lab-trajectories`.
@@ -29,7 +31,7 @@ At the start of a future task:
 
 NEW WINDOWS COMPUTER SETUP
 
-If this task starts on a newly set up Windows computer and the repository is not present:
+If this task starts on Windows and the temporary repository copy is not present:
 
 1. Confirm that Git is installed and that the user can access the private repository while signed into GitHub.
 2. Open PowerShell.
@@ -50,6 +52,8 @@ If this task starts on a newly set up Windows computer and the repository is not
 6. The expected remote is https://github.com/barbarosisik/prostate-lab-trajectories.git and the expected branch is main.
 7. Open the new Desktop/prostate-lab-trajectories folder as the Codex project or working folder.
 8. Then follow MANDATORY FIRST ACTIONS below. Do not begin analysis from the GitHub webpage alone. Work from the authenticated local clone.
+
+This Desktop clone is temporary. Remove it through the session-closeout workflow after the work is safely published and the exact deletion is confirmed.
 
 MANDATORY FIRST ACTIONS
 
@@ -77,6 +81,28 @@ USER COMMUNICATION RULES
 - Do not use em dashes anywhere in user-facing responses or project files.
 - Define technical or medical terms immediately in everyday language.
 - Do not ask the user to remember deferred tasks. Maintain reminders in PROJECT_CONTINUITY_LOG.md and actively surface them at the right time.
+
+SESSION CLOSEOUT AND LOCAL CLEANUP
+
+The user established this rule on 2026-08-31: a request for an onboarding prompt, next-agent prompt or end-of-session handoff also means that the agent must start cleanup of the local project working files. Do not merely provide a prompt and leave project clones behind without addressing cleanup.
+
+Follow this order:
+
+1. Update the onboarding prompt, continuity log, research log and other relevant permitted documentation. Keep scientific scope and approval gates unchanged.
+2. Inventory the known project working folders, including modified, untracked and ignored files. Do not perform a broad whole-drive search. Identify unpushed work and local-only materials before deletion.
+3. Explain what can remain in private GitHub and what cannot. Code, documentation, tests and privacy-reviewed aggregates may be published. Restricted patient data remains only in its approved private cloud storage. Do not publish credentials, signed links, cloud keys or publisher full-text files.
+4. Obtain explicit authorization before any new commit or push if the current request does not already provide it. Earlier completed-session authorization is not blanket permission for future pushes.
+5. Publish only the approved privacy-safe changes to `main`. Independently verify that remote `main` has the intended commit and required handoff files. Do not delete the only copy of unpublished work.
+   Honor conditions covering ignored and local-only materials too. If deletion requires all project files to be backed up, a successful Git push of tracked files alone does not satisfy that condition. Bibliography links are not backups of the downloaded PDFs or text. Obtain approval for a permitted alternative backup or an explicit exception before proceeding, and verify any new backup before deletion.
+6. Present the exact absolute local files and project folders proposed for deletion. Include local-only papers, downloads or reports in the warning. Say whether the operation bypasses the Recycle Bin and explain that ordinary SSD deletion cannot guarantee forensic erasure.
+7. Obtain fresh explicit confirmation immediately before deleting those exact targets. The onboarding trigger starts the workflow but does not replace this confirmation.
+8. After confirmation, remove the entire approved temporary project working folders, including their local Git metadata and generated files. Do not retain a clone merely because a future agent may need to program. A future session can clone again from GitHub.
+9. On Windows, resolve every target, reject unexpected links or targets outside the approved folder, use one PowerShell workflow with `-LiteralPath`, and never delete broad parent directories, unrelated files, the active task-workspace root, credentials or shared app folders.
+10. Treat Codex task history as a separate app-managed category. Use a supported deletion action only when it is available and exact task targets are approved. Archiving preserves history and is not deletion. Do not manually remove shared session databases, credential stores or arbitrary app logs.
+11. Perform a fresh post-deletion filesystem check. Report the exact targets removed, remaining local items, recovery limitations and any blocker. Do not claim that every trace on the computer is erased.
+12. Give the user a GitHub link to the updated onboarding file or copyable prompt text. Do not provide a local file link as the permanent handoff after deleting its folder.
+
+If publication, local-only-file handling or safe deletion is blocked, state exactly what remains and why. Do not silently skip cleanup, override a conditional approval or delete unpreserved work. Record a pending cleanup honestly before publication; only record completed cleanup after a filesystem check. A final verified handoff in chat can supply the post-deletion result without recreating a permanent local clone.
 
 FIXED RESEARCH QUESTION
 

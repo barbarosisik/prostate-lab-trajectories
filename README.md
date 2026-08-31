@@ -97,7 +97,9 @@ The canonical project is the private GitHub repository:
 
 `https://github.com/barbarosisik/prostate-lab-trajectories`
 
-No permanent local path should be assumed. Future agents should use an authenticated working copy in their active task workspace and treat GitHub `main` as the project record. Raw data remains outside GitHub.
+No permanent local project copy should remain after an approved session closeout. Agents may use an authenticated temporary clone while working, but GitHub `main` is the project record. Raw data remains outside GitHub in approved protected storage.
+
+When the user requests an onboarding prompt or next-agent handoff, also begin the publication-and-cleanup workflow in `NEXT_AGENT_ONBOARDING_PROMPT.md`. Verify the remote record, disclose local-only files, obtain fresh confirmation for exact deletion targets, remove the approved temporary project folders and recheck the filesystem. Future sessions can clone again. See `AGENTS.md` for the automatic agent entry point. This rule does not authorize publishing restricted files or deleting shared app history.
 
 ## Required data
 
