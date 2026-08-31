@@ -14,11 +14,11 @@ This file should be updated whenever we:
 
 **Last updated:** 2026-08-31
 
-**Project stage:** PDS package secured and verified in approved private Google Cloud Storage; protected real-file audit pending
+**Project stage:** PDS package secured and verified in private Google Cloud Storage; proceeding to protected compute and the real-file audit approved; specific execution plan next
 
 **Repository visibility:** Private
 
-**Active objective:** Prepare a private Google Cloud computing environment, then inspect the dictionary and run the tested aggregate inventory tool without returning restricted patient data to this computer or GitHub.
+**Active objective:** Present a concrete private cloud setup-and-audit plan with current costs and safeguards for approval, then implement the approved plan, inspect the dictionary and run the aggregate inventory without returning restricted patient data to this computer or GitHub. General permission to use Google Cloud is settled; historical pending-approval entries below are not the current state.
 
 ## Fixed research question
 
@@ -44,12 +44,13 @@ This file should be updated whenever we:
 | D-014 | 2026-08-25 | Do not select ENTHUSE-33 as an independent validation set until the current PDS final-scoring package is audited for longitudinal data and outcome visibility. | The original challenge withheld non-baseline longitudinal data and dependent outcomes from participants. | Active |
 | D-015 | 2026-08-25 | Use public DREAM analysis code only as documentary schema evidence, not as a replacement for the official dictionary or source files. | The repository exposes useful column names but intentionally contains no raw patient data. | Active |
 | D-016 | 2026-08-25 | Run an aggregate-only, read-only inventory before writing any cleaning transformations. | This proves what was received and prevents premature assumptions while keeping patient identifiers and laboratory values out of the report. | Active |
-| D-017 | 2026-08-25 | Acquire the complete PDS bundle first, preserve it unchanged and verify checksum and ZIP safety before extraction. | The full bundle provides one traceable acquisition artifact while safe verification protects source integrity and the local filesystem. | Completed for acquisition; extraction pending audit approval |
+| D-017 | 2026-08-25 | Acquire the complete PDS bundle first, preserve it unchanged and verify checksum and ZIP safety before extraction. | The full bundle provides one traceable acquisition artifact while safe verification protects source integrity and the local filesystem. | Acquisition complete; protected extraction follows approved execution plan |
 | D-018 | 2026-08-25 | Maintain `PROJECT_CONTINUITY_LOG.md` as the operational memory and reminder queue, with methodological decisions also recorded in this research log. | The user needs durable cross-agent continuity, reminders and an exact account of developments while working away from home. | Active |
 | D-019 | 2026-08-27 | Store the unchanged restricted package only in the PDS-approved private Google Cloud bucket with public access prevention and uniform bucket access. | This keeps the source outside GitHub and ordinary file-sharing services while preserving controlled access. | Active |
 | D-020 | 2026-08-27 | Remove local restricted copies only after remote existence, size, checksum and access controls are verified and the user gives fresh action-time confirmation. | A verified cloud source must exist before local restricted data is removed. | Completed for the two Downloads copies |
-| D-021 | 2026-08-27 | Perform the real-file audit only inside an approved protected environment and keep patient-level data out of chat, GitHub and ordinary logs. | Google Cloud Storage is storage, so protected compute is required to inspect the dictionary and CSV files without downloading them locally. | Pending compute approval |
+| D-021 | 2026-08-27 | Perform the real-file audit only inside an approved protected environment and keep patient-level data out of chat, GitHub and ordinary logs. | Google Cloud Storage is storage, so protected compute is required to inspect the dictionary and CSV files without downloading them locally. | Proceeding approved on 2026-08-31; specific setup-and-audit plan next |
 | D-022 | 2026-08-31 | Treat an onboarding or next-agent handoff request as a trigger to publish approved permitted work and clean up temporary local project folders after remote verification and fresh exact-target confirmation. Honor every backup condition attached to deletion approval. | The user wants GitHub as the permanent permitted project record and does not want local working copies retained after handoff. Restricted data remains in its approved private cloud storage, never GitHub. | Active; current all-files-backup condition unresolved |
+| D-023 | 2026-08-31 | Record private Google Cloud use and moving forward to protected compute and audit as approved. Ask for approval of concrete execution plans and later research stages, not repeated generic cloud permission. | The user explicitly clarified approval and wants the next agent to propose actionable steps, explain choices and proceed within approved plans. | Active |
 
 ## Master plan
 
@@ -147,7 +148,7 @@ This file should be updated whenever we:
 | 2 | Build the initial curated literature library. | Completed | 22-study catalog, BibTeX file, manifest and 10 validated local PDFs |
 | 3 | Convert the literature map into a field-coverage checklist. | Completed | `docs/dataset-field-coverage-checklist.md` |
 | 4 | Secure and verify the PDS DREAM package. | Completed | Private cloud object exists with verified size, checksums and access controls; local restricted ZIP copies were removed after confirmation |
-| 4A | Inspect the PDS dictionary and real tables in protected cloud compute. | Pending approval | Every dictionary sheet, schema, join key, repeated-lab count and outcome field audited without patient-level output |
+| 4A | Inspect the PDS dictionary and real tables in protected cloud compute. | Proceeding approved; execution-plan approval next | Every dictionary sheet, schema, join key, repeated-lab count and outcome field audited without patient-level output |
 | 5 | Define exact primary and secondary outcomes. | Planned | Statistical analysis plan section approved |
 | 6 | Define pre-cycle timing and repeated-measure eligibility rules. | Planned | Frozen configuration and sensitivity windows |
 | 7 | Prepare CHAARTED and external-validation access requests. | Planned | Submitted requests or documented access route |
@@ -410,6 +411,14 @@ This file should be updated whenever we:
 - The user explicitly approved publication of the new policy. Approval to delete both exact folders is conditional on every local project file being backed up in GitHub first.
 - Full-text papers, extracted text, temporary downloads and generated caches remain excluded from GitHub. No folder deletion is permitted while that condition is unmet. Obtain approval for an alternative backup or explicit exception; do not silently relax the condition.
 - Do not record local cleanup as completed before a fresh filesystem check.
+
+### 2026-08-31 - Cloud-work approval and plan-level checkpoints clarified
+
+- User confirmed that Google Cloud use is approved and requested an actionable handoff for the next agent.
+- Added D-023 and updated current status documents to separate settled cloud permission from approval of the exact resource-and-audit execution plan.
+- The next agent should propose concrete resources, access controls, current costs, audit outputs and shutdown arrangements, then execute the approved plan. A later cleaning plan and analysis plan follow the actual-field audit.
+- No source field, outcome definition, inclusion rule or model was changed. This was a documentation update only, explicitly authorized for publication to `main`.
+- Local-folder cleanup retains the separate all-files-backup condition and remains unperformed.
 
 ## Update template
 

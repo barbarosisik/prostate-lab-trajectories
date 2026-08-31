@@ -2,6 +2,14 @@
 
 Read `NEXT_AGENT_ONBOARDING_PROMPT.md` and its mandatory project records before research work. Preserve the fixed research question, restricted-data safeguards and approval gates. Use plain language and no em dashes.
 
+## Current approved direction, 2026-08-31
+
+Private Google Cloud use is approved. PDS storage permission is already confirmed, and the user has approved proceeding toward protected cloud computing and the real-file audit. Do not describe Google Cloud use as unapproved or restart the provider-permission discussion.
+
+After onboarding, prepare a concrete execution plan with exact resources, region, access controls, current costs, audit steps, outputs and shutdown arrangements. Ask for approval of that specific plan before resource creation and restricted-file execution. Setup and audit may be approved together when the plan explicitly covers both. Execute the approved scope without asking again for each routine step. Ask again for a material change or a later research stage not covered by the approved plan.
+
+Cloud approval does not mean a cloud computer (virtual machine, or VM) already exists or an audit has run. Verify actual state. The local cleanup backup condition is separate and remains unresolved; it does not prevent read-only onboarding or preparation of the approved cloud-work plan.
+
 ## Onboarding request means session closeout
 
 When the user asks for an onboarding prompt, next-agent prompt or end-of-session handoff, prepare the handoff AND begin the local-cleanup workflow in `NEXT_AGENT_ONBOARDING_PROMPT.md` under `SESSION CLOSEOUT AND LOCAL CLEANUP`.

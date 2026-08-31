@@ -87,7 +87,7 @@ The active dataset-audit layer is in [`docs/`](docs/):
 
 The project continuity layer is:
 
-- [`PROJECT_CONTINUITY_LOG.md`](PROJECT_CONTINUITY_LOG.md), the operational memory, reminder queue, current blocker and exact execution plan.
+- [`PROJECT_CONTINUITY_LOG.md`](PROJECT_CONTINUITY_LOG.md), the operational memory, reminder queue, current status and exact execution plan.
 - [`NEXT_AGENT_ONBOARDING_PROMPT.md`](NEXT_AGENT_ONBOARDING_PROMPT.md), the ready-to-paste prompt for the next GPT-5.6 Sol agent.
 - [`RESEARCH_LOG.md`](RESEARCH_LOG.md), the formal research decisions, phase plan and dated scientific progress.
 
@@ -212,7 +212,7 @@ prostate-lab-trajectories/
 ## Immediate next steps
 
 1. The complete package is secured and checksum-verified in PDS-approved private Google Cloud Storage.
-2. Obtain explicit approval before creating a paid private Google Cloud computing environment.
+2. Private Google Cloud use and proceeding to protected compute/audit are approved. Present the exact setup-and-audit execution plan, current costs and safeguards for plan-level approval.
 3. Extract and inspect the restricted package only inside that protected environment.
 4. Inspect every sheet of the official data dictionary.
 5. Run the tested aggregate inventory tool against every supplied CSV.
@@ -223,7 +223,7 @@ prostate-lab-trajectories/
 
 ## Project status
 
-**Current stage:** PDS package secured in approved private Google Cloud Storage; local restricted copies removed after complete verification; protected cloud-computing audit pending approval.
+**Current stage:** PDS package secured in approved private Google Cloud Storage; local restricted ZIP copies removed after complete verification; proceeding to protected cloud computing and the real-file audit approved on 2026-08-31. The next agent should propose the exact execution plan and ask for its approval, not reopen general cloud permission.
 
-Read [`PROJECT_CONTINUITY_LOG.md`](PROJECT_CONTINUITY_LOG.md) first for the current blocker, reminders and exact next action. See [`RESEARCH_LOG.md`](RESEARCH_LOG.md) for research decisions and dated scientific progress.
+Read [`PROJECT_CONTINUITY_LOG.md`](PROJECT_CONTINUITY_LOG.md) first for the current status, reminders and exact next action. See [`RESEARCH_LOG.md`](RESEARCH_LOG.md) for research decisions and dated scientific progress.
 

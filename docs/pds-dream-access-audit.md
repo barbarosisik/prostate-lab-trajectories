@@ -4,7 +4,7 @@
 
 The official PDS DREAM contribution and the official Synapse challenge metadata are located. PDS approved the user's access request on 2026-08-25, the user signed in successfully, and Craig at PDS later confirmed that private Google Cloud storage is permitted. The complete unchanged package was uploaded to a dedicated private Netherlands-region Google Cloud Storage bucket and verified on 2026-08-27. Public documentation proves that the training release includes event-level laboratory results through day 84, but the six-file challenge release does not list an actual chemotherapy-administration table or an adverse-event event table.
 
-The source package is now obtained and integrity-verified, but its dictionary and CSV columns are **not** yet source-verified. No patient row or laboratory value has been opened. The real-file audit awaits explicit approval and a protected Google Cloud computing environment.
+The source package is obtained and integrity-verified, but its dictionary and CSV columns are **not** yet source-verified. No patient row or laboratory value has been opened by this workflow. On 2026-08-31 the user confirmed that private Google Cloud use and proceeding toward protected computing and the real-file audit are approved. The next agent should propose the exact setup-and-audit execution plan for approval, then implement it. Provider/storage permission is not a current blocker.
 
 ## Secured acquisition record
 
@@ -124,7 +124,7 @@ Consequently:
 
 No cleaning/restructuring specification will be frozen until the dictionary and all source columns are inspected.
 
-## Historical access test and current blocker
+## Historical access test, resolution and next implementation step
 
 Checked on 2026-08-25:
 
@@ -147,14 +147,14 @@ Resolved on 2026-08-27:
 - Cloud existence, size, MD5, CRC32C and access controls were verified.
 - The exact restricted local ZIP copies were removed after fresh confirmation.
 
-Current blocker:
+Current implementation step, updated 2026-08-31:
 
 - Google Cloud Storage is not a computing environment.
-- A private cloud computing resource, cost estimate, access policy and shutdown plan must be explained and approved before the dictionary and CSV files are inspected.
+- The user approved moving forward with protected cloud computing and the real-file audit. Present the exact resource, current costs, access policy, audit outputs and shutdown plan for plan-level approval before execution. Do not ask again whether private Google Cloud use is permitted.
 
 ## Protected real-file audit procedure
 
-1. Obtain explicit approval for the protected cloud computing resource and expected cost.
+1. Prepare the specific protected setup-and-audit execution plan, including the computing resource and current costs, and obtain approval for that plan. General cloud-use approval is already recorded.
 2. Limit access to approved identities and the minimum necessary bucket permissions.
 3. Repeat ZIP path checks inside the protected environment before extraction.
 4. Preserve the original cloud object unchanged and extract only to protected temporary storage.

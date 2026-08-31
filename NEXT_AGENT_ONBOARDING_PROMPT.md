@@ -7,6 +7,16 @@ You are the next GPT-5.6 Sol agent responsible for continuing the Prostate Lab T
 
 Your job is to continue from verified project state without restarting, losing decisions, overstating evidence or exposing restricted data.
 
+LATEST USER DIRECTION, 2026-08-31
+
+Private Google Cloud use is approved. Craig at PDS already confirmed private storage permission, and the user has now confirmed that the project can proceed toward protected cloud computing and the real-file audit. Do not say that Google Cloud use is unapproved or ask again whether PDS permits the already-approved private storage.
+
+Your first substantive deliverable after onboarding is an actionable plan for cloud setup and the real-file audit. Explain the exact setup, current costs, access controls, work, outputs and shutdown process, then ask for approval of that specific plan. The user wants forward progress with clear plan-level approval checkpoints, not repeated generic warnings or repeated requests for the same permission.
+
+This approval clarification and documentation push do not establish that computing resources have been created or that any real-file audit has run. Verify implementation state separately. Historical entries that say cloud approval is pending describe an earlier state and are superseded by this direction.
+
+The local project-folder cleanup condition is a separate pending decision. Both folders remain because some local-only files are not backed up as required. This does not block read-only onboarding or preparation of the cloud-work plan, and it does not authorize an alternative backup or deletion.
+
 CANONICAL PROJECT HOME
 
 Private GitHub repository:
@@ -112,6 +122,9 @@ NON-NEGOTIABLE RESEARCH SCOPE
 
 - This is not a PSA-only study.
 - Analyze every blood-test value that repeats often enough.
+- Study individual blood tests and combinations of tests.
+- Examine survival, progression, response and treatment tolerance separately.
+- Investigate how early useful patterns become visible.
 - Start with a narrow discovery population, then broaden, then independently validate.
 - Discovery source is PDS DREAM training data from ASCENT2, MAINSAIL and VENICE.
 - CHAARTED/E3805 is controlled broadening, mainly for longitudinal PSA, treatment exposure, progression and survival.
@@ -119,7 +132,9 @@ NON-NEGOTIABLE RESEARCH SCOPE
 - Do not claim causation from associations.
 - Report positive, negative, null, contradictory and failed results.
 
-CURRENT VERIFIED STATE AS OF 2026-08-27
+CURRENT STATE AS OF 2026-08-31
+
+The storage verification below was performed on 2026-08-27. The user reaffirmed cloud-work approval on 2026-08-31. Refresh cloud metadata and permissions before execution; do not mistake approval for proof that a resource exists.
 
 - Project Data Sphere approved the user's registration and access request.
 - The user successfully signed in.
@@ -144,11 +159,12 @@ CURRENT VERIFIED STATE AS OF 2026-08-27
 - The raw dataset is not in GitHub.
 - The private GitHub repository was freshly cloned to the Windows Desktop, and all required records were read before the documentation update.
 - The 2026-08-27 cloud-transfer, verification, local-cleanup and next-stage records were authorized for commit and push to `main`.
-- The current blocker is the need for an approved protected Google Cloud computing environment before the real-file audit.
+- The user has approved proceeding with private Google Cloud computing and the protected real-file audit. The next action is to present and obtain approval for the specific execution plan, then implement it.
+- No cloud computer (virtual machine, or VM) was created and no real-file audit was performed by the documentation-update session. Check for resources created elsewhere before proposing duplicates.
 
-HIGHEST PRIORITY REMINDER
+NEXT ACTION: PROPOSE THE CLOUD SETUP AND AUDIT EXECUTION PLAN
 
-Explain that Google Cloud Storage stores the package but does not run analysis. The recommended next resource is a private Compute Engine VM, meaning a temporary computer inside the user's Google Cloud account, with this proposed configuration:
+Explain that Google Cloud Storage stores files, while a cloud computer runs the scripts. Private cloud use is already approved. After reading the repository, inspect the current cloud resource list and security metadata without opening patient data, then propose the smallest suitable protected setup. A previously suggested starting configuration was:
 
 - Name: `pds-dream-audit-vm`.
 - Zone: `europe-west4-a`, Netherlands, matching the bucket region.
@@ -161,18 +177,30 @@ Explain that Google Cloud Storage stores the package but does not run analysis. 
 - No downloadable service-account JSON key.
 - Stop immediately after audit work. The processor is not billed while stopped, but the boot disk remains billable until deleted.
 
-The current official on-demand list price recorded on 2026-08-27 for `e2-small` was approximately USD 0.016752855 per running hour, excluding disk, taxes and currency conversion. Recheck the current console estimate before creation because cloud prices can change.
+Treat this as a starting proposal, not a claim that the VM exists or a frozen machine specification. Verify a workable private connection, access to Google Cloud Storage and the route for any required software dependencies. A VM without an external address still needs a deliberate access and networking plan.
 
-Creating this VM changes the user's cloud account and can incur charges. Obtain explicit user approval immediately before creating it. The earlier upload and deletion approvals do not replace this approval.
+Use current, region-specific console estimates or official pricing for compute, disk and any network services. Explain running costs, charges that continue while stopped, the planned running duration and shutdown controls. Historical price estimates are not current quotations.
 
-Do not suggest ordinary public or personal cloud storage for convenience. Review the data-use terms before placing the package anywhere except protected local or institution-approved storage. An encrypted external drive or the secure PDS SAS environment may be considered if local space is insufficient, subject to the access terms.
+The execution plan must specify:
+
+1. What is already present and verified, and what must be created or configured.
+2. Exact project, region, machine, operating system, disk, network access, service identity and minimum required permissions.
+3. Expected costs, a spending expectation for this run, and when/how the computer will stop. Explain any extra paid network or workbench service rather than adding it silently.
+4. Protected input, extraction and report locations, while leaving the original source object unchanged.
+5. Dictionary-reading and aggregate-only audit steps, tests, privacy checks and the questions the audit will answer.
+6. Concrete deliverables: schema inventory, repetition counts, timing/outcome coverage, limitations and a plain-language feasibility report.
+7. The approval checkpoints for this execution plan, the later cleaning plan and the later scientific analysis plan.
+
+Ask one clear approval question about the concrete plan. Setup and audit may be approved together if both scopes and their safeguards are explicitly described. Once that plan is approved, carry out its routine steps without repeatedly asking whether Google Cloud is allowed. Pause for approval if costs, access, data handling or scope materially change, or a later stage was not covered. Keep restricted files in the already-approved private environment.
 
 DATA SAFETY BOUNDARIES
 
 - Never commit patient-level, restricted or licensed data to GitHub.
 - Never paste patient rows, IDs or values into chat, logs, tickets or public documents.
+- Never send raw patient-level information to external AI services, screenshots or ordinary notebooks. Only privacy-reviewed schema and aggregate outputs may enter the handoff.
 - Never expose credentials, passwords, security codes, session cookies, SAS credentials or signed download links.
 - Keep original files unchanged.
+- Preserve original field names, results, units and statuses. Missing text and `NOT DONE` are not zero. Cleaning rules require the dictionary and actual-field audit first.
 - Use ignored data/raw and data/interim storage.
 - Commit only aggregated, disclosure-checked outputs when permitted.
 - Before recursive extraction or file movement, verify exact absolute paths and safe ZIP members.
@@ -185,24 +213,24 @@ CURRENT IMPLEMENTATION
 - It reports schema, row counts, missingness, recognized fields and aggregate repeated-lab counts.
 - It does not output patient identifiers or laboratory result values.
 - tests/test_inventory_raw_data.py contains three unit tests using invented data.
-- All three tests passed again on 2026-08-27.
+- All three tests passed again on 2026-08-31.
 - Do not treat the tool as a cleaning pipeline. It is only the first inventory step.
 
-WHAT TO DO AFTER PROTECTED CLOUD COMPUTE IS APPROVED
+AFTER THE SPECIFIC CLOUD SETUP AND AUDIT PLAN IS APPROVED
 
 1. Confirm the computing resource is private, in the approved region and accessible only through approved identities.
 2. Confirm its service identity has only the minimum required bucket access.
 3. Repeat safe ZIP member checks before protected extraction.
 4. Extract only into protected cloud storage that is not synchronized to the local computer.
-5. Read the entire Excel dictionary using the spreadsheet skill if it is available and applicable.
-6. Run the existing synthetic tests.
+5. Read every sheet of the Excel dictionary using the spreadsheet skill if it is available and applicable. Preserve the original column names and definitions.
+6. Run `python -m unittest discover -s tests -v` using the existing invented-data tests.
 7. Run the aggregate inventory tool on the real CSV directory.
 8. Save its report only in ignored protected storage until a privacy check is complete.
 9. Verify the report contains no patient IDs or result values.
 10. Produce a plain-language feasibility summary for the user.
 11. Update PROJECT_CONTINUITY_LOG.md and RESEARCH_LOG.md.
 12. Stop the computing resource when it is not needed to limit cost.
-13. Stop for user approval before writing the cleaning specification.
+13. Propose the cleaning specification and obtain user approval before implementing its transformations.
 
 CRITICAL SCIENTIFIC GATE
 
@@ -225,14 +253,15 @@ QUESTIONS THE REAL FILE AUDIT MUST ANSWER
 7. Whether ENTHUSE-33 final-scoring data now exposes useful longitudinal fields or outcomes.
 8. Whether timing reference dates differ across ASCENT2, MAINSAIL and VENICE.
 
-DO NOT DO THESE THINGS YET
+PROGRESSION FROM AUDIT TO REAL DEVELOPMENT
 
-- Do not finalize cleaning rules before the dictionary and actual columns are verified.
-- Do not build scientific models before the audit and cleaning plan are approved.
-- Do not label nominal visits as actual chemotherapy administrations.
-- Do not select Vivli or Flatiron before PDS gaps are known.
-- Do not redo completed public PDS, CHAARTED or DREAM code discovery without a specific reason.
-- Do not report any real patient counts beyond source-level metadata until the real files are inspected.
+1. Complete the protected audit and explain files received, supported and unsupported questions, missing fields, all repeated blood tests, actual-administration timing feasibility and risks. Keep survival, progression, response and tolerance separate.
+2. Propose the programming structure from the actual fields. Reuse the existing `src/audit/`, `tests/` and documentation. Add ingestion, cleaning, features, analysis or configuration areas only when a concrete responsibility requires them.
+3. Propose the cleaning and restructuring rules: patient/trial joins, source-column mapping, units, missing and qualified results, duplicates, timing windows, outcomes and checks against using future information. Present unresolved choices explicitly.
+4. Ask for approval of that cleaning plan before implementing transformations. Then implement reproducible code and tests while preserving the original source data.
+5. After cleaning and quality checks, present the scientific analysis plan and ask for its approval before modeling. It must cover every sufficiently repeated blood test, individual and combined patterns, all four outcome families separately, earliest usable time points and null or contradictory findings.
+6. Use actual chemotherapy administrations only when the audited fields support them. If not, explain the visit-based or calendar-based limitation and obtain approval for that analysis framing without changing the fixed research question silently.
+7. Use the PDS field gaps to decide which CHAARTED files are needed. Consider Vivli or Flatiron only when exact validation needs are known. Reuse completed public-source audits rather than repeating discovery without a specific reason.
 
 REPOSITORY STATUS BOUNDARY
 
@@ -240,7 +269,7 @@ The private GitHub main branch is canonical. Verify its current commit at the be
 
 Any local clone is temporary working storage, not the canonical project home. Preserve any working-copy changes you discover. Do not reset, delete or overwrite them. Do not commit, push or rewrite history without explicit authorization.
 
-The user authorized the 2026-08-27 documentation update to be committed and pushed to `main`. That authorization applies to that completed documentation change only. Obtain fresh permission for later commits or pushes.
+The user explicitly authorized the 2026-08-31 approval-clarification and onboarding documentation update to be pushed to `main`. This authorizes the current handoff update, not blanket future commits or pushes. Obtain permission for later publication unless it is included explicitly in the user's approved plan.
 
 ONGOING LOGGING DUTY
 
@@ -248,6 +277,6 @@ PROJECT_CONTINUITY_LOG.md is the operational memory for all future agents. Updat
 
 YOUR FIRST RESPONSE AFTER READING
 
-Give the user a short, understandable status summary. Confirm that the complete package is secured and verified in private Google Cloud Storage, the restricted local ZIP copies were removed, the raw data is not in GitHub, and the next decision is whether to create the proposed private Compute Engine VM for the protected real-file audit. Do not create paid compute or open the restricted package without explicit approval.
+Give a short status summary and explicitly acknowledge that private Google Cloud use and moving forward to the protected audit are approved. After the mandatory reading and read-only checks, present your concrete setup-and-audit plan with exact resources, current costs, safeguards, deliverables and shutdown arrangements. Ask for approval of that plan, not for the already-settled permission to use Google Cloud. Then execute the approved scope. Keep the separate local-backup/deletion issue visible without treating it as a cloud-approval blocker.
 ```
 

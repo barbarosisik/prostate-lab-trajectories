@@ -31,7 +31,7 @@ Every agent continuing this project must read this file first, then read `RESEAR
 
 **Last updated:** 2026-08-31
 
-**Project stage:** Restricted package secured in approved private Google Cloud Storage; protected real-file audit pending approval
+**Project stage:** Restricted package secured in approved private Google Cloud Storage; cloud-computing and audit direction approved; concrete execution plan next
 
 **Primary source:** Project Data Sphere Prostate Cancer DREAM Challenge
 
@@ -41,13 +41,13 @@ Every agent continuing this project must read this file first, then read `RESEAR
 
 **Current storage state:** Craig at PDS confirmed that private Google Cloud storage is permitted. The unchanged package is stored in a dedicated private bucket in the Netherlands region. The two verified local restricted ZIP copies were permanently removed after cloud verification and fresh user confirmation.
 
-**Immediate blocker:** Google Cloud Storage stores the package but does not run the audit. A protected Google Cloud computing environment must be selected, costed, created with private access controls and approved by the user before the restricted package is extracted or inspected.
+**Current approval state:** On 2026-08-31 the user confirmed that private Google Cloud use is approved and the project can proceed toward protected computing and the real-file audit. Provider/storage permission is not a current blocker. The next agent must present exact implementation details and costs for plan-level approval, then execute the approved scope.
 
-**Immediate next action:** Explain the protected cloud-computing plan and costs, then obtain explicit approval before creating computing resources or beginning the real-file audit.
+**Immediate next action:** Read the required records, verify repository and cloud metadata, and propose a concrete setup-and-audit execution plan covering resources, permissions, current costs, protected paths, outputs and shutdown. Ask for approval of that plan rather than asking again whether Google Cloud is allowed.
 
-**Current session priority:** The user authorized publishing the cleanup rule to `main` and conditionally approved removal of both exact local project folders only if all local files were pushed to GitHub first. The ignored papers, text copies, temporary downloads and generated cache files are not backed up there. The backup condition is unmet, so neither folder may be deleted without an approved alternative backup or explicit exception. The scientific next action above remains pending and is not authorized by the cleanup request.
+**Current session priority:** Publish the user's approval clarification and actionable next-agent plan. The separate local-folder deletion condition is unchanged: all local files must first be backed up as approved. Ignored papers, text copies, temporary downloads and generated caches are not backed up in GitHub, so neither folder may be deleted without an approved alternative backup or explicit exception. This cleanup issue does not block preparation of the cloud-work plan.
 
-**After approval:** Create or use an approved private computing environment, extract only inside protected storage, inspect every dictionary sheet, run the synthetic tests and aggregate inventory, check the report for privacy, and stop for user approval before writing cleaning transformations.
+**After execution-plan approval:** Create or use the specified private computing environment, extract only inside protected storage, inspect every dictionary sheet, run the synthetic tests and aggregate inventory, check the report for privacy, and propose a cleaning plan for approval. Setup and audit can share one approval when the plan explicitly covers both. Historical dated entries below retain older approval states and do not override this current snapshot.
 
 ## User communication requirements
 
@@ -421,9 +421,9 @@ Define only after the audit:
 
 Before real-file inspection:
 
-> Explain and approve the private Google Cloud computing environment, its cost, access controls and shutdown procedure. Do not extract or inspect the restricted package in ordinary local or shared storage.
+> Google Cloud use is approved. Present the exact private setup-and-audit execution plan, current cost, access controls, outputs and shutdown procedure for plan-level approval, then proceed within that approved scope. Keep restricted files in protected cloud storage.
 
-### After cloud computing is approved
+### After the specific setup-and-audit execution plan is approved
 
 - Verify the private compute identity can read only the approved bucket and object.
 - Extract in protected cloud storage only after ZIP path checks are repeated there.
@@ -516,6 +516,17 @@ Before real-file inspection:
 - Both project folders must remain until the user approves a permitted alternative backup or explicitly changes the condition. No alternative cloud transfer is authorized by a GitHub-only backup condition.
 - Next action after publishing the rule: explain this remaining backup gap and request direction. Delete nothing while the condition is unresolved.
 - Paid cloud compute, real-file inspection, cleaning and modeling remain unstarted by this session.
+
+### 2026-08-31: Cloud approval clarified and next-agent execution plan requested
+
+- User explicitly confirmed that Google Cloud use is approved and the project can go forward. The next agent should create or suggest concrete plans and ask for approval of those plans.
+- Replaced stale current-status wording that treated cloud permission as unresolved. PDS storage permission remains confirmed, and user approval to move toward protected compute and the real-file audit is now explicit.
+- Updated `AGENTS.md`, the onboarding prompt and current status documents so the next agent starts with onboarding, read-only verification and an actionable resource-and-audit plan.
+- Exact resource choices, current costs, access configuration, protected processing steps and deliverables belong in that plan. Once approved, covered routine steps can proceed without repeated generic permission requests.
+- The later cleaning/restructuring plan and scientific analysis plan remain separate approval checkpoints informed by real fields. No research question or privacy rule changed.
+- This session changes and publishes documentation only. It creates no VM and starts no real-file inspection or modeling. Resource creation by another session must be checked live rather than assumed.
+- Local-folder deletion remains conditional on the unresolved backup requirement; no alternative backup or deletion was authorized by this clarification.
+- User explicitly authorized this documentation update to be committed and pushed to `main`.
 
 ## Session update template
 
