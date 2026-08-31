@@ -4,7 +4,7 @@
 
 The user explicitly authorized publication of the corrected handoff and corresponding closeout records, then requested local project cleanup after preservation in GitHub. This does not authorize publishing restricted data, publisher full text or credentials. It does not resolve the existing all-files-backup condition or replace fresh exact-target deletion confirmation.
 
-State at preparation: publication authorized; both project folders still present; deletion pending. The publication receipt belongs in the continuity log. A later verified chat receipt may record post-deletion results without recreating a local clone. No data processing occurred during this closeout. The next research agent must explain the local data plan and obtain approval at A0R.
+State after publication: corrected handoff committed and pushed at `0fa84856f526a7e647cf5f07b5acccfe39e645ea`. The authenticated GitHub connector independently resolved main to that commit and all ten required file blob hashes matched. Both project folders are still present; deletion is pending. This corresponding receipt is within the user's publication authorization. A later verified chat receipt may record post-deletion results without recreating a local clone. No data processing occurred during this closeout. The next research agent must explain the local data plan and obtain approval at A0R.
 
 ## Exact project folder targets
 

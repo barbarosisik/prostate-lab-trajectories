@@ -10,7 +10,7 @@ Private Google Cloud Storage is the permanent home for original and derived rest
 
 | Item | Location | Verified state |
 |---|---|---|
-| Code and safe documentation | `https://github.com/barbarosisik/prostate-lab-trajectories`, branch `main` | Corrected data-free instructions/tracker published and remote verified at `9843e5b86a89c4f5ca583a60f1906c69032ee9c8`; continuity A1 is done. Later receipt commits may follow; verify current main at onboarding |
+| Code and safe documentation | `https://github.com/barbarosisik/prostate-lab-trajectories`, branch `main` | Corrected approval-first handoff published at `0fa84856f526a7e647cf5f07b5acccfe39e645ea`; authenticated connector independently confirmed main and all ten document blob hashes. This receipt follows that commit; verify current main at onboarding |
 | Cloud project | `pds-dream-secure-storage` | Existing approved storage project |
 | Private bucket | `gs://pds-dream-secure-storage-eu-20260827` | Netherlands `europe-west4`; access controls refreshed 2026-08-31 |
 | Original package | `gs://pds-dream-secure-storage-eu-20260827/prostate-lab-trajectories/data/raw/pds_dream/source/AllProvidedFiles_149 (1).zip` | Exists in live console; 6,227,480 bytes and hashes verified 2026-08-27; exact metadata refresh before next download |
@@ -43,7 +43,7 @@ A detailed manifest belongs with the restricted cloud run bundle if filenames or
 
 | Exact folder | Purpose and state |
 |---|---|
-| `C:\Users\BarbarosIsikGreenhou\Desktop\prostate-lab-trajectories` | Temporary clone; f152628 matched remote before the corrected handoff. Publication of the revised documents is explicitly authorized. No restricted dataset downloaded here. Cleanup pending backup decision and fresh confirmation |
+| `C:\Users\BarbarosIsikGreenhou\Desktop\prostate-lab-trajectories` | Temporary clone; corrected handoff publication verified at 0fa8485; corresponding receipt authorized. No restricted dataset downloaded here. Cleanup pending backup decision and fresh confirmation |
 | `C:\Users\BarbarosIsikGreenhou\Documents\Codex\2026-08-24\s\prostate-lab-trajectories` | Retired, do not use for research. All 19 permitted working-file contents were matched to canonical Git history, allowing line-ending/final-newline normalization. Still holds 10 literature PDFs, 10 extracted text files, 5 temporary dictionary PDFs and 2 caches not backed up in GitHub. Nothing deleted |
 
 Do not delete these folders or upload their publisher files under the dataset-processing approval. Their original backup condition and fresh exact-target confirmation still apply.

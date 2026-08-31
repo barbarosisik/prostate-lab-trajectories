@@ -43,7 +43,7 @@ Every agent continuing this project must read this file first, then read `RESEAR
 
 **Current approval state:** Earlier local-audit approval and publication at 9843e5b/f152628 remain historical facts. The next agent must explain the data-processing plan in chat and ask approval before starting, at checkpoint A0R. Cloud remains STORAGE ONLY. The user rejected the agent-added mandatory BitLocker check. The latest explicit "publish please" authorizes this corrected handoff and corresponding closeout records. Cleaning, scientific analysis, exceptions to the all-files-backup condition and fresh exact-target deletion confirmation remain separate.
 
-**Immediate next action:** Publish the authorized corrected handoff, independently verify remote main, then obtain the user's decision on unbacked local-only materials and fresh confirmation of the exact deletion targets. See `docs/local-closeout-2026-08-31.md`. The next research agent's first substantive reply after reading must explain the local data plan, ask one approval question and wait before data work. No encryption-status detour, run folder or cloud output was created during closeout.
+**Immediate next action:** The corrected handoff is published and independently verified at `0fa84856f526a7e647cf5f07b5acccfe39e645ea`. Obtain the user's decision on unbacked local-only materials and fresh confirmation of the exact deletion targets in `docs/local-closeout-2026-08-31.md`. The next research agent's first substantive reply after reading must explain the local data plan, ask one approval question and wait before data work. No encryption-status detour, run folder or cloud output was created during closeout.
 
 **Current session priority:** Authorized publication and verified local cleanup, not data execution. Both known folders remain pending the backup exception or permitted alternative backup and fresh deletion confirmation. All 19 permitted retired working files match content already in canonical Git history when line endings/final newlines are normalized. The remaining 27 ignored papers/text/temp PDFs/caches are not backed up in GitHub. Do not claim complete cleanup or erase shared app records.
 
@@ -458,7 +458,7 @@ Before real-file inspection:
 - Verify that the aggregate report contains no patient identifiers or laboratory values.
 - Upload new restricted outputs and verification metadata to the run's private cloud prefix. Verify every required output; then record cleanup as pending until fresh confirmation and post-deletion checks.
 - Keep the first-audit cloud expectation below USD 0.05 under the plan's size/operation assumptions; pause above the USD 0.10 incremental approval threshold. No cloud-compute charge is planned.
-- Publication of this corrected handoff and corresponding closeout records is explicitly authorized. Verify remote main and record the result. Future unrelated publication still requires permission.
+- Corrected handoff publication is complete and independently verified at `0fa84856f526a7e647cf5f07b5acccfe39e645ea`. This corresponding receipt is within the same authorization. Future unrelated publication requires permission. Cleanup is not complete.
 
 ### Later reminders
 
@@ -469,6 +469,15 @@ Before real-file inspection:
 - Consider Vivli or Flatiron only after CHAARTED and PDS compatibility are clear.
 
 ## Dated operational history
+
+### 2026-08-31: Verified corrected handoff publication and pending deletion
+
+- Committed ten reviewed data-free documentation files in `0fa84856f526a7e647cf5f07b5acccfe39e645ea`; normal push to main succeeded. All three invented-data tests passed again; whitespace, code-fence, no-em-dash and credential-pattern checks passed. No restricted or publisher files were staged.
+- Independent CLI reads then returned "Repository not found" twice. Used the authenticated GitHub connector, which independently resolved main to the exact new commit. Fetched every one of the ten documents and matched its Git blob SHA to the local committed tree, including onboarding, both logs, the data plan/register and closeout manifest. The Desktop worktree was clean before this receipt.
+- Fresh filesystem inventory: Desktop clone 111 files / 710,653 bytes including Git metadata at that checkpoint; retired folder 79 files / 19,305,428 bytes. No reparse points were found. Desktop has no ignored/untracked files. Proposed restricted-data root still absent. This receipt will change the Desktop file totals.
+- A proposed memory-removal note was rejected because creating another persistent project record would conflict with the cleanup request. No such note was created, and no memory file or task history was deleted. Do not retry through a workaround or claim app-managed cleanup occurred.
+- Both exact project folders remain. Request explicit permission to discard the 27 unbacked local-only items as an exception to the all-files-backup condition, together with fresh confirmation of permanent deletion of both exact folders. Alternatively, wait for a permitted approved backup. Publication success does not waive that condition.
+- Data execution remains at A0R, not started. The next agent must explain the local audit and verified-output plan before asking approval and proceeding.
 
 ### 2026-08-31: Publication authorized and retired files checked
 
