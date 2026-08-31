@@ -21,7 +21,7 @@ Source SHA-256: `AB3ECA19C5D0CC4106C96AC04E665DD1A5C9DF58F66328ECD24E8E106793239
 
 | Run ID | Stage and state | Exact local folder | Cloud output prefix | Upload verification | Local cleanup |
 |---|---|---|---|---|---|
-| `2026-08-31-audit-001` | APPROVED, NOT STARTED; local encryption verification pending; continuity tracker `LOCAL-AUDIT-2026-08-31-01` | `C:\Users\BarbarosIsikGreenhou\PDS-Restricted-Work\prostate-lab-trajectories\runs\2026-08-31-audit-001` | `gs://pds-dream-secure-storage-eu-20260827/prostate-lab-trajectories/data/interim/pds_dream/audits/2026-08-31-audit-001/` | Not uploaded; no outputs exist | Not applicable yet; local folder not created |
+| `2026-08-31-audit-001` | NOT STARTED; latest handoff requires next-agent explanation and fresh approval at A0R; added BitLocker gate withdrawn, not passed | `C:\Users\BarbarosIsikGreenhou\PDS-Restricted-Work\prostate-lab-trajectories\runs\2026-08-31-audit-001` | `gs://pds-dream-secure-storage-eu-20260827/prostate-lab-trajectories/data/interim/pds_dream/audits/2026-08-31-audit-001/` | Not uploaded; no outputs exist | Not applicable yet; local folder not created |
 
 No cleaned dataset or real-file audit result has been produced. A proposed path is not evidence that a file exists.
 
@@ -43,7 +43,9 @@ A detailed manifest belongs with the restricted cloud run bundle if filenames or
 
 | Exact folder | Purpose and state |
 |---|---|
-| `C:\Users\BarbarosIsikGreenhou\Desktop\prostate-lab-trajectories` | Temporary code/documentation clone; initial safe instruction publication verified and continuity A1 complete; no restricted dataset downloaded here in this session |
-| `C:\Users\BarbarosIsikGreenhou\Documents\Codex\2026-08-24\s\prostate-lab-trajectories` | Retired folder, do not use; existence rechecked; historical local-only papers/text remain subject to the unresolved all-files-backup condition |
+| `C:\Users\BarbarosIsikGreenhou\Desktop\prostate-lab-trajectories` | Temporary clone; f152628 matched remote before the corrected handoff. Publication of the revised documents is explicitly authorized. No restricted dataset downloaded here. Cleanup pending backup decision and fresh confirmation |
+| `C:\Users\BarbarosIsikGreenhou\Documents\Codex\2026-08-24\s\prostate-lab-trajectories` | Retired, do not use for research. All 19 permitted working-file contents were matched to canonical Git history, allowing line-ending/final-newline normalization. Still holds 10 literature PDFs, 10 extracted text files, 5 temporary dictionary PDFs and 2 caches not backed up in GitHub. Nothing deleted |
 
 Do not delete these folders or upload their publisher files under the dataset-processing approval. Their original backup condition and fresh exact-target confirmation still apply.
+
+The latest publication-and-cleanup request starts closeout but does not resolve that backup condition. See `docs/local-closeout-2026-08-31.md` for the exact remaining files and preservation evidence. Shared task history and app memory are not part of these two directories and must not be manually erased.

@@ -13,7 +13,11 @@ The user's LATEST correction is cloud STORAGE ONLY, with computations, tests and
 
 The standing workflow is: record the exact protected local run directory, download and verify the cloud input, process locally, upload new outputs to a versioned location in the existing private bucket, verify all required uploads, then obtain fresh exact-target confirmation and delete the local copies. Apply this after each stage, including later approved cleaning. Keep the original cloud source unchanged. Future agents use the verified cloud versions, not forgotten local copies.
 
-Read docs/local-processing-and-cloud-storage-plan.md and docs/data-location-register.md. The user APPROVED the concrete first local audit plan and publishing the corrected data-free instructions to private GitHub main on 2026-08-31, then asked to track the plan in the log until complete. Follow tracker LOCAL-AUDIT-2026-08-31-01, steps A0-A10, in PROJECT_CONTINUITY_LOG.md. No restricted execution has occurred. The local run path is approved but not created; disk encryption remains unverified because the retried Windows status command was denied. Resolve that check before download. Do not request the same plan approval again. Historical cloud-compute proposals and old permission blockers are not current instructions.
+The latest handoff request changes the next agent's first task: AFTER mandatory read-only onboarding, explain the local data-processing plan in plain language and ask ONE clear approval question before data work. Do not download, install tools, create a data directory, extract files, run a real-file audit, clean or model before that answer. Earlier plan approval remains historical fact, but the user explicitly wants this fresh next-agent explanation-and-approval checkpoint. Do not reopen general PDS/private-storage permission.
+
+The earlier agent added a mandatory BitLocker/disk-encryption check as a precaution. The user rejected that detour. It was not established as a new PDS requirement. Do not ask the user to inspect drive C:, run more encryption-status commands, open security apps, change Windows settings or provide recovery keys as the first task or an assumed blocker. Encryption status is unknown, not verified on or off. Preserve ordinary file privacy, no synchronization, no patient-content output and the agreed transfer/cleanup controls. If a genuinely applicable new restriction is found later, explain the exact evidence and choice rather than inventing a requirement.
+
+Read docs/local-processing-and-cloud-storage-plan.md, docs/data-location-register.md and tracker LOCAL-AUDIT-2026-08-31-01 in PROJECT_CONTINUITY_LOG.md. No restricted execution has occurred. The next-agent approval checkpoint is open and the run folder has not been created. Published main was verified at f152628c4a23bccad0c8cbd671c4aa7d30d39814 before this revision. The user now explicitly authorized publishing this corrected handoff and closeout records. Verify current remote main and the closeout receipt at onboarding; publication alone does not mean cleanup occurred.
 
 The older local project-folder cleanup condition is separate. Both folders remain because some local-only files are not backed up as required. This does not block read-only onboarding or local-work planning. The new dataset workflow does not authorize an alternative backup of publisher files or deletion of those old folders.
 
@@ -160,21 +164,31 @@ Exact source size and checksums below were verified on 2026-08-27. A 2026-08-31 
 - The raw dataset is not in GitHub.
 - The private GitHub repository was freshly cloned to the Windows Desktop, and all required records were read before the documentation update.
 - The 2026-08-27 cloud-transfer, verification, local-cleanup and next-stage records were authorized for commit and push to `main`.
-- The user approved the specific temporary local audit, verified private-cloud output upload plan and corrected data-free instruction publication. The log-based execution tracker is active; local encryption verification is required before download.
+- Earlier local-audit and data-free instruction publication approval was recorded. The latest user request is that the next agent first explain the data plan and obtain fresh approval before data work. The assistant-added mandatory encryption check was withdrawn, not passed.
 - No cloud computer, real-file audit, restricted download, cleaning or modeling was performed in this planning session. Compute Engine showed an API Enable screen; no compute resources were displayed in the resource inventory. Do not enable it for this workflow.
-- Current planning began from a clean authenticated Desktop clone on main at fb059b91df2fd38740ab305fb17058204e7d9096, matching fresh remote main. The retry after a refused tool approval confirmed the same remote baseline. Publication is authorized; consult continuity tracker A1 for its verification evidence, and verify current main again at future onboarding.
+- Previous documentation/tracker publication is 9843e5b86a89c4f5ca583a60f1906c69032ee9c8; the receipt update is f152628c4a23bccad0c8cbd671c4aa7d30d39814. Fresh authenticated remote main and the clean Desktop clone matched f152628 before this handoff revision. New local changes must not be described as published until authorized and verified.
+- Before this revision, the handoff inventory found the Desktop clone had 97 files / 606,909 bytes including Git metadata and no ignored files. The retired copy had 79 files / 19,305,428 bytes, older modified/untracked work, 10 literature PDFs, 10 extracted text files, 5 temporary dictionary PDFs and 2 Python cache files. No links were found. Nothing was deleted; its all-files-backup condition remains unresolved.
 - Existing bucket access is private, but the signed-in user has Owner rights and bucket project convenience groups remain. Do not claim least-privilege runtime access or network isolation. No new member, key or permission is included in the current plan.
 
-NEXT ACTION: RESOLVE LOCAL SECURITY CHECK AND EXECUTE THE APPROVED AUDIT PLAN
+FIRST DELIVERABLE: EXPLAIN THE DATA PLAN, ASK APPROVAL, THEN WAIT
 
-Use docs/local-processing-and-cloud-storage-plan.md as the approved execution plan, not an old VM specification. Explain progress in plain language and resume from the log tracker. Do not ask for this plan approval again. Approved first-run locations, not yet created, are:
+Use docs/local-processing-and-cloud-storage-plan.md as the detailed basis, not an old VM specification or BitLocker checklist. Your first substantive reply after reading must include:
+
+1. Brief verified status: original source is in approved private cloud storage; no real-file audit, cleaned dataset or model exists.
+2. The first-stage plan: record one local folder, download and verify the unchanged ZIP, audit locally without transforming data, make disclosure-checked reports, upload new versioned outputs and verify them, then ask for exact-target local deletion confirmation.
+3. What the audit answers: all repeated blood tests and units, patient/trial joins, actual treatment timing and four separate outcome families. Define survival as how long people live, progression as worsening disease, response as treatment benefit and tolerance as how well treatment is endured.
+4. Expected locations, bounded costs and outputs. Explain that the source is never overwritten and restricted cleaned data will also be versioned in the same private bucket after a later approved cleaning stage.
+5. State that cleaning and statistical modeling are NOT part of this first approval; each gets a later written plan and approval based on actual fields.
+6. Ask: "Do you approve this first local data audit and verified cloud-output plan?" Then stop and wait. Do not substitute a Windows-security question or begin data work in the same response.
+
+Proposed first-run locations, not yet created, are:
 
 - Local run: C:\Users\BarbarosIsikGreenhou\PDS-Restricted-Work\prostate-lab-trajectories\runs\2026-08-31-audit-001
 - Audit cloud prefix: gs://pds-dream-secure-storage-eu-20260827/prostate-lab-trajectories/data/interim/pds_dream/audits/2026-08-31-audit-001/
 - Later approved cleaned versions: gs://pds-dream-secure-storage-eu-20260827/prostate-lab-trajectories/data/processed/pds_dream/<cleaning-version>/
 - Original source stays at the exact raw/source object above, unchanged.
 
-These paths are proposed, not evidence of a download or output. On another computer, resolve its actual user profile, verify local security and record the new exact path before download. Use a dedicated folder outside the Git clone and synchronized locations. Restrict folder access to the current user, SYSTEM and administrators; verify encryption first. Use approved normal sign-in and encrypted transfers, not pasted credentials or service-account keys.
+These paths are proposed, not evidence of a download or output. After plan approval on another computer, resolve its actual user profile and record the new exact path before download. Use a dedicated folder outside the Git clone and synchronized locations, with access limited to the current user, SYSTEM and administrators. Do not reinstate the rejected mandatory drive-encryption detour. Use approved normal sign-in and encrypted transfers, not pasted credentials or service-account keys.
 
 All computation is local. No cloud VM, disk, workbench or paid network service is needed. Explain current storage/download/operation costs and output retention. The first audit plan expects less than USD 0.05 in cloud charges under its explicit limits, with a USD 0.10 approval threshold, not a provider-enforced hard cap. Recheck current prices before later runs. Stop local processes when complete; do not shut down the user's computer.
 
@@ -188,7 +202,7 @@ The execution plan must specify:
 6. Concrete deliverables: schema inventory, repetition counts, timing/outcome coverage, limitations and a plain-language feasibility report.
 7. Upload checks, data-location register, fresh exact-target local cleanup confirmation, and approval checkpoints for later cleaning and scientific analysis. Explicitly ask for commit/push authorization if publishing safe documentation is included.
 
-Local setup, first read-only audit and verified output upload are approved together. Carry out routine steps after their security prerequisites pass, without repeating plan or cloud-storage permission questions. Pause for material changes to costs, access, security, destinations or scope. Later cleaning and modeling each need approval. Fresh deletion confirmation remains required at action time.
+After the user answers the requested next-agent approval question, carry out routine local setup, first read-only audit and verified output-upload steps within that approved scope. Do not keep asking the same question for each routine step or repeat settled cloud-storage permission. Pause for material changes to cost, access, destination or scope. Later cleaning and modeling each need approval. Fresh exact-target deletion confirmation remains required at action time.
 
 DATA SAFETY BOUNDARIES
 
@@ -215,7 +229,7 @@ CURRENT IMPLEMENTATION
 
 AFTER THE SPECIFIC LOCAL AUDIT AND CLOUD-STORAGE PLAN IS APPROVED
 
-1. Verify local encryption, permissions, non-synchronization and capacity; register the exact local run root before downloading. If the gate cannot be verified, pause and request the specific missing local action.
+1. Check only the agreed local run path, folder permissions, non-synchronization and capacity; record its exact root before downloading. Do not conduct a general security audit or reinstate the withdrawn BitLocker check.
 2. Refresh approved bucket controls and source metadata, use normal approved user sign-in, and download directly to the recorded local path. Verify source size and SHA-256 against the acquisition record.
 3. Repeat safe outer/nested ZIP member and containment checks before extraction, with bounded expansion.
 4. Extract only into the protected local run folder. Do not copy data into the code clone, ordinary Downloads, external AI or notebook previews.
@@ -267,7 +281,7 @@ The private GitHub main branch is canonical. Verify its current commit at the be
 
 Any local clone is temporary working storage, not the canonical project home. Preserve any working-copy changes you discover. Do not reset, delete or overwrite them. Do not commit, push or rewrite history without explicit authorization.
 
-The latest user approval explicitly covers publishing the corrected data-free instructions, execution plan and corresponding status logs to private main. Tracker A1 records the publication result. This is not blanket authorization for unrelated changes or future research-stage commits. Keep restricted data out of GitHub and independently verify remote state before reporting publication complete.
+Earlier publication authorization was used for commits 9843e5b and f152628. After the data-plan explanation in chat, the user explicitly authorized publication of this corrected handoff and corresponding closeout records. This is not blanket authorization for future commits or data processing. Keep restricted data out of GitHub and independently verify remote state before reporting publication complete. See docs/local-closeout-2026-08-31.md for the file preservation check and the outstanding cleanup decision.
 
 ONGOING LOGGING DUTY
 
@@ -275,6 +289,6 @@ PROJECT_CONTINUITY_LOG.md is the operational memory for all future agents. Updat
 
 YOUR FIRST RESPONSE AFTER READING
 
-Give a short status summary and explicitly acknowledge cloud storage only, local computation, versioned output uploads, verification and temporary local cleanup. After mandatory reading, verify the recorded implementation state. Present or resume the approved concrete local audit plan, keeping exact paths and pending uploads/cleanup visible. Do not restart cloud-compute planning. Ask only for the specific plan or next unresolved approval, not settled private-storage permission. Keep the older local-only-paper backup issue separate.
+Read the records first, then explain the data plan in plain language and ask one clear approval question BEFORE data work. Explain the first audit, local/cloud locations, outputs, verification, cleanup and later separate cleaning/analysis approvals. Acknowledge cloud storage only and local computation. Do not start with encryption, security-app automation or another cloud-permission debate. Keep the older local-only-paper backup issue separate and do not claim it is resolved. Preserve the fixed research question and every verified or unresolved fact above.
 ```
 

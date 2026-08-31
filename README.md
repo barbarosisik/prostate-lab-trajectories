@@ -214,7 +214,7 @@ prostate-lab-trajectories/
 ## Immediate next steps
 
 1. The complete package is secured and checksum-verified in PDS-approved private Google Cloud Storage.
-2. The user approved the specific local audit/upload plan and corrected data-free instruction publication. Follow the A0-A10 tracker in the continuity log; resolve local disk-encryption verification before download. Cloud remains storage only.
+2. The latest handoff request requires the next agent to explain the local data plan, ask one approval question and wait before data work. Follow tracker A0R in the continuity log. The agent-added BitLocker prerequisite was withdrawn; cloud remains storage only.
 3. Register the exact protected non-synchronized local run directory, download and verify the source, then safely extract locally. Do not create cloud compute.
 4. Inspect every sheet of the official data dictionary.
 5. Run the tested aggregate inventory tool against every supplied CSV.
@@ -225,7 +225,7 @@ prostate-lab-trajectories/
 
 ## Project status
 
-**Current stage:** The user approved the specific local audit and verified cloud-output plan on 2026-08-31, plus publication of the corrected data-free instructions. Completion is tracked in `PROJECT_CONTINUITY_LOG.md` under `LOCAL-AUDIT-2026-08-31-01`. Encryption verification is still required before downloading; no real-file audit has run. No cloud computation is planned. Cleaning and scientific analysis remain later approval stages.
+**Current stage:** The next GPT-5.6 Sol agent must explain the local data plan and ask approval before starting. A0R is pending. The assistant-added mandatory BitLocker detour was withdrawn, not passed. No real-file audit has run. Cloud is storage only; cleaning and scientific analysis require later approvals. Publication of this corrected handoff is now explicitly authorized. Local cleanup remains pending the separate backup/confirmation decision; see `docs/local-closeout-2026-08-31.md` and the continuity log for verification evidence.
 
 Read [`PROJECT_CONTINUITY_LOG.md`](PROJECT_CONTINUITY_LOG.md) first for the current status, reminders and exact next action. See [`RESEARCH_LOG.md`](RESEARCH_LOG.md) for research decisions and dated scientific progress.
 

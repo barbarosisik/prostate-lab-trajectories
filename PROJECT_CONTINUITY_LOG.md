@@ -31,7 +31,7 @@ Every agent continuing this project must read this file first, then read `RESEAR
 
 **Last updated:** 2026-08-31
 
-**Project stage:** Specific local audit, verified cloud output upload and publication of corrected data-free instructions approved on 2026-08-31; execution waiting for local encryption verification
+**Project stage:** New next-agent handoff requested: explain the local data plan and ask approval first. No data work started; assistant-added mandatory disk-encryption detour withdrawn
 
 **Primary source:** Project Data Sphere Prostate Cancer DREAM Challenge
 
@@ -41,23 +41,24 @@ Every agent continuing this project must read this file first, then read `RESEAR
 
 **Current storage state:** Craig at PDS confirmed that private Google Cloud storage is permitted. The unchanged package is stored in a dedicated private bucket in the Netherlands region. The two verified local restricted ZIP copies were permanently removed after cloud verification and fresh user confirmation.
 
-**Current approval state:** The user approved the concrete plan in `docs/local-processing-and-cloud-storage-plan.md` and publication of the corrected data-free project instructions to private GitHub `main`. The user also asked for the plan to be tracked in this log until done. Cloud is STORAGE ONLY; tests and processes run locally. The approved scope covers local setup, first read-only audit and verified output uploads. Local encryption/access gates still apply. Cleaning, scientific analysis, material scope changes and fresh exact-target deletion confirmation remain separate. Do not ask again for this plan's approval or for settled PDS private-storage permission.
+**Current approval state:** Earlier local-audit approval and publication at 9843e5b/f152628 remain historical facts. The next agent must explain the data-processing plan in chat and ask approval before starting, at checkpoint A0R. Cloud remains STORAGE ONLY. The user rejected the agent-added mandatory BitLocker check. The latest explicit "publish please" authorizes this corrected handoff and corresponding closeout records. Cleaning, scientific analysis, exceptions to the all-files-backup condition and fresh exact-target deletion confirmation remain separate.
 
-**Immediate next action:** Obtain a permitted manual confirmation of drive C: encryption status before any download: the retried read-only `manage-bde -status C:` still returned access denied. The approved data-free instructions/tracker were published and independently verified at `9843e5b86a89c4f5ca583a60f1906c69032ee9c8`. Do not request recovery keys or change encryption settings. Then complete local security/setup checks and execute the already-approved audit. Exact paths are in `docs/data-location-register.md`; the run folder and cloud output prefix have not been created.
+**Immediate next action:** Publish the authorized corrected handoff, independently verify remote main, then obtain the user's decision on unbacked local-only materials and fresh confirmation of the exact deletion targets. See `docs/local-closeout-2026-08-31.md`. The next research agent's first substantive reply after reading must explain the local data plan, ask one approval question and wait before data work. No encryption-status detour, run folder or cloud output was created during closeout.
 
-**Current session priority:** Maintain the approved-plan tracker below, with evidence for every completed step and explicit blockers. Initial instruction publication is verified; record its receipt and keep the encryption prerequisite open. The older project-folder all-files-backup condition remains unchanged and separate: ignored papers/text/downloads/caches are not backed up in GitHub, and no alternative backup or deletion is authorized here.
+**Current session priority:** Authorized publication and verified local cleanup, not data execution. Both known folders remain pending the backup exception or permitted alternative backup and fresh deletion confirmation. All 19 permitted retired working files match content already in canonical Git history when line endings/final newlines are normalized. The remaining 27 ignored papers/text/temp PDFs/caches are not backed up in GitHub. Do not claim complete cleanup or erase shared app records.
 
-**Approved execution sequence:** Verify local security, create/register the dedicated run directory, download and verify the source, extract safely, inspect every dictionary sheet and run the read-only audit locally. Privacy-check outputs, upload and verify them in the existing private bucket, record exact versions, then obtain fresh confirmation and clean up the local run. Propose cleaning separately. Do not create cloud compute. Historical pending-approval entries are superseded by this snapshot.
+**Sequence to explain for the next approval:** Record one dedicated local run directory, check its path/access/non-synchronization, download and verify the source, extract safely, inspect every dictionary sheet and audit locally without transforming patient data. Privacy-check reports, upload and verify new versions in the existing private bucket, then obtain fresh confirmation and clean up local copies. Propose cleaning and scientific analysis separately. No cloud computation or mandatory BitLocker detour. Historical instructions below do not override this snapshot.
 
-## Approved local-audit plan tracker
+## Data-plan execution tracker
 
-Plan ID: `LOCAL-AUDIT-2026-08-31-01`. Run ID: `2026-08-31-audit-001`. Approved by the user's direct response, "I approve, please go on", to the specific local-audit and safe-GitHub-publication question on 2026-08-31. The subsequent retry request concerned a refused tool approval; it did not cancel the plan approval. Update this table after every meaningful step, not only at handoff. Full details: `docs/local-processing-and-cloud-storage-plan.md`. Exact paths and transfer receipts: `docs/data-location-register.md`.
+Plan ID: `LOCAL-AUDIT-2026-08-31-01`. Run ID: `2026-08-31-audit-001`. Earlier approval and completed publication are preserved in A0/A1. The latest handoff request adds A0R: the next agent must explain the plan and obtain fresh approval before data work. The previous disk-encryption prerequisite is withdrawn, not verified as passed. Update this table after meaningful steps. Full plan: `docs/local-processing-and-cloud-storage-plan.md`; locations: `docs/data-location-register.md`.
 
 | Step | Work and completion evidence | Status |
 |---|---|---|
 | A0 | Record approval of local setup, first read-only audit, verified cloud output upload and corrected data-free instruction publication | DONE: direct user approval recorded |
+| A0R | After mandatory reading, the next agent explains the local data plan, locations, costs, outputs and later gates, asks one approval question, then waits | PENDING: explicitly requested by the user's latest handoff instruction; no data work before the answer |
 | A1 | Commit only the ten reviewed data-free project documents to main, push normally and verify remote commit and required file contents | DONE: normal push and fresh `git ls-remote` verified `9843e5b86a89c4f5ca583a60f1906c69032ee9c8`; its content-addressed tree contains all ten documents and the approved tracker |
-| A2 | Verify drive encryption, sufficient capacity, actual path containment, non-synchronization and restricted local access | WAITING FOR USER CHECK: encryption status command denied after approved retry; not evidence that encryption is off |
+| A2 | After A0R approval, check only the intended local path, capacity, containment, non-synchronization and folder access | NOT STARTED: former mandatory BitLocker check withdrawn at user request; encryption status remains unknown, not a current assigned blocker |
 | A3 | Register/create the exact local run root, configure its permissions and process temp paths, prepare local Google Cloud CLI sign-in and isolated Python dependencies | NOT STARTED: no run directory or restricted files created |
 | A4 | Refresh source/bucket security metadata, pin object generation, download to the registered path and verify exact bytes/SHA-256 | NOT STARTED: retain the original cloud object unchanged |
 | A5 | Safely validate/extract archives; inspect every dictionary sheet; run synthetic tests and read-only schema/join/all-lab repetition/timing/four-outcome checks | NOT STARTED: no real-file audit or cleaning |
@@ -67,7 +68,7 @@ Plan ID: `LOCAL-AUDIT-2026-08-31-01`. Run ID: `2026-08-31-audit-001`. Approved b
 | A9 | Present the data-cleaning/restructuring plan based on audited fields, supported timing and four distinct outcome families | LATER APPROVAL REQUIRED: do not implement cleaning yet |
 | A10 | After approved cleaning and checks, propose the scientific analysis plan before modeling | LATER APPROVAL REQUIRED: no modeling authorized now |
 
-Approved first-run limits: one local audit session, up to four hours of active work before checkpointing; no unattended recurring job; at most 100 MiB of output/verification data and 1,000 cloud operations in each priced class for the cost estimate. Expected first-audit/first-month cloud cost below USD 0.05; pause above the USD 0.10 projected incremental threshold or for a material change. No cloud computation. This tracker is not a billing cap or automatic background monitor.
+First-run limits to explain at the next approval: one local audit session, up to four hours of active work before checkpointing; no unattended recurring job; at most 100 MiB of output/verification data and 1,000 cloud operations in each priced class for the cost estimate. Expected first-audit/first-month cloud cost below USD 0.05; pause above the USD 0.10 projected incremental threshold or for a material change. No cloud computation. This tracker is not a billing cap or automatic background monitor.
 
 ## User communication requirements
 
@@ -192,7 +193,7 @@ C:\Users\BarbarosIsikGreenhou\PDS-Restricted-Work\prostate-lab-trajectories\runs
   manifest.json
 ```
 
-This first-run path is proposed, not created. It is outside the Git clone, Desktop, Documents and Downloads. The repository's ignored `data/raw/` and `data/interim/` rules remain defense in depth, not permission to scatter copies. Verify actual encryption, permissions, synchronization settings, containment and ZIP safety before download/extraction. Register all temporary and verification copies. Preserve the original cloud ZIP. See `docs/data-location-register.md` for transfer and cleanup state.
+This first-run path is proposed, not created. It is outside the Git clone, Desktop, Documents and Downloads. The repository's ignored `data/raw/` and `data/interim/` rules remain defense in depth, not permission to scatter copies. After plan approval, check folder permissions, non-synchronization, containment and ZIP safety. Register temporary and verification copies. Preserve the original cloud ZIP. The agent-added BitLocker gate was withdrawn; do not reintroduce it. See `docs/data-location-register.md` for state.
 
 ### If the user's home computer lacks space
 
@@ -314,12 +315,12 @@ No cleaning specification or scientific conclusion may be finalized before these
 
 ### Stage 1: Prepare the approved temporary local run
 
-**Trigger:** The specific local audit plan is approved and local security checks pass. The original PDS acquisition is already complete; do not restart acquisition from PDS.
+**Trigger:** The next agent has explained the plan and received the user-requested fresh approval, then completed the scoped folder/path checks. Original PDS acquisition is already complete; do not restart it.
 
 **Actions:**
 
 1. Read the data-location register and resolve any prior incomplete run or pending local cleanup.
-2. Verify encryption, effective folder permissions, non-synchronization and available local capacity.
+2. Check effective folder permissions, non-synchronization and available local capacity without a general Windows-security or BitLocker detour.
 3. Record the exact run root before creating it or downloading files.
 4. Refresh approved bucket access and pin the source object generation.
 5. Download the unchanged source directly to the protected registered path with normal approved authentication.
@@ -444,11 +445,11 @@ Define only after the audit:
 
 Before real-file inspection:
 
-> The specific local audit plan and corrected data-free GitHub publication are approved. Next resolve drive C: encryption verification, then complete the already-approved local setup and audit. Register all locations, verify stage-output uploads and seek fresh exact-target confirmation for cleanup. Do not ask again for this plan's approval or create cloud compute.
+> The next agent must FIRST explain the data plan and ask one approval question, then wait. Do not start data work or substitute the rejected drive-encryption check. Cloud storage permission is settled. Maintain recorded local/cloud paths, verified uploads, later separate cleaning/analysis approval and fresh exact-target cleanup confirmation.
 
-### Execution reminders for the approved plan
+### Execution reminders after the requested next-agent approval
 
-- Verify local encryption and permissions; the status command was denied, not evidence of encryption being off. Do not download while this check is unresolved.
+- Do not ask for further BitLocker commands, Windows security screens or recovery keys. The agent-added gate was withdrawn at the user's direction; encryption status is unknown and no new PDS mandate was established.
 - Prepare a non-synchronized local run folder and local dependencies, with exact paths recorded before transfer. No cloud-compute API enablement is needed.
 - Refresh bucket access/source checksums and use only approved user authentication. Existing Owner rights exceed transfer needs; no access expansion is included.
 - Extract locally only after source integrity and ZIP path checks pass.
@@ -457,7 +458,7 @@ Before real-file inspection:
 - Verify that the aggregate report contains no patient identifiers or laboratory values.
 - Upload new restricted outputs and verification metadata to the run's private cloud prefix. Verify every required output; then record cleanup as pending until fresh confirmation and post-deletion checks.
 - Keep the first-audit cloud expectation below USD 0.05 under the plan's size/operation assumptions; pause above the USD 0.10 incremental approval threshold. No cloud-compute charge is planned.
-- Corrected data-free instruction/log publication is now explicitly authorized. Verify remote state before marking tracker A1 done. This is not blanket permission for unrelated or future-stage publication.
+- Publication of this corrected handoff and corresponding closeout records is explicitly authorized. Verify remote main and record the result. Future unrelated publication still requires permission.
 
 ### Later reminders
 
@@ -468,6 +469,16 @@ Before real-file inspection:
 - Consider Vivli or Flatiron only after CHAARTED and PDS compatibility are clear.
 
 ## Dated operational history
+
+### 2026-08-31: Publication authorized and retired files checked
+
+- The user explicitly requested publication, followed by local project cleanup after GitHub preservation. This authorizes the corrected handoff and matching closeout documentation, not a data-processing run.
+- Fresh authenticated remote main and local HEAD matched `f152628c4a23bccad0c8cbd671c4aa7d30d39814` before this publication. Nine prepared modified documents were preserved; no unrelated changes were overwritten.
+- Compared all 19 permitted retired working files against reachable canonical history. Every file's text is already preserved; 13 differ in final newline formatting from Git blobs. Six are exact Git blob matches. Specific matching commits and excluded files are recorded in `docs/local-closeout-2026-08-31.md`.
+- The 27 ignored local-only materials remain unbacked. Do not put publisher full text in GitHub. Both folders remain pending an explicit backup exception or approved alternative and fresh exact-target confirmation.
+- The active task workspace has only its own Git metadata, not the project clone. The proposed restricted-data run root does not exist. No dataset was downloaded or opened.
+- Task histories and memory are separate app-managed categories. No supported task-deletion tool is exposed in this task; archiving would not delete history. Shared session databases and credential stores must not be manually removed. Do not promise every trace is erased.
+- Next: verify publication, request the remaining cleanup decision, and perform deletion only after that decision and fresh confirmation. The research handoff remains approval-first at A0R.
 
 ### 2026-08-24: Project foundation
 
@@ -595,6 +606,19 @@ Historical proposal only. The later same-day local-processing correction below s
 - Published the ten reviewed data-free documents in commit `9843e5b86a89c4f5ca583a60f1906c69032ee9c8`. A normal push succeeded, and a fresh authenticated `git ls-remote` independently returned that exact SHA for remote main. Verified all ten required paths and tracker content in the matching content-addressed commit. The working tree was clean immediately after publication. No raw data, patient values, credentials or publisher files were staged.
 - All three invented-data tests passed again. Staged whitespace checks, balanced Markdown fences, no-em-dash checks and a credential-pattern scan passed. No source/test code changed.
 - Marked tracker A1 done and retained A2 as waiting for the user's manual encryption check. This receipt update is within the approved corresponding status-log publication scope. Continue the approved plan after local security passes, without reopening generic cloud-storage or plan permission.
+
+### 2026-08-31: Approval-first next-agent handoff requested; encryption detour rejected
+
+- The user objected to the mandatory drive C: protection check and requested an onboarding prompt for the next GPT-5.6 Sol agent. The next agent must first explain the data-processing plan and ask for approval before starting it. The user also requested an explanation in chat before the existing GitHub onboarding file is modified.
+- Explained the local download/audit/new-output upload/verification/cleanup cycle in chat before local draft editing. No GitHub change has been made in this revision. The first patch attempt failed to match an exact old paragraph and made no changes; it was corrected against the actual file.
+- Removed the assistant-added mandatory BitLocker prerequisite from current instructions. It was an extra precaution, not a newly verified PDS rule. This does not establish that the drive is encrypted or unencrypted, authorize Windows-setting changes or weaken the no-patient-content/no-GitHub-data boundaries.
+- Added A0R for the requested next-agent approval-first step; retained historical A0/A1 approval/publication and all later cleaning/analysis gates. No real data process was started.
+- Reverified clean Desktop main and fresh authenticated remote main at `f152628c4a23bccad0c8cbd671c4aa7d30d39814` before editing.
+- Started handoff cleanup with a contained, no-link-traversal inventory of only the two known project folders. Desktop: 97 files / 606,909 bytes including Git metadata, no PDFs/text/ignored files before this revision. Retired: 79 files / 19,305,428 bytes, 10 literature PDFs, 10 extracted text files, 5 temporary dictionary PDFs and 2 Python caches, plus its older modified/untracked work. No links were found. The initial Desktop git check from another cwd reported an ownership warning; a direct check in the verified Desktop workdir succeeded without changing global trust settings.
+- Exact folders remain: `C:\Users\BarbarosIsikGreenhou\Desktop\prostate-lab-trajectories` and `C:\Users\BarbarosIsikGreenhou\Documents\Codex\2026-08-24\s\prostate-lab-trajectories`. The proposed restricted-data run folder is absent. No backup, deletion, restricted download or cloud write occurred.
+- Cleanup is blocked by the unchanged all-files-backup condition and lack of fresh exact-target deletion confirmation. The handoff request does not permit uploading publisher files or deleting the only copy of older work. Do not delete either folder until those conditions are resolved.
+- The new handoff/current-status revisions are local and uncommitted. Next: present the plain-language plan and request explicit publication authorization; after publication verify main, then address the separate local-only-file/deletion decision. Do not restart data work during this closeout.
+- Validation: all nine revised documents passed whitespace, balanced-code-fence, no-em-dash and credential-pattern checks. No active onboarding/README/docs instruction still requires the withdrawn encryption check. All three invented-data unit tests passed again; no source/test code changed. The historical entries retain their earlier context rather than being rewritten as current facts.
 
 ## Session update template
 

@@ -4,7 +4,7 @@
 
 The official PDS DREAM contribution and the official Synapse challenge metadata are located. PDS approved the user's access request on 2026-08-25, the user signed in successfully, and Craig at PDS later confirmed that private Google Cloud storage is permitted. The complete unchanged package was uploaded to a dedicated private Netherlands-region Google Cloud Storage bucket and verified on 2026-08-27. Public documentation proves that the training release includes event-level laboratory results through day 84, but the six-file challenge release does not list an actual chemotherapy-administration table or an adverse-event event table.
 
-The source package is obtained and integrity-verified, but its dictionary and CSV columns are **not** yet source-verified. No patient row or laboratory value has been opened by this workflow. The latest 2026-08-31 user direction requires cloud storage only and local processing, followed by verified cloud uploads and local cleanup. The user approved `local-processing-and-cloud-storage-plan.md`; local encryption verification remains pending before download. Track execution in the continuity log under `LOCAL-AUDIT-2026-08-31-01`. Provider/private-storage permission is not a current blocker.
+The source package is obtained and integrity-verified, but its dictionary and CSV columns are **not** yet source-verified. No patient row or laboratory value has been opened by this workflow. Cloud storage only and local processing remain the required workflow. The latest handoff instruction is for the next agent to explain `local-processing-and-cloud-storage-plan.md` and ask approval before data work. The agent-added mandatory BitLocker check was withdrawn; it was not established as a new PDS requirement. Track A0R under `LOCAL-AUDIT-2026-08-31-01`. Private-storage permission is settled.
 
 ## Secured acquisition record
 
@@ -150,11 +150,11 @@ Resolved on 2026-08-27:
 Current implementation step, updated 2026-08-31:
 
 - Google Cloud is the permanent file store; the user explicitly requires all computation and tests to run locally.
-- Execute the approved local audit plan after its security checks pass. Track each step in the continuity log. Do not create cloud compute or ask again for the same plan/private-storage permission.
+- The next agent first explains the local audit plan and asks the fresh approval explicitly requested for this handoff, then executes the agreed routine steps. Do not substitute an encryption-check detour, create cloud compute or reopen settled private-storage permission.
 
 ## Protected real-file audit procedure
 
-1. The specific local audit plan is approved. Verify local encryption, permissions and lack of synchronization, then register every actual local path before download. Private storage permission is already recorded.
+1. After the next agent explains the plan and receives the requested approval, check the scoped local folder permissions/non-synchronization and record every actual path before download. Private storage permission is already recorded. No mandatory BitLocker check is part of this first task.
 2. Limit access to approved identities and the minimum necessary bucket permissions.
 3. Repeat ZIP path checks inside the protected environment before extraction.
 4. Preserve the original cloud object unchanged, download and verify its checksum, and extract only to the registered protected local run folder.

@@ -14,11 +14,11 @@ This file should be updated whenever we:
 
 **Last updated:** 2026-08-31
 
-**Project stage:** Specific local read-only audit and verified cloud output uploads approved; local encryption verification required before execution
+**Project stage:** Next-agent handoff requested; first substantive deliverable is explanation of the local data plan and a fresh approval question before execution
 
 **Repository visibility:** Private
 
-**Active objective:** Execute the approved `docs/local-processing-and-cloud-storage-plan.md` after verifying the local security prerequisites. Track progress in `PROJECT_CONTINUITY_LOG.md` under `LOCAL-AUDIT-2026-08-31-01` and exact paths in `docs/data-location-register.md`. The user approved publishing the corrected data-free instructions. Encryption remains unverified; no real-file audit has started. D-024 supersedes earlier cloud-compute interpretations; cleaning and scientific analysis each require later approval.
+**Active objective:** Publish the explicitly authorized approval-first handoff and complete safe closeout without starting data work. The next agent reads the records, explains `docs/local-processing-and-cloud-storage-plan.md`, asks one approval question and waits at A0R. The agent-added BitLocker prerequisite is withdrawn at user direction, not passed. Cloud is storage only; cleaning and scientific analysis each require later approval. Local cleanup remains pending the all-files-backup exception or permitted backup and fresh exact-target confirmation.
 
 ## Fixed research question
 
@@ -51,8 +51,9 @@ This file should be updated whenever we:
 | D-021 | 2026-08-27 | Perform the real-file audit only inside an approved protected environment and keep patient-level data out of chat, GitHub and ordinary logs. | Earlier interpretation was protected cloud compute without local download. | Cloud-compute interpretation superseded by D-024; privacy rule retained |
 | D-022 | 2026-08-31 | Treat an onboarding or next-agent handoff request as a trigger to publish approved permitted work and clean up temporary local project folders after remote verification and fresh exact-target confirmation. Honor every backup condition attached to deletion approval. | The user wants GitHub as the permanent permitted project record and does not want local working copies retained after handoff. Restricted data remains in its approved private cloud storage, never GitHub. | Active; current all-files-backup condition unresolved |
 | D-023 | 2026-08-31 | Record private Google Cloud use and moving forward to protected compute and audit as approved. Ask for approval of concrete execution plans and later research stages, not repeated generic cloud permission. | Earlier documentation interpreted this as cloud computation. | Cloud-compute interpretation superseded by D-024; concrete approval gates retained |
-| D-024 | 2026-08-31 | Use cloud storage only as the permanent restricted-data home; perform computations, tests, audits, cleaning and analysis locally in a recorded protected temporary run folder. Upload new versioned outputs, verify them, then obtain fresh confirmation and delete local copies after each stage. | The user explicitly corrected the compute location and wants future agents to resume from verified cloud versions without forgotten local data. | Active; specific local audit plan approved, local security checks pending |
-| D-025 | 2026-08-31 | Execute the first local read-only audit under `LOCAL-AUDIT-2026-08-31-01`, track each step and evidence in the continuity log, and publish the approved corrected data-free instructions. | The user explicitly approved the concrete plan and requested a persistent completion tracker. | Approved; real-file execution awaits local security verification; cleaning/modeling excluded |
+| D-024 | 2026-08-31 | Use cloud storage only as the permanent restricted-data home; perform computations, tests, audits, cleaning and analysis locally in a recorded protected temporary run folder. Upload new versioned outputs, verify them, then obtain fresh confirmation and delete local copies after each stage. | The user explicitly corrected the compute location and wants future agents to resume from verified cloud versions without forgotten local data. | Active; next-agent approval-first sequence clarified by D-026 |
+| D-025 | 2026-08-31 | Execute the first local read-only audit under `LOCAL-AUDIT-2026-08-31-01`, track each step and evidence in the continuity log, and publish the approved corrected data-free instructions. | The user explicitly approved the concrete plan and requested a persistent completion tracker. | Historical approval/publication complete; next execution checkpoint now follows D-026; no real-file audit occurred |
+| D-026 | 2026-08-31 | The next agent must first explain the local data-processing plan and ask one approval question before data work. Withdraw the previous agent's added mandatory drive-encryption detour; retain source integrity, folder privacy, disclosure checks, verified uploads and exact-target cleanup confirmation. | The user explicitly rejected the detour and requested an approval-first handoff, with the plan explained in chat before GitHub onboarding changes. | Active; next-agent approval pending; corrected handoff publication now explicitly authorized |
 
 ## Master plan
 
@@ -452,7 +453,23 @@ Historical unapproved proposal, superseded by the later same-day local-processin
 - The approved audit remains read-only and covers every repeated lab, full joins, exact administration timing, four separate outcome families and ENTHUSE-33 availability. No source-derived cleaning definition, treatment window or model has been established.
 - Continue routine approved audit steps once local security passes. Prepare the cleaning specification from verified fields afterward, then obtain separate approval before transformations. Scientific analysis remains a later approval gate.
 
+### 2026-08-31 - Approval-first handoff and removal of the added encryption detour
+
+- Added D-026 following the user's latest instruction. The earlier approval is not erased, but the next agent now has an explicit explanation-and-approval checkpoint before data work.
+- The mandatory BitLocker check was an agent-added precaution, not a newly verified PDS requirement. The user rejected that detour. It is withdrawn from current instructions; disk status remains unknown, and no Windows setting or scientific definition changed.
+- Preserved the full local audit scope, immutable source, all sufficiently repeated labs, four distinct outcome families, actual-administration timing gate and later separate cleaning/modeling approvals.
+- Completed a read-only inventory of both known project folders for the handoff cleanup workflow. Unbacked local-only papers/text/temp files and older working-copy changes remain in the retired folder; no backup exception or deletion was authorized.
+- New handoff/current-state changes remain local and uncommitted pending publication authorization. No restricted data was downloaded, extracted, audited, cleaned, modeled, uploaded or deleted.
+
 ## Update template
+
+### 2026-08-31 - Corrected handoff publication authorized; cleanup pending
+
+- The user explicitly authorized publication, followed by local project cleanup after preservation. The approval-first research handoff remains unchanged: A0R must be answered before data execution, with separate later cleaning and modeling approvals.
+- All 19 permitted retired working-file contents were matched to canonical Git history, allowing newline normalization. The 27 ignored local-only papers, extracted text, temporary PDFs and caches are not backed up in GitHub. Their backup exception or permitted alternative and fresh exact-target confirmation remain unresolved.
+- This closeout changes documentation only. No patient data was downloaded, inspected, transformed or uploaded, and no new scientific result or timing assumption was made. Publication evidence belongs in the continuity log; deletion must not be reported without a fresh filesystem check.
+
+## Future update template
 
 Copy this block for each future working session:
 
