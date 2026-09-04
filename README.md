@@ -84,11 +84,12 @@ The active dataset-audit layer is in [`docs/`](docs/):
 - [`chaarted-public-field-audit.md`](docs/chaarted-public-field-audit.md) records what the public CHAARTED submissions can and cannot support.
 - [`dream-public-code-audit.md`](docs/dream-public-code-audit.md) records schema clues from public DREAM code without treating it as patient data.
 - [`raw-data-inventory-tool.md`](docs/raw-data-inventory-tool.md) explains the read-only, aggregate inspection tool prepared for the approved files.
+- [`dream-dataset-audit-2026-09-04.md`](docs/dream-dataset-audit-2026-09-04.md) is the completed field-level audit of the real DREAM package and the feasibility verdict.
 
 The project continuity layer is:
 
 - [`PROJECT_CONTINUITY_LOG.md`](PROJECT_CONTINUITY_LOG.md), the operational memory, reminder queue, current status and exact execution plan.
-- [`NEXT_AGENT_ONBOARDING_PROMPT.md`](NEXT_AGENT_ONBOARDING_PROMPT.md), the ready-to-paste prompt for the next GPT-5.6 Sol agent.
+- [`NEXT_AGENT_ONBOARDING_PROMPT.md`](NEXT_AGENT_ONBOARDING_PROMPT.md), the ready-to-paste prompt for the next agent.
 - [`RESEARCH_LOG.md`](RESEARCH_LOG.md), the formal research decisions, phase plan and dated scientific progress.
 - [`data-location-register.md`](docs/data-location-register.md), exact local/cloud locations, run versions, upload verification and cleanup state.
 - [`local-processing-and-cloud-storage-plan.md`](docs/local-processing-and-cloud-storage-plan.md), the proposed local audit workflow and stage approval gates.
@@ -165,43 +166,6 @@ At least two observations are needed for a slope. At least three are required fo
 - Harmonize censoring and endpoint definitions before pooling studies.
 - Preserve a complete transformation log from source data to analysis tables.
 
-## Planned repository structure
-
-```text
-prostate-lab-trajectories/
-├── README.md
-├── RESEARCH_LOG.md
-├── PROJECT_CONTINUITY_LOG.md
-├── NEXT_AGENT_ONBOARDING_PROMPT.md
-├── literature/
-│   ├── README.md
-│   ├── STUDY_CATALOG.md
-│   ├── references.bib
-│   ├── download_manifest.csv
-│   └── papers/           # Local only; ignored by Git
-├── data/
-│   ├── README.md
-│   ├── raw/              # Never committed
-│   ├── interim/          # Never committed if patient-level
-│   └── processed/        # Only non-sensitive or approved outputs
-├── docs/
-│   ├── dataset-field-coverage-checklist.md
-│   ├── pds-dream-access-audit.md
-│   ├── source-coverage-matrix.md
-│   ├── chaarted-public-field-audit.md
-│   ├── dream-public-code-audit.md
-│   └── raw-data-inventory-tool.md
-├── notebooks/
-├── src/
-│   ├── audit/
-│   ├── cleaning/
-│   ├── features/
-│   ├── models/
-│   └── visualization/
-├── tests/
-└── results/              # Aggregated, disclosure-checked outputs only
-```
-
 ## Data governance
 
 - Do not commit patient-level, restricted, licensed or identifiable data.
@@ -210,22 +174,3 @@ prostate-lab-trajectories/
 - Commit only aggregated outputs after disclosure checks.
 - Record every material methodological decision in [`RESEARCH_LOG.md`](RESEARCH_LOG.md).
 - Record every operational development, blocker, reminder and exact next action in [`PROJECT_CONTINUITY_LOG.md`](PROJECT_CONTINUITY_LOG.md).
-
-## Immediate next steps
-
-1. The complete package is secured and checksum-verified in PDS-approved private Google Cloud Storage.
-2. The latest handoff request requires the next agent to explain the local data plan, ask one approval question and wait before data work. Follow tracker A0R in the continuity log. The agent-added BitLocker prerequisite was withdrawn; cloud remains storage only.
-3. Register the exact protected non-synchronized local run directory, download and verify the source, then safely extract locally. Do not create cloud compute.
-4. Inspect every sheet of the official data dictionary.
-5. Run the tested aggregate inventory tool against every supplied CSV.
-6. Confirm whether serial laboratory dates can be aligned to actual chemotherapy administrations rather than only nominal visits.
-7. Privacy-review and explain feasibility results, upload new outputs to the private cloud run prefix, verify uploads, record locations and obtain fresh confirmation for local cleanup. Obtain separate approval before cleaning.
-8. Freeze the first data-cleaning and restructuring specification only after the actual columns are verified.
-9. Prepare the CHAARTED patient-data request using the completed public compatibility audit.
-
-## Project status
-
-**Current stage:** The next GPT-5.6 Sol agent must explain the local data plan and ask approval before starting. A0R is pending. The assistant-added mandatory BitLocker detour was withdrawn, not passed. No real-file audit has run. Cloud is storage only; cleaning and scientific analysis require later approvals. Publication of this corrected handoff is now explicitly authorized. Local cleanup remains pending the separate backup/confirmation decision; see `docs/local-closeout-2026-08-31.md` and the continuity log for verification evidence.
-
-Read [`PROJECT_CONTINUITY_LOG.md`](PROJECT_CONTINUITY_LOG.md) first for the current status, reminders and exact next action. See [`RESEARCH_LOG.md`](RESEARCH_LOG.md) for research decisions and dated scientific progress.
-
