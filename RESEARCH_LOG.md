@@ -12,13 +12,13 @@ This file should be updated whenever we:
 
 ## Current snapshot
 
-**Last updated:** 2026-08-31
+**Last updated:** 2026-09-04
 
-**Project stage:** Next-agent handoff requested; first substantive deliverable is explanation of the local data plan and a fresh approval question before execution
+**Project stage:** A5 complete; the dataset is fully audited at aggregate level; the blocking issue is now the pre-chemotherapy definition in the fixed question, recorded as Q-009
 
 **Repository visibility:** Private
 
-**Active objective:** Publish the explicitly authorized approval-first handoff and complete safe closeout without starting data work. The next agent reads the records, explains `docs/local-processing-and-cloud-storage-plan.md`, asks one approval question and waits at A0R. The agent-added BitLocker prerequisite is withdrawn at user direction, not passed. Cloud is storage only; cleaning and scientific analysis each require later approval. Local cleanup remains pending the all-files-backup exception or permitted backup and fresh exact-target confirmation.
+**Active objective:** Obtain the user's decision on Q-009, the meaning of pre-chemotherapy in the fixed research question, since the package supplies a median of only 2 distinct pre-treatment laboratory days per patient but a median of 7 across the full window. Then scope the analysable outcome families honestly before any cleaning. Cleaning at A9 and scientific analysis at A10 still require separate approval. The next agent reads the records, explains `docs/local-processing-and-cloud-storage-plan.md`, asks one approval question and waits at A0R. The agent-added BitLocker prerequisite is withdrawn at user direction, not passed. Cloud is storage only; cleaning and scientific analysis each require later approval. Local cleanup remains pending the all-files-backup exception or permitted backup and fresh exact-target confirmation.
 
 ## Fixed research question
 
@@ -54,6 +54,17 @@ This file should be updated whenever we:
 | D-024 | 2026-08-31 | Use cloud storage only as the permanent restricted-data home; perform computations, tests, audits, cleaning and analysis locally in a recorded protected temporary run folder. Upload new versioned outputs, verify them, then obtain fresh confirmation and delete local copies after each stage. | The user explicitly corrected the compute location and wants future agents to resume from verified cloud versions without forgotten local data. | Active; next-agent approval-first sequence clarified by D-026 |
 | D-025 | 2026-08-31 | Execute the first local read-only audit under `LOCAL-AUDIT-2026-08-31-01`, track each step and evidence in the continuity log, and publish the approved corrected data-free instructions. | The user explicitly approved the concrete plan and requested a persistent completion tracker. | Historical approval/publication complete; next execution checkpoint now follows D-026; no real-file audit occurred |
 | D-026 | 2026-08-31 | The next agent must first explain the local data-processing plan and ask one approval question before data work. Withdraw the previous agent's added mandatory drive-encryption detour; retain source integrity, folder privacy, disclosure checks, verified uploads and exact-target cleanup confirmation. | The user explicitly rejected the detour and requested an approval-first handoff, with the plan explained in chat before GitHub onboarding changes. | Active; next-agent approval pending; corrected handoff publication now explicitly authorized |
+
+### Decisions added 2026-09-04 after the real-data audit
+
+| ID | Date | Decision | Reason | Status |
+|---|---|---|---|---|
+| D-021 | 2026-09-04 | Treat the 1,600-patient training partition as the only analysable cohort and do not attempt supervised use of the leaderboard or final scoring partitions. | Their `DEATH` and `LKADT_P` fields are entirely blank because they were the blinded DREAM challenge test sets, so no outcome label exists. | Active |
+| D-022 | 2026-09-04 | Do not claim treatment tolerance in terms of dose reduction, dose delay or cycle-level administration on this package. | `PriorMed` is baseline-only with `CMPRE=YES` on all 147,770 rows and zero on-treatment records, so no administration, cycle or dose data exists. Tolerance can only be operationalized through discontinuation, its recorded reason, and laboratory toxicity grades. | Active |
+| D-023 | 2026-09-04 | Do not treat radiographic progression or RECIST response as primary outcomes on this package. | `LesionMeasure` covers only 70.2% of patients, omits ASCENT2 entirely, has a median of 2 assessment days and is largely qualitative. | Active |
+| D-024 | 2026-09-04 | Interpret pre-chemotherapy as measured around each chemotherapy cycle, not only before docetaxel starts, and anchor all trajectory features to harmonized `VISIT` cycle labels. | The user confirmed the intended design is trend analysis across cycles. The `VISIT` field names cycles explicitly in three trial-specific vocabularies, and 1,179 patients have all of cycles 1 to 4 measured. The before-treatment-only reading gives a median of 2 laboratory days and is not feasible. | Active |
+| D-025 | 2026-09-04 | Use cycles 1 to 4 as the primary analysis window on the 1,179 complete-case patients, with cycle 5 and the 1,292 three-cycle patients as sensitivity analyses. | Patient coverage is 90.6%, 93.3%, 89.6% and 82.9% at cycles 1 to 4, falls to 48.1% at cycle 5 and is negligible beyond. | Active |
+| D-026 | 2026-09-04 | Set primary endpoints as overall survival and treatment discontinuation, with PSA response as an explicitly labelled secondary. | 663 death events with complete follow-up time, and `ENDTRS_C` complete for all 1,600. No RECIST response field exists, so PSA response must not be presented as radiographic response. | Active |
 
 ## Master plan
 
@@ -160,6 +171,11 @@ This file should be updated whenever we:
 | 10 | Prepare a safe first-pass source inspector. | Completed | `src/audit/inventory_raw_data.py`; three synthetic-data tests pass |
 | 11 | Create durable operational continuity and next-agent onboarding. | Completed | `PROJECT_CONTINUITY_LOG.md` and `NEXT_AGENT_ONBOARDING_PROMPT.md` |
 
+| 14 | Reconcile the new macOS working copy with remote main and preserve the unpushed 2026-08-26 state. | Completed | Fast-forward to `7392d50`; preservation branch `backup/local-2026-08-26-session` at `a85919f` |
+| 15 | Register and verify a macOS restricted-work run root outside all synchronized locations. | Completed | `/Users/barbarosisik/PDS-Restricted-Work/.../runs/2026-09-04-audit-001`; seven containment and permission checks recorded in `docs/data-location-register.md` |
+| 16 | Install and verify the macOS toolchain for the local audit. | Completed | Python 3.12.8, Google Cloud CLI 583.0.0, `~/tools/venv-pds-audit` with pinned `openpyxl==3.1.5`; all 3 synthetic tests pass |
+| 17 | Download and verify the real PDS source package on the Mac. | Completed | 6,227,480 bytes; SHA-256 matches the 2026-08-27 record; MD5 matches live cloud metadata; archive scanned safe without extracting |
+| 18 | Audit the real DREAM files at aggregate level against the four outcome families. | Completed | 1,600 analysable patients; survival strong; tolerance partial; progression and response weak; no chemotherapy administration records |
 ## Open questions
 
 | ID | Question | Needed for |
@@ -168,6 +184,8 @@ This file should be updated whenever we:
 | Q-002 | Does the released ENTHUSE-33 package include the outcome fields needed for independent validation? | Discovery/validation split |
 | Q-003 | Which treatment-tolerance variables are consistently dated across PDS trials? | Tolerance endpoint definition |
 | Q-004 | Can progression be separated into radiographic, clinical and PSA progression in every source? | Outcome hierarchy |
+| Q-008 | Should the leaderboard and final scoring partitions be held out entirely, or pooled with training after the coverage audit? | RESOLVED by audit: their outcome labels were never released, so they are unusable for supervised work and the effective sample is 1,600 |
+| Q-009 | Does pre-chemotherapy in the fixed research question mean before docetaxel starts, or before each docetaxel cycle? | RESOLVED 2026-09-04 by the user: tests are taken around every chemotherapy cycle so that trends across cycles can be related to survival and recovery. The per-cycle reading is confirmed and the design is feasible |
 | Q-005 | Which Vivli trials expose serial standard laboratory panels and chemotherapy-cycle dates? | External validation choice |
 | Q-006 | Does Flatiron provide all standard blood values and reliable chemotherapy-cycle linkage, not only PSA? | Purchase/access decision |
 

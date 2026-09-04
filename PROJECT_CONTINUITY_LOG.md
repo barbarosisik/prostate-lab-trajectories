@@ -29,9 +29,11 @@ Every agent continuing this project must read this file first, then read `RESEAR
 
 ## Current snapshot
 
-**Last updated:** 2026-08-31
+**Last updated:** 2026-09-04
 
-**Project stage:** New next-agent handoff requested: explain the local data plan and ask approval first. No data work started; assistant-added mandatory disk-encryption detour withdrawn
+**Project stage:** A0R through A5 complete and the audit is reported. Q-009 resolved in favour of the per-cycle reading, so the trajectory design is confirmed feasible: 1,179 patients have all of cycles 1 to 4 measured across twelve near-universal blood tests, with 663 death events. Endpoints narrowed to survival and discontinuation. RESTRICTED DATA IS PRESENT LOCALLY and must be cleaned up after verified upload and fresh confirmation
+
+**Current machine:** THIS MAC IS THE ONLY WORKSPACE for the project, confirmed by the user on 2026-09-04, who instructed that any other machine be disregarded. All Windows paths and the Windows closeout items in `docs/local-closeout-2026-08-31.md` are historical and CLOSED AS OUT OF SCOPE. macOS working copy at `/Users/barbarosisik/Desktop/prostate-lab-trajectories`, verified level with `origin/main` at `7392d50` on 2026-09-04. This is NOT the Windows machine that the run path and closeout deletion targets refer to. `python3` and `git` are present; `gcloud` and `gsutil` are NOT installed here. The Desktop volume reports 415 GiB free.
 
 **Primary source:** Project Data Sphere Prostate Cancer DREAM Challenge
 
@@ -43,7 +45,7 @@ Every agent continuing this project must read this file first, then read `RESEAR
 
 **Current approval state:** Earlier local-audit approval and publication at 9843e5b/f152628 remain historical facts. The next agent must explain the data-processing plan in chat and ask approval before starting, at checkpoint A0R. Cloud remains STORAGE ONLY. The user rejected the agent-added mandatory BitLocker check. The latest explicit "publish please" authorizes this corrected handoff and corresponding closeout records. Cleaning, scientific analysis, exceptions to the all-files-backup condition and fresh exact-target deletion confirmation remain separate.
 
-**Immediate next action:** The corrected handoff is published and independently verified at `0fa84856f526a7e647cf5f07b5acccfe39e645ea`. Obtain the user's decision on unbacked local-only materials and fresh confirmation of the exact deletion targets in `docs/local-closeout-2026-08-31.md`. The next research agent's first substantive reply after reading must explain the local data plan, ask one approval question and wait before data work. No encryption-status detour, run folder or cloud output was created during closeout.
+**Immediate next action:** Q-009 is RESOLVED. The user confirmed the per-cycle reading, so the trajectory design proceeds under D-024 to D-026. Next is the cleaning and restructuring specification at A9, which still needs its own approval: harmonize the three `VISIT` cycle vocabularies, write explicit rules for `UNSCHEDULED` visits, the malformed `.` test code and `LBSTAT = NOT DONE` rows, then build per-cycle trajectory features for the twelve near-universal tests. Restricted data is on this Mac, so A8 cleanup remains a live obligation. The verified run root already exists at `/Users/barbarosisik/PDS-Restricted-Work/prostate-lab-trajectories/runs/2026-09-04-audit-001`. Confirm with the user immediately before A4, because A4 is the first step that places restricted patient data on this disk. Superseded note: checkpoint A0R was answered on 2026-09-04. The local data plan was explained to the user on 2026-09-04 and one approval question was asked. WAIT for that answer before any data work. Then obtain the user's decision on the untracked 2026-08-26 audit document, on the local-only branch `backup/local-2026-08-26-session`, and on the unbacked local-only materials and exact deletion targets in `docs/local-closeout-2026-08-31.md`. No encryption-status detour, run folder or cloud output has been created.
 
 **Current session priority:** Authorized publication and verified local cleanup, not data execution. Both known folders remain pending the backup exception or permitted alternative backup and fresh deletion confirmation. All 19 permitted retired working files match content already in canonical Git history when line endings/final newlines are normalized. The remaining 27 ignored papers/text/temp PDFs/caches are not backed up in GitHub. Do not claim complete cleanup or erase shared app records.
 
@@ -56,12 +58,12 @@ Plan ID: `LOCAL-AUDIT-2026-08-31-01`. Run ID: `2026-08-31-audit-001`. Earlier ap
 | Step | Work and completion evidence | Status |
 |---|---|---|
 | A0 | Record approval of local setup, first read-only audit, verified cloud output upload and corrected data-free instruction publication | DONE: direct user approval recorded |
-| A0R | After mandatory reading, the next agent explains the local data plan, locations, costs, outputs and later gates, asks one approval question, then waits | PENDING: explicitly requested by the user's latest handoff instruction; no data work before the answer |
+| A0R | After mandatory reading, the next agent explains the local data plan, locations, costs, outputs and later gates, asks one approval question, then waits | DONE: plan presented 2026-09-04; the user waived further explanation, replied "no need" and directed execution to begin with the run-root step. Later gates at A9 and A10 are unaffected |
 | A1 | Commit only the ten reviewed data-free project documents to main, push normally and verify remote commit and required file contents | DONE: normal push and fresh `git ls-remote` verified `9843e5b86a89c4f5ca583a60f1906c69032ee9c8`; its content-addressed tree contains all ten documents and the approved tracker |
-| A2 | After A0R approval, check only the intended local path, capacity, containment, non-synchronization and folder access | NOT STARTED: former mandatory BitLocker check withdrawn at user request; encryption status remains unknown, not a current assigned blocker |
-| A3 | Register/create the exact local run root, configure its permissions and process temp paths, prepare local Google Cloud CLI sign-in and isolated Python dependencies | NOT STARTED: no run directory or restricted files created |
-| A4 | Refresh source/bucket security metadata, pin object generation, download to the registered path and verify exact bytes/SHA-256 | NOT STARTED: retain the original cloud object unchanged |
-| A5 | Safely validate/extract archives; inspect every dictionary sheet; run synthetic tests and read-only schema/join/all-lab repetition/timing/four-outcome checks | NOT STARTED: no real-file audit or cleaning |
+| A2 | After A0R approval, check only the intended local path, capacity, containment, non-synchronization and folder access | DONE 2026-09-04: realpath match, no symlink in the chain, mode 700 owned by `barbarosisik:staff`, outside Desktop/Documents/CloudStorage/Mobile Documents and outside the Git repo, 416 GiB free, zero files present. iCloud Drive confirmed effectively off. Encryption status deliberately not checked and not a gate |
+| A3 | Register/create the exact local run root, configure its permissions and process temp paths, prepare local Google Cloud CLI sign-in and isolated Python dependencies | PARTIAL 2026-09-04: run root created, permissions set to 700, subfolders `source`/`extracted`/`interim`/`reports`/`tmp`/`verify` in place, and the path registered in `docs/data-location-register.md`. DONE 2026-09-04: run root created with mode 700 and registered; Python 3.12.8 installed and verified; Google Cloud CLI 583.0.0 installed at `~/tools/google-cloud-sdk` and confirmed to run with `CLOUDSDK_PYTHON` persisted in `~/.zshrc`; isolated environment `~/tools/venv-pds-audit` created with pinned `openpyxl==3.1.5`; all 3 synthetic-fixture tests pass on this machine; `gcloud auth login` completed as `barbarosisik7@gmail.com` with project `pds-dream-secure-storage` set. The first CLI attempt had failed because macOS Python is 3.9.6 and the CLI needs 3.10 or newer, and no macOS bundled-Python build is published. Tooling lives in `~/tools`, never in the restricted root. No restricted files exist |
+| A4 | Refresh source/bucket security metadata, pin object generation, download to the registered path and verify exact bytes/SHA-256 | DONE 2026-09-04: bucket `EUROPE-WEST4`, public access prevention enforced, uniform bucket-level access on, no public IAM binding, and the source is the only object in the bucket. Generation `1787841139282260` pinned and downloaded to `runs/2026-09-04-audit-001/source/AllProvidedFiles_149.zip`, set to mode 400. Verified 6,227,480 bytes, SHA-256 `AB3ECA19...932391` matching the 2026-08-27 record, and MD5 `0F8633E474B581317CB66F1783A84AD8` matching live cloud metadata. Archive scanned without extracting: all entries CRC-clean, no absolute paths, no traversal, no symlinks, no encryption, expansion ratio 1.0x. Cloud object unchanged |
+| A5 | Safely validate/extract archives; inspect every dictionary sheet; run synthetic tests and read-only schema/join/all-lab repetition/timing/four-outcome checks | DONE 2026-09-04: all three nested archives independently scanned clean, extracted to `extracted/` at mode 400, 110,112,522 bytes expanded. All six dictionary sheets read. Aggregate-only audit completed on the training partition. Key results are recorded in `docs/data-location-register.md` and summarized in the dataset report. No cleaning or transformation performed and no patient values written to any report |
 | A6 | Apply disclosure checks and create feasibility, coverage, limitations and reproducibility reports | NOT STARTED: no patient IDs/results/free text may leave restricted storage |
 | A7 | Upload new audit outputs/manifests to the private run prefix, re-download for checksum comparison and record all verified object generations | NOT STARTED: do not infer upload success from an unverified command |
 | A8 | Stop processes, inventory exact local copies, obtain fresh deletion confirmation, remove only approved targets and verify absence | NOT STARTED: no run copies exist; old project-folder backup issue remains separate |
@@ -628,6 +630,52 @@ Historical proposal only. The later same-day local-processing correction below s
 - Cleanup is blocked by the unchanged all-files-backup condition and lack of fresh exact-target deletion confirmation. The handoff request does not permit uploading publisher files or deleting the only copy of older work. Do not delete either folder until those conditions are resolved.
 - The new handoff/current-status revisions are local and uncommitted. Next: present the plain-language plan and request explicit publication authorization; after publication verify main, then address the separate local-only-file/deletion decision. Do not restart data work during this closeout.
 - Validation: all nine revised documents passed whitespace, balanced-code-fence, no-em-dash and credential-pattern checks. No active onboarding/README/docs instruction still requires the withdrawn encryption check. All three invented-data unit tests passed again; no source/test code changed. The historical entries retain their earlier context rather than being rewritten as current facts.
+
+### 2026-09-04: macOS working copy reconciled with remote main and 2026-08-26 state preserved
+
+**User situation and request**
+
+- The user asked whether the local documents were older than GitHub `main`, to pull the latest if so, and to push only if the local copy was the newer one.
+- The user asked for shorter action-first replies and confirmed as a standing instruction that the logs must always be updated.
+- The user asked where the project stands and what to do next.
+
+**Completed**
+
+- Fetched `origin` and compared both sides before changing any file.
+- Preserved the unpushed 2026-08-26 working-tree state on the local-only branch `backup/local-2026-08-26-session`.
+- Fast-forwarded `main` from `d02eed8` to `origin/main` at `7392d50`.
+- Restored `docs/dataset-internet-search-audit.md` as an untracked file, because remote `main` never contained it.
+- Completed the mandatory onboarding reading order and recorded this machine's tooling state.
+
+**Verified evidence**
+
+- Local `main` was 0 ahead and 7 behind `origin/main`. `git merge-base --is-ancestor` confirmed a pure fast-forward, so no merge commit was created.
+- The uncommitted local files carried modification time 2026-08-26 20:03. Remote `main` head is dated 2026-08-31 15:08. The remote was therefore newer and NOTHING was pushed.
+- The preserved branch tip is `a85919f` and holds all four files from the 2026-08-26 state.
+- `git status` reports `main` level with `origin/main`, with only the untracked audit document remaining.
+- `python3` and `git` are available. `gcloud` and `gsutil` are NOT installed on this machine. The Desktop volume reports 415 GiB free.
+- No restricted data were downloaded, opened or moved. No run folder and no cloud output were created.
+
+**Decisions**
+
+- No research question, scope, source strategy, method or approval gate was changed.
+- The superseded 2026-08-26 narrative was deliberately NOT merged into the current logs. Remote `main` records that PDS access was resolved and that the package is in the approved private bucket, whereas the 2026-08-26 text still described PDS as blocked and proposed MSK-CHORD as a partial substitute.
+- No new `D-0xx` identifier was created. The 2026-08-26 draft had reused `D-019` and `D-020`, which upstream already assigns to the cloud storage and local-deletion decisions.
+
+**Problems or blockers**
+
+- The registered run path and the closeout deletion targets are Windows paths on the previous machine and are not reachable from this macOS working copy, so that cleanup cannot be verified or completed here.
+- The Google Cloud CLI is absent on this machine, so A3 must include installing and signing in to it before A4 can download the source.
+- The fate of the untracked `docs/dataset-internet-search-audit.md` and of the local-only preservation branch is undecided.
+
+**Reminder added or cleared**
+
+- The A0R approval requirement remains active. The explanation was delivered on 2026-09-04 and the answer is outstanding.
+- Added a reminder to obtain a decision on the untracked 2026-08-26 audit document and on the local-only branch, neither of which exists on the remote.
+
+**Exact next action**
+
+- Wait for the user's A0R answer. Do not create a run folder, install cloud tooling or download the source before that answer.
 
 ## Session update template
 

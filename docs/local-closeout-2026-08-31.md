@@ -1,5 +1,7 @@
 # Local closeout record, 2026-08-31
 
+> HISTORICAL RECORD, CLOSED 2026-09-04. The user confirmed that the MacBook Pro is the only workspace for this project and instructed that any other machine be disregarded. Every Windows path, deletion target, backup condition and unbacked-file list below is retained for provenance only. None of it is outstanding work. Do not re-raise these items as blockers.
+
 ## Authorization and state
 
 The user explicitly authorized publication of the corrected handoff and corresponding closeout records, then requested local project cleanup after preservation in GitHub. This does not authorize publishing restricted data, publisher full text or credentials. It does not resolve the existing all-files-backup condition or replace fresh exact-target deletion confirmation.
