@@ -29,31 +29,23 @@ Every agent continuing this project must read this file first, then read `RESEAR
 
 ## Current snapshot
 
-**Last updated:** 2026-09-04
+**Last updated:** 2026-09-06
 
-**Project stage:** A0R through A5 complete and the audit is reported. Q-009 resolved in favour of the per-cycle reading, so the trajectory design is confirmed feasible: 1,179 patients have all of cycles 1 to 4 measured across twelve near-universal blood tests, with 663 death events. Endpoints narrowed to survival and discontinuation. RESTRICTED DATA IS PRESENT LOCALLY and must be cleaned up after verified upload and fresh confirmation
+**Verified current stage:** preparation Stage 01 was explicitly requested and is complete. Its frozen roster retains 1,600 training patients. Zero duplicate core keys; zero unmatched joins across 412,575 event rows. All 18 source CSVs match the original archive. Output CSV read-back and 21 tests passed. Laboratory results and outcome codes were not transformed.
 
-**Current machine:** THIS MAC IS THE ONLY WORKSPACE for the project, confirmed by the user on 2026-09-04, who instructed that any other machine be disregarded. All Windows paths and the Windows closeout items in `docs/local-closeout-2026-08-31.md` are historical and CLOSED AS OUT OF SCOPE. macOS working copy at `/Users/barbarosisik/Desktop/prostate-lab-trajectories`, verified level with `origin/main` at `7392d50` on 2026-09-04. This is NOT the Windows machine that the run path and closeout deletion targets refer to. `python3` and `git` are present; `gcloud` and `gsutil` are NOT installed here. The Desktop volume reports 415 GiB free.
+**Verified errors resolved for this stage:** three training tables contain non-UTF-8 bytes; a reversible byte parser checks ASCII keys without guessing free-text encoding. Withheld evaluation outcomes use literal `.` markers. Earlier attempts stopped before writing a roster. Semantic text encoding and outcome coding remain later checks.
 
-**Primary source:** Project Data Sphere Prostate Cancer DREAM Challenge
+**Verified patient locations:** `/Users/barbarosisik/PDS-Restricted-Work/goal-patient/` for PDFs; `/Users/barbarosisik/PDS-Restricted-Work/index-patient/` for extracted/transcribed data. Eight pre-existing PDFs were inspected for dates/cycle labels. The latest user-pasted report is now a labelled private four-page PDF with 58 current entries; all rows passed text read-back, and all rendered pages were inspected. Its original PDF is unavailable, latest cycle number is inferred only, and the missing unit is unresolved. Exact artifacts and hashes are in the data register.
 
-**Current dataset page:** `https://data.projectdatasphere.org/projectdatasphere/html/content/0abbd47a-dcfb-42c2-a036-af1898ea3c1c`
+**Verified documentation cleanup:** docs reduced from eleven to six. Five tracked duplicates removed after preserving useful content; no patient or untracked data file deleted. Patient paths, scope and TLDR/reasons/error-reporting instructions are durable in AGENTS and onboarding. No new research documentation files were created.
 
-**Current dataset ID:** `Prostat_na_2006_149`
+**Pending next action:** publish the latest permitted work first, then continue authorized preparation stages 02 to 07 with sequential checks. A10 modeling remains separate. Continue the PDS-first user-side source search; no dbGaP application. Affiliation and Downloads duplicate housekeeping remain unanswered/unverified.
 
-**Current storage state:** Craig at PDS confirmed that private Google Cloud storage is permitted. The unchanged package is stored in a dedicated private bucket in the Netherlands region. The two verified local restricted ZIP copies were permanently removed after cloud verification and fresh user confirmation.
-
-**Current approval state:** Earlier local-audit approval and publication at 9843e5b/f152628 remain historical facts. The next agent must explain the data-processing plan in chat and ask approval before starting, at checkpoint A0R. Cloud remains STORAGE ONLY. The user rejected the agent-added mandatory BitLocker check. The latest explicit "publish please" authorizes this corrected handoff and corresponding closeout records. Cleaning, scientific analysis, exceptions to the all-files-backup condition and fresh exact-target deletion confirmation remain separate.
-
-**Immediate next action:** Q-009 is RESOLVED. The user confirmed the per-cycle reading, so the trajectory design proceeds under D-024 to D-026. Next is the cleaning and restructuring specification at A9, which still needs its own approval: harmonize the three `VISIT` cycle vocabularies, write explicit rules for `UNSCHEDULED` visits, the malformed `.` test code and `LBSTAT = NOT DONE` rows, then build per-cycle trajectory features for the twelve near-universal tests. Restricted data is on this Mac, so A8 cleanup remains a live obligation. The verified run root already exists at `/Users/barbarosisik/PDS-Restricted-Work/prostate-lab-trajectories/runs/2026-09-04-audit-001`. Confirm with the user immediately before A4, because A4 is the first step that places restricted patient data on this disk. Superseded note: checkpoint A0R was answered on 2026-09-04. The local data plan was explained to the user on 2026-09-04 and one approval question was asked. WAIT for that answer before any data work. Then obtain the user's decision on the untracked 2026-08-26 audit document, on the local-only branch `backup/local-2026-08-26-session`, and on the unbacked local-only materials and exact deletion targets in `docs/local-closeout-2026-08-31.md`. No encryption-status detour, run folder or cloud output has been created.
-
-**Current session priority:** Authorized publication and verified local cleanup, not data execution. Both known folders remain pending the backup exception or permitted alternative backup and fresh deletion confirmation. All 19 permitted retired working files match content already in canonical Git history when line endings/final newlines are normalized. The remaining 27 ignored papers/text/temp PDFs/caches are not backed up in GitHub. Do not claim complete cleanup or erase shared app records.
-
-**Sequence to explain for the next approval:** Record one dedicated local run directory, check its path/access/non-synchronization, download and verify the source, extract safely, inspect every dictionary sheet and audit locally without transforming patient data. Privacy-check reports, upload and verify new versions in the existing private bucket, then obtain fresh confirmation and clean up local copies. Propose cleaning and scientific analysis separately. No cloud computation or mandatory BitLocker detour. Historical instructions below do not override this snapshot.
+**Storage and Git:** this Mac only, approved private Google Cloud storage only, source unchanged. Restricted files remain local. See the data register for output preservation and exact-target cleanup status. Branch dataset-audit at local HEAD 4b3dae8; documentation changes/removals and new source/tests are uncommitted. No push or restricted deletion occurred. Current remote state was not verified in this session.
 
 ## Data-plan execution tracker
 
-Plan ID: `LOCAL-AUDIT-2026-08-31-01`. Run ID: `2026-08-31-audit-001`. Earlier approval and completed publication are preserved in A0/A1. The latest handoff request adds A0R: the next agent must explain the plan and obtain fresh approval before data work. The previous disk-encryption prerequisite is withdrawn, not verified as passed. Update this table after meaningful steps. Full plan: `docs/local-processing-and-cloud-storage-plan.md`; locations: `docs/data-location-register.md`.
+Active run: `2026-09-04-audit-001`. Earlier approvals and publication are historical in A0/A1. A0R is complete. Stage 01 preparation was explicitly authorized 2026-09-06; do not reopen the initial-audit approval. Update this table after meaningful steps. Full plan: `docs/local-processing-and-cloud-storage-plan.md`; locations: `docs/data-location-register.md`.
 
 | Step | Work and completion evidence | Status |
 |---|---|---|
@@ -65,9 +57,9 @@ Plan ID: `LOCAL-AUDIT-2026-08-31-01`. Run ID: `2026-08-31-audit-001`. Earlier ap
 | A4 | Refresh source/bucket security metadata, pin object generation, download to the registered path and verify exact bytes/SHA-256 | DONE 2026-09-04: bucket `EUROPE-WEST4`, public access prevention enforced, uniform bucket-level access on, no public IAM binding, and the source is the only object in the bucket. Generation `1787841139282260` pinned and downloaded to `runs/2026-09-04-audit-001/source/AllProvidedFiles_149.zip`, set to mode 400. Verified 6,227,480 bytes, SHA-256 `AB3ECA19...932391` matching the 2026-08-27 record, and MD5 `0F8633E474B581317CB66F1783A84AD8` matching live cloud metadata. Archive scanned without extracting: all entries CRC-clean, no absolute paths, no traversal, no symlinks, no encryption, expansion ratio 1.0x. Cloud object unchanged |
 | A5 | Safely validate/extract archives; inspect every dictionary sheet; run synthetic tests and read-only schema/join/all-lab repetition/timing/four-outcome checks | DONE 2026-09-04: all three nested archives independently scanned clean, extracted to `extracted/` at mode 400, 110,112,522 bytes expanded. All six dictionary sheets read. Aggregate-only audit completed on the training partition. Key results are recorded in `docs/data-location-register.md` and summarized in the dataset report. No cleaning or transformation performed and no patient values written to any report |
 | A6 | Apply disclosure checks and create feasibility, coverage, limitations and reproducibility reports | NOT STARTED: no patient IDs/results/free text may leave restricted storage |
-| A7 | Upload new audit outputs/manifests to the private run prefix, re-download for checksum comparison and record all verified object generations | NOT STARTED: do not infer upload success from an unverified command |
-| A8 | Stop processes, inventory exact local copies, obtain fresh deletion confirmation, remove only approved targets and verify absence | NOT STARTED: no run copies exist; old project-folder backup issue remains separate |
-| A9 | Present the data-cleaning/restructuring plan based on audited fields, supported timing and four distinct outcome families | LATER APPROVAL REQUIRED: do not implement cleaning yet |
+| A7 | Upload new audit outputs/manifests to the private run prefix, re-download for checksum comparison and record all verified object generations | BLOCKED 2026-09-06: Stage 01 bundle prepared locally; fresh metadata requests stalled/timed out. No upload attempted and no new cloud generation verified |
+| A8 | Stop processes, inventory exact local copies, obtain fresh deletion confirmation, remove only approved targets and verify absence | PENDING: restricted run copies verified present 2026-09-05. Verify preservation of required outputs and obtain fresh exact-target confirmation before deletion |
+| A9 | Prepare the audited data in explicitly authorized stages | PARTIAL: Stage 01 authorized and completed 2026-09-06, roster and joins verified with 21 tests. Stage 02 onward pending scoped approval. Integrity review remains required before features |
 | A10 | After approved cleaning and checks, propose the scientific analysis plan before modeling | LATER APPROVAL REQUIRED: no modeling authorized now |
 
 First-run limits to explain at the next approval: one local audit session, up to four hours of active work before checkpointing; no unattended recurring job; at most 100 MiB of output/verification data and 1,000 cloud operations in each priced class for the cost estimate. Expected first-audit/first-month cloud cost below USD 0.05; pause above the USD 0.10 projected incremental threshold or for a material change. No cloud computation. This tracker is not a billing cap or automatic background monitor.
@@ -75,7 +67,7 @@ First-run limits to explain at the next approval: one local audit session, up to
 ## User communication requirements
 
 - Use simple, non-medical language first.
-- Explain why a step is necessary before starting a new major stage.
+- Explain the reason alongside every proposed step: what it enables or which error it prevents.
 - Ask for approval when a new major stage or consequential choice begins.
 - Give brief summaries of what was done, reached, learned and planned.
 - Do not use em dashes.
@@ -264,21 +256,7 @@ Follow this order:
 
 ## Important evidence files
 
-Read these before making source or analysis decisions:
-
-1. `PROJECT_CONTINUITY_LOG.md`
-2. `RESEARCH_LOG.md`
-3. `README.md`
-4. `docs/pds-dream-access-audit.md`
-5. `docs/dataset-field-coverage-checklist.md`
-6. `docs/source-coverage-matrix.md`
-7. `docs/raw-data-inventory-tool.md`
-8. `docs/chaarted-public-field-audit.md`
-9. `docs/dream-public-code-audit.md`
-10. `literature/README.md`
-11. `literature/STUDY_CATALOG.md`
-12. `literature/download_manifest.csv`
-13. `literature/references.bib`
+Read the current onboarding order in `NEXT_AGENT_ONBOARDING_PROMPT.md`. The six necessary docs cover the real-data audit, data register, execution plan, field checklist, source matrix and CHAARTED fields. Older filenames in historical session entries refer to Git history, not documents to recreate.
 
 ## Repository and Git state
 
@@ -676,6 +654,51 @@ Historical proposal only. The later same-day local-processing correction below s
 **Exact next action**
 
 - Wait for the user's A0R answer. Do not create a run folder, install cloud tooling or download the source before that answer.
+
+### 2026-09-05: Mandatory reading and local state verification
+
+- **Verified:** Read the onboarding prompt and mandatory records. Checked Git status, local and cached branch tips, source size/mode/SHA-256, directory metadata and source/test file inventory. No preparation implementation is present under `src`; the existing audit script remains the only source file listed.
+- **Verified:** Corrected stale current snapshots and the A8 row without reopening settled approvals or changing the research question. Highest existing decision identifier is D-033; duplicate historical D-021 through D-026 identifiers remain date-qualified. No new decision was introduced.
+- **Blocked:** Live remote verification failed at DNS resolution. No commit, push, pull request, data transformation, upload or deletion occurred. Tests were not rerun for this documentation-only task.
+- **Pending:** A9 implementation approval, the user-side PDS search and affiliation answer, duplicate-record housekeeping, and publication decisions. Preserve all pre-existing worktree edits.
+
+### 2026-09-06: Reasons for preparation and proposed reuse of excluded records
+
+- **Verified user preference:** Explain the reason for each proposed step, including what it enables or which error it prevents. Keep replies short and numbered.
+- **Verified discussion scope:** The user asked whether excluded records could be compressed into 5 to 10 weighted, column-average observations and returned to the analysis. This is a methodological question, not approval to transform data or revise D-025.
+- **Inferred methodological assessment:** Such averages may describe excluded groups, but treating them as additional observed patients would lose individual cycle patterns and their links to outcomes. Arbitrary weights do not restore those links or supply independent observations. Preserve source records and distinguish row-level exclusions from whole-patient exclusions.
+- **Pending alternatives:** Assess usable portions of incomplete records and, where assumptions are defensible, multiple imputation or missingness weighting as separately specified sensitivity analyses. Multiple imputation creates plausible versions of missing entries and combines estimates with uncertainty; it does not append invented average patients. Preserve the approved primary cohort. Any learned preprocessing for prediction must respect trial splits and prediction-time availability.
+- **Verified sources consulted:** [Sterne et al., BMJ 2009](https://www.bmj.com/content/338/bmj.b2393) on imputation assumptions and uncertainty; [scikit-learn common pitfalls](https://scikit-learn.org/stable/common_pitfalls.html) on preprocessing leakage.
+- **Verified execution boundary:** Documentation only. No restricted record was opened, excluded, transformed or deleted in this discussion; no new decision identifier or implementation approval was recorded.
+
+### 2026-09-06: Educational walkthrough requested before local preparation
+
+- **Verified user request:** Explain the proposed cleaning process step by step with invented before-and-after tables and a reason for each action, before starting implementation on this Mac. This request does not approve execution yet.
+- **Verified code state:** The existing `src/audit/inventory_raw_data.py` is an inventory tool, not the A9 preparation pipeline. Its baseline heuristic must not silently become the cleaning definition.
+- **Pending preparation sequence:** 01 freeze the training roster and verify joins; 02 harmonize visit labels while retaining within-cycle day; 03 check visit/day consistency using dictionary-defined trial time origins; 04 specify off-schedule and discontinuation visit handling; 05 harmonize test identities and verify units; 06 preserve missingness and bounded-result information, and distinguish exact duplicates from conflicting repeats; 07 define baseline using `LBBLFL` with timing and uniqueness checks. These are proposed operational details, not executed transformations or newly approved numerical thresholds.
+- **Pending integrity checkpoint:** Reconcile source rows with retained/excluded/review categories; report patient/test/cycle coverage, unit conflicts, timing discrepancies, baseline ambiguity and missingness. The recorded 1,179 patients with visits in cycles 1 to 4 must not be described as proven complete numeric coverage for all twelve tests. The 663 deaths refer to all 1,600 training patients, not the final landmark-eligible subset.
+- **Pending later work:** Select cycle snapshots under explicit duplicate/timing rules, build features and endpoint-specific landmark eligibility, then evaluate against baseline predictors with leave-one-trial-out validation. Early-cycle analyses must not require future visit completion; future measurements and held-out trial data cannot inform learned preprocessing. A10 approval remains separate.
+- **Verified boundaries:** Only documentation and existing invented fixtures were read. No restricted patient contents were opened and no preparation code, derived data, feature, model, upload or deletion was produced. All teaching examples in the reply are invented; clinical meaning is not inferred from them. No new decision identifier was added.
+
+### 2026-09-06: Stage 01 executed, private transcription verified and documentation consolidated
+
+- **Verified authorization:** user requested local Stage 01 execution, correct tests, progress/error reports, durable patient locations, fewer documents and a private PDF from supplied report text. Added D-034 for the scoped stage. No authorization was inferred for later modeling or Git publication.
+- **Verified implementation:** new roster code and invented failure tests; 21 tests passed. All 18 source CSVs matched the original nested archives. Roster: 1,600 patients, zero duplicate keys; five event tables: 412,575 rows, zero unmatched keys. All patients retained regardless of laboratory completeness. Output read-back and mode 600 verified.
+- **Verified errors and recovery:** initial UTF-8 decoding failure and then the evaluation literal-dot missing marker each stopped output safely. Fixed with reversible byte parsing/ASCII-key enforcement and explicit missing-marker handling, with regression tests. Free-text semantics and endpoint coding remain pending.
+- **Verified private patient work:** read eight prior PDFs for dates and explicit cycle labels; created a labelled four-page transcription and structured data from the latest user text, outside Git. All 58 current rows and historical comparison columns survived text extraction. Rendered all four pages and inspected their layout. Original-PDF verification and confirmed latest cycle number remain pending; no patient values or identifiers were copied into project documentation.
+- **Verified consolidation:** reduced docs from eleven to six. Retained useful provenance and limitations in the existing source matrix, dataset audit and execution plan. Removed only five tracked, unmodified duplicate/obsolete documents, recoverable at local HEAD 4b3dae8. Refreshed onboarding and agent instructions so patient paths and current scope persist across sessions.
+- **Pending:** cycle/day/unit/baseline checks, source PDF for the latest transcription, private-output preservation/cleanup completion as recorded in the register, and any Git commit/push. No index-patient file is included in the DREAM preservation bundle. No restricted file was deleted.
+
+**Stage 01 final verification receipt, 2026-09-06:** independently rechecked 1,600 unique roster keys, laboratory-row accounting, all 18 input hashes, executed code hash and roster hash. Five retired docs are absent; six remain. Markdown links, whitespace and patient-identifier checks passed. Only the new preparation code and invented tests are untracked. No commit or push occurred.
+
+**Blocked preservation receipt:** stopped the stalled read-only cloud metadata request; a noninteractive retry timed out after 30 seconds and was terminated. No upload was attempted and no restricted file was deleted. The local Stage 01 bundle and private patient artifacts remain at their registered locations. This is a connectivity/access-check failure, not a new storage-permission question.
+
+### 2026-09-06: Publication, documented functions and continued cleaning authorized
+
+- **Verified user authorization:** first commit and push the permitted developments; then continue toward cleaned data stage by stage. Treat this as approval for preparation stages 02 to 07, retaining the integrity checkpoint before features and the separate A10 modeling gate. The user also authorized testing private cloud reads and a new write or edit; the original source remains immutable.
+- **Verified publication preparation:** live GitHub main is 7392d50 and dataset-audit is 4b3dae8, matching the local branch references. Added function-level documentation to the existing Stage 01 implementation without changing its behavior. Its original executed code remains preserved in the restricted bundle with its original hash; the docstring revision has a different source hash.
+- **Standing preference:** explain every production function, report reasons and error points after each stage, and keep user-facing updates TLDR. No new documentation files.
+- **Pending:** commit/push verification, current cloud reachability and subsequent cleaning execution. Do not call authorization or a planned write a completed operation.
 
 ## Session update template
 

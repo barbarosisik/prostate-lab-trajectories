@@ -1,32 +1,43 @@
 # Prostate Lab Trajectories Agent Instructions
 
-Read `NEXT_AGENT_ONBOARDING_PROMPT.md` and its mandatory project records before research work. Preserve the fixed research question, restricted-data safeguards and approval gates. Use plain language and no em dashes.
+Read `NEXT_AGENT_ONBOARDING_PROMPT.md` in full before any research work, then the records it lists. Preserve the fixed research question, the restricted-data safeguards and the approval gates. Use plain language and no em dashes.
 
-## Current approved direction, 2026-08-31
+## What this project is
 
-The latest user correction supersedes the earlier cloud-computing interpretation: Google Cloud is approved private STORAGE ONLY. Run computations, tests, audits, cleaning and analysis LOCALLY in a protected temporary run folder. Do not create a VM, cloud notebook or remote compute job. PDS private-storage permission is settled; do not restart that permission discussion.
+The project exists to interpret the blood-test trends of one real index patient with de novo metastatic prostate cancer, currently between chemotherapy cycles. Public trial datasets are the reference population, not the goal. Judge every dataset against his actually measured panel and timing.
 
-Read `docs/local-processing-and-cloud-storage-plan.md` and `docs/data-location-register.md`. Record every actual local path before download, keep access limited and avoid synchronized locations. Download from the approved bucket, work locally, upload new outputs to versioned private cloud locations, verify all required uploads, then obtain fresh exact-target confirmation and delete local run copies. Keep original source bytes unchanged. This workflow applies after each stage, not only at final handoff.
+His PDFs live at `/Users/barbarosisik/PDS-Restricted-Work/goal-patient/`; extracted and transcribed data live at `/Users/barbarosisik/PDS-Restricted-Work/index-patient/`. These persistent locations must be checked before research and kept OUTSIDE Git. The latest derived report is `2026-09-05-laboratory-transcription.pdf`, reconstructed from user-pasted text and not verified against its original PDF. Never move, commit or publish these records. His panel guides coverage and timing; one application patient does not independently validate outcome models.
 
-LATEST HANDOFF DIRECTION: after mandatory read-only onboarding, the next agent must explain the data plan in plain language, ask one clear approval question and WAIT before any data work. This user-requested checkpoint supersedes the earlier instruction to resume without asking again. Prior approval/publication remain historical facts, not permission to skip the requested first reply. Track this in `LOCAL-AUDIT-2026-08-31-01`, including A0R. Cleaning and scientific analysis each require later approval; exact-target deletion confirmation stays separate.
+## Current direction, 2026-09-06
 
-The user rejected the previous agent's added mandatory BitLocker/disk-encryption check. Do not pursue more encryption-status commands, security-app inspection, Windows-setting changes or recovery-key requests as a prerequisite to this handoff or the first data-plan response. Encryption status is unknown, not verified on/off; the added gate was not established as a new PDS requirement. Preserve agreed file privacy and data handling without inventing additional requirements.
+Two tracks run in parallel, decision D-030.
 
-The user explicitly authorized publication of this corrected handoff and corresponding closeout records on 2026-08-31. Verify remote main before reporting publication complete. This authorization does not approve data execution, future unrelated pushes, an alternative backup of publisher files or deletion without the required exact-target confirmation.
+**Track 1, active now.** Develop the whole method on the DREAM package, which is the methods cohort. It is downloaded, checksum-verified and fully audited at aggregate level. Stages A0R through A5 are complete. The user explicitly approved preparation Stage 01 on 2026-09-06; it is implemented and verified. The user has now authorized continuing preparation stages 02 to 07 sequentially toward cleaned data. A10 modeling remains separate. Explain what was done, why it matters and remaining errors after every step.
 
-The older local project-folder all-files-backup condition remains unresolved and separate. It does not block planning, and the new dataset workflow does not authorize an alternative backup of publisher files or deletion of the old folders.
+**Track 2.** Do NOT start a dbGaP application. Search the Project Data Sphere catalogue first for a hormone-sensitive metastatic prostate cancer trial with docetaxel, decision D-032, because that account already works. CHAARTED now routes through dbGaP, which needs an institutional Signing Official, and its submission D8 is prostate-specific antigen only, so it cannot validate the twelve-test panel, decision D-033.
 
-## Onboarding request means session closeout
+The index patient is hormone-sensitive while DREAM is entirely castration-resistant. Never present a DREAM-derived survival figure as his prognosis.
 
-When the user asks for an onboarding prompt, next-agent prompt or end-of-session handoff, prepare the handoff AND begin the local-cleanup workflow in `NEXT_AGENT_ONBOARDING_PROMPT.md` under `SESSION CLOSEOUT AND LOCAL CLEANUP`.
+## Machine and storage
 
-- GitHub `main` is the permanent home for permitted code, documentation, tests and privacy-reviewed aggregate reports. Local project working copies are temporary.
-- The permanent restricted PDS source and derived-data versions stay in approved private Google Cloud Storage, never GitHub. Temporary local processing copies follow the registered upload-verification-cleanup workflow. Do not publish restricted files, patient values, credentials, signed links or publisher full text as part of an "everything" request.
-- Update the records, check all modified, untracked and ignored files, obtain explicit commit/push authorization if absent, and verify the remote commit before deleting any project working copy.
-- Present exact absolute deletion targets and warn about local-only materials. Obtain fresh action-time confirmation before deletion. An onboarding request starts this workflow but does not waive those checks.
-- Honor every condition attached to deletion approval. If the user requires all local project files to be backed up first, verifying only tracked Git files is insufficient. Unbacked ignored files must remain until an approved backup or explicit exception is verified. Bibliography links are not backups of PDF or text files.
-- After verification and confirmation, remove the complete approved temporary project working folders. Do not keep a local clone merely for future programming. The next session can clone again.
-- Use exact PowerShell `-LiteralPath` targets with containment and link checks. Never delete broad parent folders, the active task workspace root, shared app files, credentials, unrelated projects or whole Recycle Bins.
-- Codex task-history deletion is separate. Use only an available supported app action and explicit task targets. Archiving is not permanent deletion. Do not delete session databases or logs manually.
-- Recheck the filesystem after cleanup and report what is gone, what remains and any blocked work. Never report planned deletion as completed deletion.
-- Deliver the onboarding prompt through a GitHub link or copyable chat text, not a local file link that cleanup will invalidate.
+This MacBook Pro is the only workspace. Every Windows path in the project history is historical and closed as out of scope; do not raise those items. Google Cloud is approved private STORAGE ONLY, settled with PDS, so do not reopen it and do not create cloud compute. All computation runs locally in the registered run folder recorded in `docs/data-location-register.md`. Tooling lives in `~/tools` and never inside the restricted run root.
+
+Restricted data is currently present locally, so the cleanup obligation at A8 is live. Local copies are removed only after verified upload and fresh exact-target confirmation.
+
+## Working rules
+
+- Answer in TLDR form: action first, numbered, no preamble or closing pleasantries.
+- Explain clinical terms in plain language at first use. The user is technically fluent but has no clinical training.
+- Be critical about data and never overclaim. Lead with what a dataset cannot support, and use counts rather than adjectives.
+- **Create no new log, status, register or report files.** Exactly six necessary documents remain in `docs/` after user-authorized consolidation. Update them and the existing root records. This does not prohibit explicitly requested private patient artifacts or necessary code/tests.
+- Document each production function with its purpose, inputs/outputs and important errors or constraints.
+- Explain the reason alongside every action. Use persistent records for memory; never promise flawless research or unconditional recall.
+- Update `PROJECT_CONTINUITY_LOG.md` and `RESEARCH_LOG.md` as part of the work, without being asked. Check the highest existing `D-0xx` before adding one, because parallel sessions have collided on identifiers before.
+- Commit messages carry no assistant attribution: no `Co-Authored-By` trailer, no generated-with line, no emoji.
+- Label every fact as verified, pending, inferred or blocked. Never report a download, upload, test or deletion as complete without direct evidence.
+
+## Publication and cleanup
+
+GitHub `main` is the permanent home for permitted code, documentation, tests and privacy-reviewed aggregate reports. The permanent restricted source and any derived patient-level data stay in the approved private Google Cloud bucket, never in GitHub. Before any `git add`, confirm with `git ls-files --others --exclude-standard` that no patient file is exposed; the `goal-patient/` folder was once unignored and a `git add -A` would have published it.
+
+When the user asks for an onboarding prompt or an end-of-session handoff, update `NEXT_AGENT_ONBOARDING_PROMPT.md`, obtain explicit commit and push authorization if it is absent, and verify the remote commit before describing anything as published. Present exact absolute deletion targets and obtain fresh confirmation before removing anything. Never report planned deletion as completed deletion.

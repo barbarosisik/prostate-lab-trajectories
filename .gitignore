@@ -39,3 +39,7 @@ models/
 tmp/
 work/
 
+
+# Real patient records for the index case. Never commit.
+goal-patient/
+index-patient/

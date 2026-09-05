@@ -1,194 +1,100 @@
-# Data location and run register
+# Data locations and verification register
 
-Updated: 2026-09-04. This is non-sensitive operational metadata, not a dataset. Read it at onboarding and update it before and after every transfer, processing stage and cleanup. The continuity and research logs remain required.
+Updated 2026-09-06. This register contains operational metadata only. No individual laboratory value or patient identifier belongs here.
 
-## Single workspace, from 2026-09-04
+## Fixed locations and current authorization
 
-The user confirmed that this MacBook Pro is the ONLY workspace for the project and instructed that any other machine be disregarded. All local paths in this register refer to macOS. Earlier Windows paths are retained below only as history and are NOT actionable. The previously open Windows all-files-backup condition and the 27 unbacked ignored files under the retired Windows folder are therefore OUT OF SCOPE, not outstanding blockers.
+This Mac is the only workspace. Computation is local. Google Cloud is the already-approved private storage destination, never compute. Preparation Stage 01 was explicitly authorized and completed; later preparation stages and A10 modeling remain pending scoped approval. No Git commit/push or restricted deletion was authorized in this session.
 
-## Standing workflow
-
-Private Google Cloud Storage is the permanent home for original and derived restricted data. Computations, tests and processing run locally in a recorded temporary folder. Upload new outputs, verify every required file, then obtain fresh confirmation and remove the exact local run folder. Never put restricted data in GitHub or leave an unrecorded local copy. No cloud computation is authorized by this workflow.
-
-## Permanent storage
-
-| Item | Location | Verified state |
+| Item | Exact location | Current state |
 |---|---|---|
-| Code and safe documentation | `https://github.com/barbarosisik/prostate-lab-trajectories`, branch `main` | Corrected approval-first handoff published at `0fa84856f526a7e647cf5f07b5acccfe39e645ea`; authenticated connector independently confirmed main and all ten document blob hashes. This receipt follows that commit; verify current main at onboarding |
-| Cloud project | `pds-dream-secure-storage` | Existing approved storage project |
-| Private bucket | `gs://pds-dream-secure-storage-eu-20260827` | Netherlands `europe-west4`; access controls refreshed 2026-08-31 |
-| Original package | `gs://pds-dream-secure-storage-eu-20260827/prostate-lab-trajectories/data/raw/pds_dream/source/AllProvidedFiles_149 (1).zip` | Exists in live console; 6,227,480 bytes and hashes verified 2026-08-27; exact metadata refresh before next download |
+| Working repository | `/Users/barbarosisik/Desktop/prostate-lab-trajectories` | Verified branch dataset-audit at local HEAD 4b3dae8; local edits/new code/tests/removals are uncommitted |
+| Patient PDFs | `/Users/barbarosisik/PDS-Restricted-Work/goal-patient/` | Verified mode 700; eight pre-existing PDFs plus one explicitly requested derived transcription |
+| Patient extracted/transcribed records | `/Users/barbarosisik/PDS-Restricted-Work/index-patient/` | Verified mode 700; stays outside Git and outside the DREAM preservation bundle |
+| Registered DREAM run | `/Users/barbarosisik/PDS-Restricted-Work/prostate-lab-trajectories/runs/2026-09-04-audit-001` | Verified present; restricted source and output copies remain local |
+| Tooling | `/Users/barbarosisik/tools` | Local dependencies, never patient data |
+| Approved cloud bucket | `gs://pds-dream-secure-storage-eu-20260827` | Private storage approval settled; current refresh/preservation status below |
 
-Source SHA-256, from the 2026-08-27 verification: `AB3ECA19C5D0CC4106C96AC04E665DD1A5C9DF58F66328ECD24E8E1067932391`. Google Cloud Storage does not store SHA-256, so this value is confirmed by computing it locally after download.
+Original run creation checks on 2026-09-04 verified containment, no symlinks, mode 700 and location outside synchronization folders. Stage 01 rechecked registered-path resolution and source/input redirection. Device encryption remains unknown and is not a prerequisite. No old machine is an active target.
 
-### Live source object metadata, refreshed 2026-09-04
+## Unchanged source package
 
-Read-only `gcloud storage objects describe` against the pinned object returned:
+Cloud object: `gs://pds-dream-secure-storage-eu-20260827/prostate-lab-trajectories/data/raw/pds_dream/source/AllProvidedFiles_149 (1).zip`.
 
-| Property | Value |
+- Pinned generation: `1787841139282260`; metageneration 1 recorded 2026-09-04.
+- Local source: `source/AllProvidedFiles_149.zip` relative to the registered run, mode 400.
+- Verified size: 6,227,480 bytes.
+- Verified local SHA-256: `AB3ECA19C5D0CC4106C96AC04E665DD1A5C9DF58F66328ECD24E8E1067932391`.
+- Recorded MD5: `0F8633E474B581317CB66F1783A84AD8`; cloud base64 `D4Yz5HS1gTF8tm8Xg6hK2A==`; CRC32C `gx71ow==`.
+- Last completed security verification, 2026-09-04: EUROPE-WEST4, public access prevention enforced, uniform bucket access on, no public IAM bindings. Versioning not enabled; seven-day soft delete recorded. These are dated observations, not claims of a successful new check.
+- Stage 01 verified all 18 CSVs against the original nested archives, before roster creation, and verified they remained unchanged during processing.
+
+The extracted directory was verified 2026-09-05 at 21 files and 110,158,524 bytes including ancillary files. The earlier 110,112,522-byte extraction figure is retained in the audit history. No source file was rewritten.
+
+## Stage 01 output and provenance
+
+All paths below are relative to the registered run. The roster retains all 1,600 training patients; no test-completeness filtering, laboratory transformation, cycle assignment or outcome recoding was applied. Five event tables contributed 412,575 rows with zero unmatched keys; zero duplicate core keys. Twenty-one invented-data tests passed.
+
+| Artifact | Bytes / SHA-256 | State |
+|---|---|---|
+| `interim/stage01_training_roster.csv` | 78,123 bytes; `e91a6459da073c60a06d194dd4aadaba51b945a66f834bf0c4bffd6e61b350d8` | Verified mode 600 and exact CSV read-back; do not overwrite |
+| `interim/stage01-2026-09-06-roster-001.zip` | 35,409 bytes; `76f55f10ce2398a23ede87e531e1b71657f09bb9b05aa5173aa312069249173f` | Verified local bundle containing roster, updated existing inventory, exact code/tests and dependency versions |
+| `reports/inventory_training.json` | Existing report updated with `preparation_stage01` | Restricted provenance includes all input hashes and stage results; no new report file created |
+| `reports/dream-audit-report.html` | Existing earlier audit artifact | Retained unchanged; not included in this Stage 01 bundle |
+| `src/preparation/stage01_roster.py` in repository | `b1b24d74d10e00b8ad38cebbabd88f1c66619ed7141fdad0c375818c6323951a` | Exact executed code hash; also included in bundle |
+
+**Verified source-format findings:** MedHistory, PriorMed and VitalSign training CSVs are not UTF-8. Stage 01 parses bytes reversibly as Latin-1 while requiring ASCII keys; free-text encoding remains unresolved. Evaluation DEATH/LKADT_P fields use `.` missing markers for all 470 patients. Training DEATH uses YES and empty cells; those codes remain unchanged.
+
+## Input CSV SHA-256 verification
+
+| Path relative to run | SHA-256 |
 |---|---|
-| Object | `prostate-lab-trajectories/data/raw/pds_dream/source/AllProvidedFiles_149 (1).zip` |
-| Size | 6,227,480 bytes, which MATCHES the 2026-08-27 record exactly |
-| Generation | `1787841139282260` |
-| Metageneration | 1 |
-| MD5 | `D4Yz5HS1gTF8tm8Xg6hK2A==` base64, `0F8633E474B581317CB66F1783A84AD8` hex |
-| CRC32C | `gx71ow==` base64 |
-| Storage class | STANDARD |
-| Content type | `application/x-zip-compressed` |
+| `extracted/finalscoringset/CoreTable_validation.csv` | `ff3d8ecc69c3f1150c9eae10f403376b616854dff4829717e40b54d3d66b31dc` |
+| `extracted/finalscoringset/LabValue_validation.csv` | `17733b7ee283484742bc9a1577c601c22d6e180d2a77eeb14e024abdc31c07dc` |
+| `extracted/finalscoringset/LesionMeasure_validation.csv` | `f816869fefe468549aece5f3010f7d42b37c671fa7776476df9f141f06fac4e2` |
+| `extracted/finalscoringset/MedHistory_validation.csv` | `8f306d6312bb818a434c3d9b4152115c2d98d0b18171757839b6f37295e31c58` |
+| `extracted/finalscoringset/PriorMed_validation.csv` | `ebc683bfb04610c9a2309fe2b3e4900ace2057903c7a30b40b478cd3f4ccb4c1` |
+| `extracted/finalscoringset/VitalSign_validation.csv` | `80becdac2095f8a4c574affa7d5bdac82ac6502e99d33f17f155f9c9b2b72c60` |
+| `extracted/leaderboard/CoreTable_leaderboard.csv` | `3a8ce9bec3b574a775979932a126005413665227cb5d6965738b23283a923055` |
+| `extracted/leaderboard/LabValue_leaderboard.csv` | `fbdc852ec068f5ec9aa255ffcbaa90a977027d838cefae68a71ba0b52ad93c2d` |
+| `extracted/leaderboard/LesionMeasure_leaderboard.csv` | `f2c7215b3fdc94a383f32210c6402f1509fd85a6554a69fb492b84b1744d47a7` |
+| `extracted/leaderboard/MedHistory_leaderboard.csv` | `fc7294e3a5922bf090e62c0b6f957af64dcf269b7398eb254438d2327ffe3269` |
+| `extracted/leaderboard/PriorMed_leaderboard.csv` | `b8e9c436fca069f5bf3943a5f3d119e093fe7ee0e7b3413cd259f41b181e4024` |
+| `extracted/leaderboard/VitalSign_leaderboard.csv` | `43cf86eddf36e3e24826f21f3aa69db4b90a81dd48f650336c30791c69231cab` |
+| `extracted/training/CoreTable_training.csv` | `989ebfcfb72824e570e0ca1277a7100c8caee14ce515c3503c5d77df97bf1fd4` |
+| `extracted/training/LabValue_training.csv` | `ecc9615d67da8acd3e58fef225c7623b409b02eb037371e1652a231e7433ff7d` |
+| `extracted/training/LesionMeasure_training.csv` | `ed3df99bbb49baf86c42598d484d03d7fdffdecd6e51caf14adb3e38e1fdfb90` |
+| `extracted/training/MedHistory_training.csv` | `864b491618ecec209e8b9d24ebb8a5d8a9f76f8ea4a0a7a471e9758e2e14ffb9` |
+| `extracted/training/PriorMed_training.csv` | `8c6196e49ac8e49478e097271e38c9417d76f75bb5c38828237863813c26c9b0` |
+| `extracted/training/VitalSign_training.csv` | `fd3943928c1e9d3b08ad606eb58a0ad674c65bb1d86daefee1c3aca8d029f82a` |
 
-Download at A4 must pin this exact generation so a later overwrite cannot silently change the source. A full recursive listing confirmed this is the ONLY object in the bucket, so no unexpected copies or stray uploads exist.
+## Latest private patient transcription
 
-Bucket security refreshed the same day: location `EUROPE-WEST4`, `public_access_prevention: enforced`, `uniform_bucket_level_access: true`, and an IAM policy scan found no `allUsers` or `allAuthenticatedUsers` binding.
+The user explicitly requested a PDF from pasted report text. These artifacts are outside Git and were not sent to external services or included in DREAM cloud storage.
 
-Object versioning is NOT reported as enabled on this bucket, so the original object is protected by generation pinning and by not writing to its path, rather than by version history.
-
-## Active and proposed runs
-
-| Run ID | Stage and state | Exact local folder | Cloud output prefix | Upload verification | Local cleanup |
-|---|---|---|---|---|---|
-| `2026-08-31-audit-001` | RETIRED, never started. Superseded by `2026-09-04-audit-001`. Its Windows folder belonged to a machine that is no longer part of the project | `C:\Users\BarbarosIsikGreenhou\PDS-Restricted-Work\prostate-lab-trajectories\runs\2026-08-31-audit-001` (stale, replace on approval) | `gs://pds-dream-secure-storage-eu-20260827/prostate-lab-trajectories/data/interim/pds_dream/audits/2026-08-31-audit-001/` | Not uploaded; no outputs exist | Not applicable yet; local folder not created |
-
-## Current machine, 2026-09-04
-
-The active working copy is macOS at `/Users/barbarosisik/Desktop/prostate-lab-trajectories`, verified level with `origin/main` at `7392d50`. `python3` and `git` are present. The Google Cloud CLI is NOT installed, so `gcloud` and `gsutil` are unavailable until A3 installs them. The Desktop volume reports 415 GiB free, which is ample for a 6,227,480 byte source package.
-
-### Registered macOS run root, verified 2026-09-04
-
-Root: `/Users/barbarosisik/PDS-Restricted-Work`. Run folder:
-`/Users/barbarosisik/PDS-Restricted-Work/prostate-lab-trajectories/runs/2026-09-04-audit-001`
-with subfolders `source`, `extracted`, `interim`, `reports`, `tmp` and `verify`.
-
-Verified at creation: the given path equals its `realpath`, so no symlink redirection; no symlink exists anywhere in the chain from `/` down to the run folder; every folder is mode `700` owned by `barbarosisik:staff`; the path lies outside `~/Desktop`, `~/Documents`, `~/Library/CloudStorage` and `~/Library/Mobile Documents`, and outside the Git working copy, with `git rev-parse` confirming it is not in any repository; the volume reports 416 GiB free against a 6,227,480 byte source package; and the run folder contains zero files, so no restricted bytes are present yet.
-
-Synchronization state: iCloud Drive is effectively off for this account. `MOBILE_DOCUMENTS` reports `status=None`, no `com~apple~CloudDocs` container exists, and `~/Desktop` and `~/Documents` are ordinary local directories with no iCloud placeholder attributes. A stale `CLOUDDESKTOP status=active` flag and an empty read-only `~/Library/CloudStorage/iCloudDrive-iCloudDrive` mount remain, which is inert without iCloud Drive, but restricted data is kept out of Desktop and Documents regardless. No Dropbox, Google Drive or OneDrive client is present.
-
-### A5 aggregate audit results, 2026-09-04
-
-Extraction produced 110,112,522 bytes across three partitions, all files set to mode 400. Each nested archive passed an independent CRC, unsafe-path, symlink, encryption and expansion-ratio check before extraction. All six data dictionary sheets were read. Every figure below is an aggregate count; no patient identifier and no laboratory result value was written to any report.
-
-Partitions and effective sample size:
-
-| Partition | Patients | Trials | Outcome labels | Lab rows |
-|---|---|---|---|---|
-| training | 1,600 | EFC6546 598, CELGENE 526, ASCENT2 476 | PRESENT | 210,442 |
-| leaderboard | 157 | AZ only | WITHHELD, `DEATH` and `LKADT_P` entirely blank | 6,144 |
-| finalscoringset | 313 | AZ only | WITHHELD, `DEATH` and `LKADT_P` entirely blank | 12,065 |
-
-CRITICAL consequence: the effective analysable sample is 1,600 patients, not 2,070. The two held-out DREAM partitions were the blinded challenge test sets and their outcome labels were never released, so they cannot support supervised analysis or independent validation of an outcome model. The AZ trial appears ONLY in those unlabelled partitions.
-
-Cohort homogeneity: every one of the 1,600 training patients has `TRT1_ID=PLACEBO`, `TRT2_ID=DOCETAXEL` (1,585) and `TRT3_ID=PREDNISONE` (1,581). These are the control arms of three phase 3 trials in metastatic castration-resistant prostate cancer, which makes the treatment exposure unusually uniform.
-
-Outcome availability in `CoreTable_training.csv`:
-
-| Field | Filled | Meaning |
+| Artifact | Location relative to `/Users/barbarosisik/PDS-Restricted-Work` | Verified state |
 |---|---|---|
-| `LKADT_P` | 1,600 of 1,600, 100% | Last known alive day, survival time |
-| `DEATH` | 663 YES, 41.4% event rate | Survival event |
-| `ENDTRS_C` | 1,600 of 1,600, 100% | Discontinuation reason: possible_AE 594, progression 540, AE 239, complete 116, misce 111 |
-| `ENTRT_PC` | 1,505, 94.1% | Discontinuation day |
-| `DISCONT` | 1,489, 93.1%; 197 positive | Curated discontinuation flag |
+| Derived PDF | `goal-patient/2026-09-05-laboratory-transcription.pdf` | Four pages, mode 600; all 58 current-result rows and comparison columns passed text extraction checks; all pages rendered and visually inspected |
+| Structured transcription | `index-patient/2026-09-05-user-supplied-transcription.json` | Mode 600; source qualifiers and previous-result provenance retained |
+| Private layout verification | `index-patient/pdf-qa-2026-09-05/` | Four page PNGs plus a contact sheet; local only, cleanup not performed |
 
-Longitudinal laboratory coverage in `LabValue_training.csv`: 210,442 rows, 1,600 patients, 103 distinct `LBTESTCD` codes, 92.6% with a usable numeric `LBSTRESN`. Timing relative to first treatment on day 0 is 24.1% before treatment, 6.9% on day 0 and 68.7% on or after treatment, with 0.2% missing a day.
+PDF SHA-256: `34916edc6ef533145ca61e6fa7139c7be57fe7b8942ed855b103bb1d5a61e6cd`.
+Structured transcription SHA-256: `896c9c4da60fdad078e191392c51d02b49bc95142428524103ec3b72e872eef1`.
 
-DECISIVE FEASIBILITY NUMBER: distinct laboratory days per patient BEFORE first treatment have median 2, interquartile range 1 to 3, maximum 11. Only 51.1% of patients have 2 or more pre-treatment laboratory days and only 37.1% have 3 or more. Counting the whole observation window instead, distinct laboratory days per patient have median 7, interquartile range 5 to 8, maximum 33.
+**Pending:** comparison against the actual latest original PDF, which was not supplied. Testosterone unit/reference and confirmed latest cycle number remain unresolved. The ninth dated blood panel must not be called the ninth chemotherapy cycle. The latest inferred cycle label is stored privately with its evidence status. No medical conclusion was derived from the transcription process.
 
-Twelve tests reach near-complete patient coverage at roughly 99.8%: `ALP`, `PSA`, `CREAT`, `ALT`, `TBILI`, `AST`, `NEU`, `HB`, `WBC`, `PLT`, `CA` and `TESTO`. A second tier at roughly 70% adds `GLU`, `K`, `ALB`, `TPRO`, `PHOS` and `MG`. A third tier at roughly 33% adds the full differential and chemistry panel including `LYM`, `MONO`, `BASO`, `EOS`, `HCT`, `RBC`, `CL`, `HCO3` and `URAC`. A malformed test code of `.` carries 6,151 rows and needs a cleaning rule. The `NA` sodium column in `CoreTable` is entirely empty despite being defined.
+## Local toolchain
 
-`PriorMed_training.csv` is 147,770 rows with `CMPRE=YES` on every single row and ZERO rows with a start day at or after day 0. It is therefore baseline prior medication only. The package contains NO chemotherapy administration records, no cycle dates, no per-cycle doses, no dose reductions and no dose delays. Only one row anywhere names docetaxel and it is pre-treatment.
+Python 3.12.8: `/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12`. Audit/PDF environment: `/Users/barbarosisik/tools/venv-pds-audit`. Exact installed versions are pinned in the existing `/Users/barbarosisik/tools/venv-pds-audit-requirements.txt` and included in the Stage 01 bundle.
 
-`LesionMeasure_training.csv` is 10,009 rows covering only 1,123 patients, 70.2%, and only two of the three trials, since ASCENT2 supplied no event-level lesion data. Distinct assessment days per patient have median 2 and maximum 6, and results are largely qualitative such as `PRESENT/STABLE`, `YES` and `IR` rather than clean RECIST response categories.
+PDF creation dependencies installed and verified 2026-09-06: reportlab 5.0.1, pypdfium2 5.13.0, Pillow 12.3.0 and charset-normalizer 3.5.1. Existing pypdf 6.16.2 handles text read-back. Poppler was not installed; local PDFium rendered the pages. The PDF operation marker ran successfully with the existing application-bundled Node runtime; no system Node installation was required.
 
-`VitalSign_training.csv` is 36,841 rows covering all 1,600 patients, including repeated `ECOG PERFORMANCE STATUS`, `WEIGHT`, `BODY SURFACE AREA` and blood pressure, which are usable time-varying covariates.
+Google Cloud CLI 583.0.0 remains under `~/tools/google-cloud-sdk`. Set `CLOUDSDK_PYTHON` to the Python 3.12 path above. Do not print credentials or place tooling inside restricted data folders.
 
-### Cycle alignment, verified 2026-09-04
+## Preservation and cleanup status
 
-The `VISIT` field in `LabValue_training.csv` carries 28 distinct labels and names chemotherapy cycles explicitly, which makes per-cycle trajectory features possible even though the package holds no administration records. Three trial-specific vocabularies require harmonization: CELGENE uses `CYCLE 1 DAY 1` through `CYCLE 5 DAY 1` and also `CYCLE 1 DAY 14`; EFC6546 uses `CYCLE 1` through `CYCLE 5`; ASCENT2 uses `CYCLE #01` through `CYCLE #07`. Pre-treatment labels are `SCREENING` with 38,335 rows and `PRE-ENROLLMENT` with 7,605 rows.
+**Blocked, verified 2026-09-06:** the read-only bucket metadata request stalled and was stopped. A noninteractive retry exceeded its 30-second limit and was terminated. No upload was attempted, no new cloud generation was created, and no claim of fresh cloud privacy/source verification is made. Create-only preservation of the new Stage 01 bundle remains pending. Planned destination: `gs://pds-dream-secure-storage-eu-20260827/prostate-lab-trajectories/data/processed/pds_dream/stage01/2026-09-06-roster-001.zip`. This path is a plan, not an upload receipt. No original-source overwrite is permitted.
 
-Patient coverage per cycle, out of 1,600: cycle 1 has 1,450 at 90.6%, cycle 2 has 1,493 at 93.3%, cycle 3 has 1,433 at 89.6%, cycle 4 has 1,327 at 82.9%, cycle 5 has 769 at 48.1%, and cycles 6 through 10 together have 23 patients and are unusable. Complete-case counts are 1,367 patients for cycles 1 and 2, 1,292 for cycles 1 to 3, and 1,179 for all of cycles 1 to 4.
+All restricted local copies remain. Verify every required preserved artifact by generation, size and a re-downloaded SHA-256 before proposing removal. Fresh exact-target confirmation is required. Patient originals are not part of DREAM run cleanup. Downloads duplicates have not been inventoried or removed in this session. No restricted deletion, Git commit or push occurred.
 
-Cleaning rules still required: `UNSCHEDULED` at 4,148 rows, `TX PHASE DISCONTINUATION` at 1,820 rows and the follow-up visits each need explicit handling.
-
-### A4 download and verification, 2026-09-04
-
-The pinned source generation was downloaded to
-`/Users/barbarosisik/PDS-Restricted-Work/prostate-lab-trajectories/runs/2026-09-04-audit-001/source/AllProvidedFiles_149.zip`
-and set to mode `400` so the source bytes cannot be modified in place. The cloud object was read only and was NOT altered; its generation and metageneration are unchanged.
-
-Three independent integrity checks all PASSED:
-
-| Check | Expected | Result |
-|---|---|---|
-| Byte count | 6,227,480 | MATCH |
-| SHA-256 | `AB3ECA19C5D0CC4106C96AC04E665DD1A5C9DF58F66328ECD24E8E1067932391` | MATCH, identical to the 2026-08-27 record |
-| MD5 | `0F8633E474B581317CB66F1783A84AD8` | MATCH, identical to live cloud metadata |
-
-The SHA-256 agreeing with the value recorded on the previous machine proves the package is byte-identical provenance, not a re-acquired or altered copy.
-
-Archive safety was checked WITHOUT extracting, using `zipfile` in the pinned environment. Every entry passed a CRC integrity test. The scan found no absolute paths, no `..` traversal, no symlink entries and no encrypted entries. The expansion ratio is 1.0x, 6,410,321 uncompressed against 6,227,480 compressed, so there is no zip-bomb risk.
-
-Top-level manifest, names and sizes only, with no file contents read and no patient values accessed:
-
-| Type | Size (bytes) | Name |
-|---|---|---|
-| Workbook | 31,593 | `Challenge_data_dictionary v2.xlsx` |
-| Document | 14,409 | `PCDC Protocol, CRF Location.docx` |
-| Nested archive | 5,930,904 | `prostate_cancer_challenge_data_training.zip` |
-| Nested archive | 279,647 | `prostate_cancer_challenge_data_leaderboard.zip` |
-| Nested archive | 153,768 | `prostate_cancer_challenge_data_finalscoringset.zip` |
-
-IMPORTANT structural finding for A5: the payload is three NESTED archives, not loose CSV files. Each nested archive must receive its own independent unsafe-path, symlink, encryption and expansion-ratio check before extraction. The training archive is the discovery set; leaderboard and final scoring set are held-out partitions and must not be blended into the discovery cohort without an explicit recorded decision.
-
-### Toolchain, 2026-09-04
-
-The Google Cloud CLI is NOT yet installed. The first attempt failed because macOS ships Python 3.9.6 and the CLI requires Python 3.10 or newer; its bundled `urllib3` uses PEP 604 union syntax that Python 3.9 cannot evaluate at import time. No macOS bundled-Python tarball is published by Google, so both candidate URLs return 404.
-
-The user chose to install Python 3.12.8 from python.org rather than download the source through the browser console. The installer at `~/tools/python-3.12.8-macos11.pkg` was verified as signed by the Python Software Foundation, notarized by Apple, with a trusted timestamp. Installation succeeded on 2026-09-04 and `python3.12` reports 3.12.8 at `/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12`.
-
-Verified toolchain state after installation:
-
-| Item | Value | Verified state |
-|---|---|---|
-| Google Cloud CLI | `~/tools/google-cloud-sdk`, version 583.0.0 | Runs; `gcloud storage` available; `gsutil 5.37` and `bundled-python3-unix 3.14.7` components present |
-| Interpreter for gcloud | `CLOUDSDK_PYTHON=/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12` | Persisted in `~/.zshrc`; required because macOS Python 3.9 cannot import the CLI |
-| Audit environment | `~/tools/venv-pds-audit` on Python 3.12.8 | Created; `openpyxl==3.1.5` and `et_xmlfile==2.0.0` pinned in `~/tools/venv-pds-audit-requirements.txt` |
-| Audit tool check | `python -m unittest discover -s tests` | All 3 synthetic-fixture tests pass on this machine; invented data only, no restricted data |
-| Authentication | none | `gcloud auth list` reports no credentialed accounts; the user must run `gcloud auth login` |
-
-The CLI installer additionally attempted to install its own Python 3.14 through `sudo` and failed because no terminal was available for the password. That failure is not a blocker, since the CLI runs on the configured Python 3.12 interpreter. The `~/.zshrc` file did not previously exist and was created by the installer; a copy of the pre-existing state was attempted at `~/.zshrc.backup-2026-09-04` before any edit.
-
-The audit tool `src/audit/inventory_raw_data.py` imports only the Python standard library, so the pinned `openpyxl` dependency exists for reading the data dictionary workbook sheets rather than for the inventory tool itself.
-
-Tooling is kept OUTSIDE the restricted root. The CLI tarball and extracted SDK were initially unpacked inside `~/PDS-Restricted-Work` by mistake and were relocated to `~/tools` the same day. The restricted root then contained only its README, and the run folder held zero files throughout, so no restricted data was ever involved in that relocation.
-
-Disk-encryption status is deliberately NOT checked and is NOT a gate, per the user's standing rejection of that added prerequisite. It remains unknown rather than verified.
-
-The Windows run root and the two Windows closeout deletion targets belonged to a machine that is no longer part of this project. Following the user's 2026-09-04 instruction that this Mac is the only workspace, those items are CLOSED AS OUT OF SCOPE and must not be reported as pending work.
-
-| `2026-09-04-audit-001` | LOCAL_CREATED and ready for A4. Run root registered and verified, toolchain installed and authenticated, source metadata refreshed and generation pinned, all on 2026-09-04. Awaiting the user's go-ahead for the download | `/Users/barbarosisik/PDS-Restricted-Work/prostate-lab-trajectories/runs/2026-09-04-audit-001` | `gs://pds-dream-secure-storage-eu-20260827/prostate-lab-trajectories/data/interim/pds_dream/audits/2026-09-04-audit-001/` | Not uploaded; no outputs exist | Not applicable yet; folder is empty of data |
-
-No cleaned dataset or real-file audit result has been produced. A proposed path is not evidence that a file exists.
-
-## Required per-run record
-
-- Run ID, machine label, actual absolute root, creation time, current stage and last checkpoint.
-- Local source, extraction, interim, report, temporary and verification-copy paths. Unexpected copies must be recorded too.
-- Cloud source URI, object generation, byte size and checksum; each output's explicit version URI, generation, size and checksum.
-- Exact code and dependency version; include a source snapshot/hash if work is uncommitted.
-- Security checks and transfer verification evidence, without credentials, signed URLs, patient IDs or patient values.
-- Publication state of safe code/docs and exact next scientific approval gate.
-- Cleanup targets, fresh confirmation state, deletion result and post-deletion check; outstanding items stay visible.
-
-Use states such as `proposed`, `local_created`, `downloaded_verified`, `audited`, `uploaded_unverified`, `uploaded_verified`, `cleanup_pending_confirmation`, `local_removed_verified`, or `blocked_with_local_copy`. Never skip from upload started to cleaned up.
-
-A detailed manifest belongs with the restricted cloud run bundle if filenames or metadata themselves need protection. Keep only reviewed operational metadata in this GitHub register. During execution, also upload a non-sensitive manifest/verification receipt to the run's cloud prefix so transfer state is available even before the next authorized GitHub publication. After local removal, update that receipt and the safe project record as authorized.
-
-## Other known local folders, separate cleanup issue
-
-| Exact folder | Purpose and state |
-|---|---|
-| `C:\Users\BarbarosIsikGreenhou\Desktop\prostate-lab-trajectories` | Temporary clone; corrected handoff publication verified at 0fa8485; corresponding receipt authorized. No restricted dataset downloaded here. Cleanup pending backup decision and fresh confirmation |
-| `C:\Users\BarbarosIsikGreenhou\Documents\Codex\2026-08-24\s\prostate-lab-trajectories` | Retired, do not use for research. All 19 permitted working-file contents were matched to canonical Git history, allowing line-ending/final-newline normalization. Still holds 10 literature PDFs, 10 extracted text files, 5 temporary dictionary PDFs and 2 caches not backed up in GitHub. Nothing deleted |
-
-Do not delete these folders or upload their publisher files under the dataset-processing approval. Their original backup condition and fresh exact-target confirmation still apply.
-
-The latest publication-and-cleanup request starts closeout but does not resolve that backup condition. See `docs/local-closeout-2026-08-31.md` for the exact remaining files and preservation evidence. Shared task history and app memory are not part of these two directories and must not be manually erased.
+The six retained docs are the dataset audit, this register, the execution plan, the field checklist, the source matrix and the CHAARTED audit. Five obsolete/duplicate tracked documents were removed locally under the user's explicit cleanup request, with useful content consolidated and their prior versions recoverable in Git at 4b3dae8. No new documentation file was created.

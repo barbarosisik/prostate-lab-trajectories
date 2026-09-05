@@ -1,67 +1,43 @@
-# Source Coverage Matrix
+# Source coverage and access evidence
 
-## Reading this matrix
+Updated 2026-09-06. Current DREAM counts come from the completed local audit. Alternative-source statements below are historical public evidence, not new access or download verification.
 
-- **Yes (public)**: confirmed in official public source documentation; actual column values still require source-file verification.
-- **Partial (public)**: some required information is documented, but the full outcome/feature family is not supported.
-- **Unknown**: must be resolved from the gated dictionary or actual source files.
-- **No listed table**: the official release inventory contains no table at the required grain; an unlisted column could still change the conclusion and will be checked.
-- **Not yet audited**: intentionally deferred until the PDS column audit is complete.
+## Current source decisions
 
-## Planned-source matrix
+| Source | Supported role and coverage | Limitation | Next action |
+|---|---|---|---|
+| DREAM training: ASCENT2, CELGENE, EFC6546 | Verified: 1,600 patients, serial routine labs and outcome fields; methods cohort | No actual dose records, no primary imaging-response endpoint; disease setting differs from index patient | Implement approved preparation locally |
+| DREAM AZ leaderboard/final | Verified: 470 patients excluded from supervised work | Released death and follow-up fields blank | No independent validation claim |
+| PDS hormone-sensitive docetaxel trial | Pending: candidate name, ID, actual test and timing coverage | None selected | User searches existing PDS account first, D-032 |
+| CHAARTED/E3805 | Publicly documented: D8 repeated PSA, D12 testosterone, linked outcomes | Repeated full blood panel not publicly established; exact administrations unverified | PDS search first; no dbGaP application now |
+| Vivli / Flatiron | Pending field-level compatibility | Advertised coverage is not actual source verification | No purchase or blind application |
 
-| Source | Intended role | Serial labs | Actual chemotherapy cycles/doses | Overall survival | Progression | Response | Treatment tolerance | Current verdict |
-|---|---|---|---|---|---|---|---|---|
-| PDS DREAM training: ASCENT2, MAINSAIL, VENICE | Discovery | Yes (public), through day 84 | Unknown; no administration table listed | Yes (public), patient-level | Unknown | Partial/unknown; lesion events exist with ASCENT2 exception | Partial: patient-level early AE discontinuation; no AE event table listed | Package secured in private cloud storage; latest handoff requires next-agent plan explanation and approval first; local audit not run |
-| PDS DREAM ENTHUSE-33/AZ leaderboard/final | Potential validation | Baseline only in original challenge release; current final package unknown | Unknown | Withheld in original challenge release; current visibility unknown | Unknown | Baseline/event visibility unknown | Outcome withheld in original challenge release | Do not select as validation until current package is audited |
-| CHAARTED/E3805 D5/D7/D8/D9/D11 | Controlled broadening | D8 is officially described as longitudinal PSA | Partial (public): D7 has treatment data and D9 has total dose; exact administrations are not proven | Yes (public): D5 has `os` and `dead` | Yes/partial (public): D5 has CRPC, clinical and radiographic progression fields; D7 has PSA progression | PSA response may be derived only after D8 timing and fields are verified | Unknown | Strong PSA broadening source; patient-level access is routed through dbGaP |
-| Vivli FIRSTANA/PROSELICA/TROPIC | Independent validation candidate | Advertised trial data are insufficient evidence | Unknown | Expected | Unknown by exact definition | Unknown | Unknown | Column-level enquiry required after PDS audit |
-| Flatiron Prostate Panoramic | Real-world validation candidate | Vendor verification required for all CBC/CMP, not PSA only | Vendor verification required | Expected but exact death source needed | Vendor-defined/abstracted; exact dates needed | Unknown | Dose/delay/reduction/AE fields require verification | Do not purchase/select before variable-list audit |
+D-027: assess every source against the index patient's actually measured tests and timing. D-030: DREAM is not his prognosis. D-031: leave-one-trial-out validation across the three training trials; no independent outcome-labeled holdout exists in this package. D-033: CHAARTED is expected to support PSA confirmation only. See [chaarted-public-field-audit.md](chaarted-public-field-audit.md) for submission details.
 
-## PDS trial-level coverage
+## Official DREAM provenance
 
-| Trial label | PDS `STUDYID` | Patients | Role in original challenge | Longitudinal lab window | Lesion events | Outcome visibility | Timing caveat |
-|---|---|---:|---|---|---|---|---|
-| ASCENT2 | `ASCENT2` | 476 | Training | Through day 84 (public) | No event-level lesion table | Training outcomes included (public) | Weekly versus three-weekly trial schedules require arm- and schedule-specific cycle definitions; some reference dates use consent |
-| MAINSAIL | `CELGENE` | 526 | Training | Through day 84 (public) | Yes (public) | Training outcomes included (public) | Lab/vital/lesion reference is generally first treatment date; verify exceptions |
-| VENICE | `EFC6546` | 598 | Training | Through day 84 (public) | Yes (public) | Training outcomes included (public) | Lesion/vital reference may be randomization rather than first treatment |
-| ENTHUSE-33 | `AZ` | 470 | 157 leaderboard + 313 final scoring | Baseline only in original challenge evaluation files | Yes in documented table family | Dependent outcomes withheld in original challenge | Current PDS final-scoring package contents must be inspected before assuming validation is possible |
+- PDS contribution: [Prostate Cancer DREAM Challenge](https://data.projectdatasphere.org/projectdatasphere/html/content/0abbd47a-dcfb-42c2-a036-af1898ea3c1c), ID `Prostat_na_2006_149`, DOI [10.34949/e6c8-v326](https://doi.org/10.34949/e6c8-v326).
+- Synapse project [syn2813558](https://www.synapse.org/Synapse:syn2813558), challenge folder `syn3325825`, dictionary `syn3348062`, training folder `syn3348064`, training ZIP `syn3350917`.
+- [Official data-description wiki](https://www.synapse.org/Synapse:syn2813558/wiki/209583) and [access instructions](https://www.synapse.org/Synapse:syn2813558/wiki/209590).
+- Training file IDs: CoreTable `syn3346724`; LabValue `syn3346726`; LesionMeasure `syn3346728`; MedHistory `syn3346730`; PriorMed `syn3346732`; VitalSign `syn3346734`.
+- The six source tables are patient core records, laboratory events, lesion records, screening medical history, prior medications and vital signs. Exact local/cloud hashes and locations belong in [data-location-register.md](data-location-register.md).
 
-## PDS table-by-requirement matrix
+## Timing and field cautions retained from the public audit
 
-| Required information | `CoreTable` | `LabValue` | `LesionMeasure` | `PriorMed` | `MedHistory` | `VitalSign` | Current coverage conclusion |
-|---|---|---|---|---|---|---|---|
-| Patient/trial join | Expected | Expected | Expected | Expected | Expected | Expected | Candidate keys require actual uniqueness/unmatched audit |
-| Laboratory name/result/unit/status/range | Baseline summaries only | Primary source | No | No | No | No | Event-level source exists; exact complete column inventory is gated |
-| Laboratory collection day | No | `LBDT_PC` | No | No | No | No | Relative timing exists, reference-date exceptions documented |
-| Cycle/visit label | Unknown | `VISIT` expected from public baseline logic | `VISIT` | No | Screening | `VISIT` | May support nominal-cycle analyses; not proof of actual administration |
-| Actual chemotherapy administration date | No listed event table | No documented administration field | No | No | No | No | Not established |
-| Actual/planned dose and dose reduction | Treatment IDs only | No | No | No | No | No | Not established |
-| Delay or missed cycle | No listed event table | Missing/visit patterns only | No | No | No | Visit patterns only | Cannot be defined reliably from public evidence |
-| Overall survival | `DEATH`, `LKADT_P` | No | No | No | No | No | Patient-level OS/censoring publicly documented for training |
-| Radiographic progression | Unknown | No | Measurements only | No | No | No | Not established; lesion events are not automatically progression events |
-| Clinical progression | Unknown | No | No | No | No | No | Not established |
-| PSA progression/response | Unknown outcome field | PSA lab values | No | No | No | No | Trajectory can be derived; source-defined endpoint is unknown |
-| Imaging response | Unknown | No | Measurements/standard results | No | No | No | Partial; response criteria/date fields need audit |
-| AE-related early discontinuation | `DISCONT`, `ENTRT_PC`, `ENDTRS_C` | No | No | No | No | No | Historical DREAM endpoint supported at patient level |
-| Adverse-event term/grade/date | No listed event table | No | No | No | No | No | Not supported by listed release tables |
-| Baseline covariates | Primary summaries | Baseline labs | Baseline lesions except ASCENT2 raw absence | Baseline medications | Baseline diagnoses except ASCENT2 raw absence | Baseline vital signs | Broad baseline adjustment context is publicly documented |
+`STUDYID` and `RPT` are candidate composite keys, now checked by Stage 01. `LBDT_PC` is a relative collection day, `LBBLFL` the supplied baseline flag, `LBORRES`/`LBSTRESC` original/standardized character results, `LBSTAT` completion status and `LBNRIND` the supplied reference-range indicator. Verify numeric fields and units against the actual dictionary before conversion.
 
-## Critical unresolved questions
+Trial/table reference dates may be first treatment, consent or randomization. Public documentation describes consent references in ASCENT2 and randomization references in some EFC6546 tables. Do not assume all relative days share one origin. Prior-medication end dates may have been censored at treatment start. Neither visit labels nor three-week spacing proves actual dose administration, reductions or delays. Historical duplicate counts from published processing are not counts for this run.
 
-1. What are all columns, types and missing-value codes in dictionary `syn3348062`?
-2. What is the exact patient identifier and is `STUDYID` + patient ID sufficient across all six tables?
-3. Does `LabValue.VISIT` encode cycle number consistently enough to reproduce cycles 1–4?
-4. Is any actual treatment-administration date/dose information embedded in `CoreTable` or another supplied column despite the absence of a treatment event table?
-5. How many patients/tests have at least two, three and four observations, per trial and cycle?
-6. Can a result be aligned to the next **actual** administration, or only to nominal calendar/visit landmarks?
-7. Are progression and response endpoint fields present beyond lesion measurements and PSA values?
-8. Does the current PDS final-scoring package expose ENTHUSE-33 outcomes or longitudinal data that were originally withheld?
+## Earlier alternative-source search, retained conclusions
 
-These questions must be answered before the cleaning and restructuring specification is written.
+These are the 2026-08-26 public-search conclusions, not authorization to acquire a new source. PDS access is now resolved, so old fallback acquisition instructions are retired.
 
-## Waiting-period evidence
+| Candidate | Historical evidence | Why it does not replace DREAM |
+|---|---|---|
+| MSK-CHORD | [Original paper](https://www.nature.com/articles/s41586-024-08167-5), 3,211 prostate patients; [official cBioPortal study](https://www.cbioportal.org/study/summary?id=msk_chord_2024) | Tumour-marker tracks and treatment course intervals do not establish repeated routine panels or infusion dates |
+| AACR GENIE BPC Prostate | [Public analytic guide](https://www.aacr.org/wp-content/uploads/2026/03/GENIE-BPC-Prostate-v1.0-public-Analytic-Data-Guide.pdf), 1,116 patients | PSA/testosterone and treatment intervals, not verified serial full blood panels or dosing |
+| Metastatic Prostate Cancer Project | [Methods](https://mpcproject.org/Methods.pdf), 123 participants | Small, PSA-only laboratory coverage |
+| Open Zenodo prostate cohort | [Dataset record](https://zenodo.org/records/15007105), 600 patients | Not a serial pre-cycle chemotherapy cohort |
+| SWOG S0421 / general inpatient databases | Earlier field review | No verified matching full-panel, outpatient chemotherapy-cycle structure |
 
-- [`chaarted-public-field-audit.md`](chaarted-public-field-audit.md) records the public D5, D7, D8, D9, D11 and D12 coverage and the limits of that evidence.
-- [`dream-public-code-audit.md`](dream-public-code-audit.md) records column clues from the public winning-solution code without treating them as an official dictionary.
-- [`raw-data-inventory-tool.md`](raw-data-inventory-tool.md) documents the aggregate-only inspection tool prepared for the approved files.
+An unlicensed participant copy of DREAM was found in the earlier search and was not used. Continue using the licensed, checksum-verified official package. Do not seek a separate PSA dataset merely to add antigen coverage.

@@ -1,5 +1,7 @@
 # Dataset Field-Coverage Checklist
 
+**Current use, 2026-09-06:** retain this field-level checklist as the test specification. The completed DREAM audit supersedes historical unknowns. D-024 permits visit-anchored analyses; actual pre-dose timing remains unavailable. Candidate 0-7-day pre-dose windows below apply only to a source with verified administration dates, not an assumed DREAM schedule. A0R is complete. Stage 01 is explicitly authorized; later preparation and modeling remain scoped separately.
+
 ## Purpose
 
 This is the column-level audit specification for the fixed research question. It translates the literature evidence into fields that must be found, typed, joined and quality-checked before a cleaning specification or analysis pipeline is written.
@@ -15,7 +17,7 @@ This checklist is deliberately broader than the 13 laboratory tests used in earl
 | `LIT` | Supported by the curated literature catalog. |
 | `SRC` | Must be confirmed from the actual data dictionary and source files. |
 
-The PDS-specific public evidence is recorded in [`pds-dream-access-audit.md`](pds-dream-access-audit.md). A field is not considered source-verified until its actual column name, type, values, missingness and join behavior have been inspected.
+The PDS-specific public evidence is recorded in [`pds-dream-access-audit.md`](source-coverage-matrix.md). A field is not considered source-verified until its actual column name, type, values, missingness and join behavior have been inspected.
 
 ## A. Source provenance, identifiers and joins
 

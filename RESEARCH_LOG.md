@@ -12,13 +12,15 @@ This file should be updated whenever we:
 
 ## Current snapshot
 
-**Last updated:** 2026-09-04
+**Last updated:** 2026-09-06
 
-**Project stage:** A5 complete; the dataset is fully audited at aggregate level; the blocking issue is now the pre-chemotherapy definition in the fixed question, recorded as Q-009
+**Verified:** A5 audit complete and preparation Stage 01 explicitly authorized and completed under D-034. All 1,600 training patients retained, zero duplicate core keys and zero unmatched joins across 412,575 event rows. All 18 source CSVs verified against the original archive; the roster passed exact read-back. Twenty-one tests passed after fixing byte-encoding and missing-marker assumptions.
 
-**Repository visibility:** Private
+**Pending:** Stage 02 cycle-label harmonization, followed by the remaining preparation checks and integrity checkpoint before features. Stage 01 approval does not authorize modeling. Preserve D-003 and the two-track direction: DREAM methods cohort plus PDS-first search for a hormone-sensitive docetaxel source; no dbGaP application now.
 
-**Active objective:** Obtain the user's decision on Q-009, the meaning of pre-chemotherapy in the fixed research question, since the package supplies a median of only 2 distinct pre-treatment laboratory days per patient but a median of 7 across the full window. Then scope the analysable outcome families honestly before any cleaning. Cleaning at A9 and scientific analysis at A10 still require separate approval. The next agent reads the records, explains `docs/local-processing-and-cloud-storage-plan.md`, asks one approval question and waits at A0R. The agent-added BitLocker prerequisite is withdrawn at user direction, not passed. Cloud is storage only; cleaning and scientific analysis each require later approval. Local cleanup remains pending the all-files-backup exception or permitted backup and fresh exact-target confirmation.
+**Verified patient-data handling:** the user-supplied latest panel was transcribed into a private four-page PDF and structured data outside Git. All 58 current-result rows passed PDF text read-back checks and the rendered pages were inspected. The original latest PDF is unavailable. Cycle numbering is inferred only and a missing unit remains unresolved. The index patient is the application case, not independent model validation.
+
+**Verified documentation policy:** six essential docs remain after five tracked duplicates were consolidated and removed locally. No new research documentation files were created. Changes and new code/tests remain uncommitted; no publication authorization was supplied. See the data register for current preservation and cleanup evidence.
 
 ## Fixed research question
 
@@ -65,6 +67,25 @@ This file should be updated whenever we:
 | D-024 | 2026-09-04 | Interpret pre-chemotherapy as measured around each chemotherapy cycle, not only before docetaxel starts, and anchor all trajectory features to harmonized `VISIT` cycle labels. | The user confirmed the intended design is trend analysis across cycles. The `VISIT` field names cycles explicitly in three trial-specific vocabularies, and 1,179 patients have all of cycles 1 to 4 measured. The before-treatment-only reading gives a median of 2 laboratory days and is not feasible. | Active |
 | D-025 | 2026-09-04 | Use cycles 1 to 4 as the primary analysis window on the 1,179 complete-case patients, with cycle 5 and the 1,292 three-cycle patients as sensitivity analyses. | Patient coverage is 90.6%, 93.3%, 89.6% and 82.9% at cycles 1 to 4, falls to 48.1% at cycle 5 and is negligible beyond. | Active |
 | D-026 | 2026-09-04 | Set primary endpoints as overall survival and treatment discontinuation, with PSA response as an explicitly labelled secondary. | 663 death events with complete follow-up time, and `ENDTRS_C` complete for all 1,600. No RECIST response field exists, so PSA response must not be presented as radiographic response. | Active |
+| D-032 | 2026-09-04 | Before starting any dbGaP application, search the Project Data Sphere catalogue for a hormone-sensitive metastatic prostate cancer trial with docetaxel, because PDS access is already granted and working. | NCTN and NCORP clinical data moved to dbGaP in the third quarter of 2025, and dbGaP controlled access requires an eRA Commons account plus approval from an institutional Signing Official followed by Data Access Committee review. Without a university or research-institution affiliation that route may be unavailable, whereas the PDS account already produced the DREAM package. Checking PDS costs days rather than months. | Active |
+| D-033 | 2026-09-04 | Do not expect CHAARTED to validate the full twelve-test panel. Plan for it to confirm the prostate-specific antigen findings only. | The project's own public field audit established that submission D8 is longitudinal prostate-specific antigen only, with D12 adding testosterone, and no CHAARTED submission publicly provides repeated full blood panels. The multi-test trajectory result will therefore remain DREAM-derived and castration-resistant unless a hormone-sensitive source with complete panels is found. | Active |
+| D-030 | 2026-09-04 | Run method development on DREAM and the CHAARTED access request in parallel rather than sequentially, and never report a DREAM-derived survival estimate as the index patient's prognosis. | Agreed with the user. CHAARTED is controlled access through dbGaP and will take weeks to months, while DREAM is already downloaded and verified, so waiting would idle the project. The stage mismatch makes DREAM valid for identifying which trends matter but invalid for quantifying this patient's outcome. | Active |
+| D-031 | 2026-09-04 | Validate internally by leave-one-trial-out cross-validation across EFC6546, CELGENE and ASCENT2, and freeze the pipeline before the final run. | The leaderboard and final scoring partitions carry no outcome labels, so no external validation set exists. Holding out an entire trial is the strongest honest generalization test available and directly probes cross-trial transportability. | Active |
+| D-029 | 2026-09-04 | Do not seek a separate prostate-specific-antigen dataset. | The DREAM package already contains 9,310 prostate-specific antigen measurements covering 99.9% of its 1,600 patients, so it is one of the twelve near-universal tests. The reason to obtain CHAARTED is disease-stage matching, not antigen coverage. | Active |
+| D-027 | 2026-09-04 | Judge every candidate dataset against the index patient's actually measured panel and timing, not against a generic ideal. | The project's purpose is to interpret one real patient's blood-test trends. Coverage of a test the index patient never had is near worthless; a test he has serially is high value even at partial dataset coverage. | Active |
+| D-028 | 2026-09-04 | Treat the DREAM package as the METHODS development cohort rather than the primary clinical reference. Confirmed by Q-010: the index patient is hormone-sensitive, so CHAARTED is the stage-matched reference and must be requested, while all method development proceeds on DREAM immediately rather than waiting. | DREAM is entirely castration-resistant: 90.1% had prior anti-androgens and 87.9% prior gonadotropin therapy, so all had progressed through androgen deprivation. The index patient's prostate-specific antigen is falling steeply while testosterone is at castrate level, which is the hormone-SENSITIVE response pattern. If confirmed, CHAARTED becomes the correct primary reference population and DREAM the secondary. | Pending clinical confirmation |
+
+### Decision added 2026-09-06
+
+| ID | Date | Decision | Reason | Status |
+|---|---|---|---|---|
+| D-034 | 2026-09-06 | Execute preparation Stage 01 locally: freeze all 1,600 training patients and check source integrity and composite-key joins without test/cycle filtering or outcome recoding. Later stages remain scoped separately. | The user explicitly requested starting Stage 1, correct tests and disclosure of error points after each step. | Verified complete; 21 tests passed |
+
+### Continued preparation authorization, 2026-09-06
+
+| ID | Date | Decision | Reason | Status |
+|---|---|---|---|---|
+| D-035 | 2026-09-06 | Continue preparation stages 02 to 07 sequentially toward cleaned data after publishing the current permitted work. Retain raw fields, explicit uncertainty, per-stage tests and the integrity checkpoint before features. | The user explicitly requested continuing cleaning one step at a time and function-level documentation. | Authorized; execution pending |
 
 ## Master plan
 
@@ -185,6 +206,7 @@ This file should be updated whenever we:
 | Q-003 | Which treatment-tolerance variables are consistently dated across PDS trials? | Tolerance endpoint definition |
 | Q-004 | Can progression be separated into radiographic, clinical and PSA progression in every source? | Outcome hierarchy |
 | Q-008 | Should the leaderboard and final scoring partitions be held out entirely, or pooled with training after the coverage audit? | RESOLVED by audit: their outcome labels were never released, so they are unusable for supervised work and the effective sample is 1,600 |
+| Q-010 | Is the index patient castration-resistant or still hormone-sensitive at the start of docetaxel? | High-confidence hormone-sensitive inference recorded 2026-09-04 from the private care-pathway and laboratory records. Pathology, imaging and baseline-treatment documentation remain incomplete. Patient details and values remain in the restricted patient folders. |
 | Q-009 | Does pre-chemotherapy in the fixed research question mean before docetaxel starts, or before each docetaxel cycle? | RESOLVED 2026-09-04 by the user: tests are taken around every chemotherapy cycle so that trends across cycles can be related to survival and recovery. The per-cycle reading is confirmed and the design is feasible |
 | Q-005 | Which Vivli trials expose serial standard laboratory panels and chemotherapy-cycle dates? | External validation choice |
 | Q-006 | Does Flatiron provide all standard blood values and reliable chemotherapy-cycle linkage, not only PSA? | Purchase/access decision |
@@ -486,6 +508,51 @@ Historical unapproved proposal, superseded by the later same-day local-processin
 - The user explicitly authorized publication, followed by local project cleanup after preservation. The approval-first research handoff remains unchanged: A0R must be answered before data execution, with separate later cleaning and modeling approvals.
 - All 19 permitted retired working-file contents were matched to canonical Git history, allowing newline normalization. The 27 ignored local-only papers, extracted text, temporary PDFs and caches are not backed up in GitHub. Their backup exception or permitted alternative and fresh exact-target confirmation remain unresolved.
 - This closeout changes documentation only. No patient data was downloaded, inspected, transformed or uploaded, and no new scientific result or timing assumption was made. Publication evidence belongs in the continuity log; deletion must not be reported without a fresh filesystem check.
+
+### 2026-09-05 - Onboarding verification and snapshot reconciliation
+
+- **Verified:** Completed mandatory reading and local state checks. Source size and SHA-256 match the registered package; restricted directories remain outside the repository. No patient contents were opened.
+- **Verified:** Replaced stale snapshot instructions that reopened Q-009 and A0R. Preserved the current two-track direction and separate A9/A10 gates. Highest existing identifier is D-033; no methodological decision or new identifier was added.
+- **Blocked:** Fresh remote branch verification failed because `github.com` could not be resolved. Cached references are not a fresh publication receipt.
+- **Pending:** Implement stages 01 to 07 only after explicit approval; show integrity results before features. User reminders remain PDS dataset name/ID, institutional affiliation and duplicate-record housekeeping. No scientific analysis or data transformation was performed.
+
+### 2026-09-06: Reasons for preparation and proposed reuse of excluded records
+
+- **Verified user preference:** Explain the reason for each proposed step, including what it enables or which error it prevents. Keep replies short and numbered.
+- **Verified discussion scope:** The user asked whether excluded records could be compressed into 5 to 10 weighted, column-average observations and returned to the analysis. This is a methodological question, not approval to transform data or revise D-025.
+- **Inferred methodological assessment:** Such averages may describe excluded groups, but treating them as additional observed patients would lose individual cycle patterns and their links to outcomes. Arbitrary weights do not restore those links or supply independent observations. Preserve source records and distinguish row-level exclusions from whole-patient exclusions.
+- **Pending alternatives:** Assess usable portions of incomplete records and, where assumptions are defensible, multiple imputation or missingness weighting as separately specified sensitivity analyses. Multiple imputation creates plausible versions of missing entries and combines estimates with uncertainty; it does not append invented average patients. Preserve the approved primary cohort. Any learned preprocessing for prediction must respect trial splits and prediction-time availability.
+- **Verified sources consulted:** [Sterne et al., BMJ 2009](https://www.bmj.com/content/338/bmj.b2393) on imputation assumptions and uncertainty; [scikit-learn common pitfalls](https://scikit-learn.org/stable/common_pitfalls.html) on preprocessing leakage.
+- **Verified execution boundary:** Documentation only. No restricted record was opened, excluded, transformed or deleted in this discussion; no new decision identifier or implementation approval was recorded.
+
+### 2026-09-06: Educational walkthrough requested before local preparation
+
+- **Verified user request:** Explain the proposed cleaning process step by step with invented before-and-after tables and a reason for each action, before starting implementation on this Mac. This request does not approve execution yet.
+- **Verified code state:** The existing `src/audit/inventory_raw_data.py` is an inventory tool, not the A9 preparation pipeline. Its baseline heuristic must not silently become the cleaning definition.
+- **Pending preparation sequence:** 01 freeze the training roster and verify joins; 02 harmonize visit labels while retaining within-cycle day; 03 check visit/day consistency using dictionary-defined trial time origins; 04 specify off-schedule and discontinuation visit handling; 05 harmonize test identities and verify units; 06 preserve missingness and bounded-result information, and distinguish exact duplicates from conflicting repeats; 07 define baseline using `LBBLFL` with timing and uniqueness checks. These are proposed operational details, not executed transformations or newly approved numerical thresholds.
+- **Pending integrity checkpoint:** Reconcile source rows with retained/excluded/review categories; report patient/test/cycle coverage, unit conflicts, timing discrepancies, baseline ambiguity and missingness. The recorded 1,179 patients with visits in cycles 1 to 4 must not be described as proven complete numeric coverage for all twelve tests. The 663 deaths refer to all 1,600 training patients, not the final landmark-eligible subset.
+- **Pending later work:** Select cycle snapshots under explicit duplicate/timing rules, build features and endpoint-specific landmark eligibility, then evaluate against baseline predictors with leave-one-trial-out validation. Early-cycle analyses must not require future visit completion; future measurements and held-out trial data cannot inform learned preprocessing. A10 approval remains separate.
+- **Verified boundaries:** Only documentation and existing invented fixtures were read. No restricted patient contents were opened and no preparation code, derived data, feature, model, upload or deletion was produced. All teaching examples in the reply are invented; clinical meaning is not inferred from them. No new decision identifier was added.
+
+### 2026-09-06 - Stage 01 executed, private transcription verified and documentation consolidated
+
+- **Verified authorization:** user requested local Stage 01 execution, correct tests, progress/error reports, durable patient locations, fewer documents and a private PDF from supplied report text. Added D-034 for the scoped stage. No authorization was inferred for later modeling or Git publication.
+- **Verified implementation:** new roster code and invented failure tests; 21 tests passed. All 18 source CSVs matched the original nested archives. Roster: 1,600 patients, zero duplicate keys; five event tables: 412,575 rows, zero unmatched keys. All patients retained regardless of laboratory completeness. Output read-back and mode 600 verified.
+- **Verified errors and recovery:** initial UTF-8 decoding failure and then the evaluation literal-dot missing marker each stopped output safely. Fixed with reversible byte parsing/ASCII-key enforcement and explicit missing-marker handling, with regression tests. Free-text semantics and endpoint coding remain pending.
+- **Verified private patient work:** read eight prior PDFs for dates and explicit cycle labels; created a labelled four-page transcription and structured data from the latest user text, outside Git. All 58 current rows and historical comparison columns survived text extraction. Rendered all four pages and inspected their layout. Original-PDF verification and confirmed latest cycle number remain pending; no patient values or identifiers were copied into project documentation.
+- **Verified consolidation:** reduced docs from eleven to six. Retained useful provenance and limitations in the existing source matrix, dataset audit and execution plan. Removed only five tracked, unmodified duplicate/obsolete documents, recoverable at local HEAD 4b3dae8. Refreshed onboarding and agent instructions so patient paths and current scope persist across sessions.
+- **Pending:** cycle/day/unit/baseline checks, source PDF for the latest transcription, private-output preservation/cleanup completion as recorded in the register, and any Git commit/push. No index-patient file is included in the DREAM preservation bundle. No restricted file was deleted.
+
+**Stage 01 final verification receipt, 2026-09-06:** independently rechecked 1,600 unique roster keys, laboratory-row accounting, all 18 input hashes, executed code hash and roster hash. Five retired docs are absent; six remain. Markdown links, whitespace and patient-identifier checks passed. Only the new preparation code and invented tests are untracked. No commit or push occurred.
+
+**Blocked preservation receipt:** stopped the stalled read-only cloud metadata request; a noninteractive retry timed out after 30 seconds and was terminated. No upload was attempted and no restricted file was deleted. The local Stage 01 bundle and private patient artifacts remain at their registered locations. This is a connectivity/access-check failure, not a new storage-permission question.
+
+### 2026-09-06: Publication, documented functions and continued cleaning authorized
+
+- **Verified user authorization:** first commit and push the permitted developments; then continue toward cleaned data stage by stage. Treat this as approval for preparation stages 02 to 07, retaining the integrity checkpoint before features and the separate A10 modeling gate. The user also authorized testing private cloud reads and a new write or edit; the original source remains immutable.
+- **Verified publication preparation:** live GitHub main is 7392d50 and dataset-audit is 4b3dae8, matching the local branch references. Added function-level documentation to the existing Stage 01 implementation without changing its behavior. Its original executed code remains preserved in the restricted bundle with its original hash; the docstring revision has a different source hash.
+- **Standing preference:** explain every production function, report reasons and error points after each stage, and keep user-facing updates TLDR. No new documentation files.
+- **Pending:** commit/push verification, current cloud reachability and subsequent cleaning execution. Do not call authorization or a planned write a completed operation.
 
 ## Future update template
 

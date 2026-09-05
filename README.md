@@ -34,7 +34,7 @@ Starting narrowly keeps the treatment and disease setting coherent. Later phases
 
 ### 1. Discover
 
-**Dataset:** Prostate Cancer DREAM Challenge / Project Data Sphere (PDS), using ASCENT2, MAINSAIL and VENICE, with ENTHUSE-33 assessed as an additional validation cohort.
+**Dataset:** Prostate Cancer DREAM Challenge / Project Data Sphere (PDS), using ASCENT2, MAINSAIL and VENICE, with leave-one-trial-out validation. The ENTHUSE-33 evaluation partitions lack outcome labels and are excluded from supervised work.
 
 **Work:** Analyze every usable repeated blood value alone and in combination. Measure starting level, change, slope, acceleration, instability and threshold crossings.
 
@@ -42,7 +42,7 @@ Starting narrowly keeps the treatment and disease setting coherent. Later phases
 
 ### 2. Broaden
 
-**Dataset:** CHAARTED / E3805 linked submissions.
+**Dataset:** search the existing PDS catalogue first for a hormone-sensitive docetaxel cohort. CHAARTED / E3805 remains a possible PSA-only confirmation source; do not start dbGaP now.
 
 **Work:** Re-test the findings that are available, especially longitudinal PSA, in metastatic hormone-sensitive prostate cancer. Link longitudinal PSA, treatment exposure, progression and survival through the shared deidentified patient IDs.
 
@@ -76,15 +76,16 @@ The curated literature layer is in [`literature/`](literature/README.md):
 - [`download_manifest.csv`](literature/download_manifest.csv) records full-text access and validation status.
 - Full-text PDFs and extracted text stay in the ignored local `literature/papers/` folder.
 
-The active dataset-audit layer is in [`docs/`](docs/):
+The six retained documents in [`docs/`](docs/) are:
 
-- [`dataset-field-coverage-checklist.md`](docs/dataset-field-coverage-checklist.md) defines every field, count and feasibility gate that must be checked.
-- [`pds-dream-access-audit.md`](docs/pds-dream-access-audit.md) records the official PDS/Synapse package, file IDs, public table semantics and current access blocker.
-- [`source-coverage-matrix.md`](docs/source-coverage-matrix.md) separates verified, partial, unknown and not-yet-audited coverage by source and PDS trial.
-- [`chaarted-public-field-audit.md`](docs/chaarted-public-field-audit.md) records what the public CHAARTED submissions can and cannot support.
-- [`dream-public-code-audit.md`](docs/dream-public-code-audit.md) records schema clues from public DREAM code without treating it as patient data.
-- [`raw-data-inventory-tool.md`](docs/raw-data-inventory-tool.md) explains the read-only, aggregate inspection tool prepared for the approved files.
-- [`dream-dataset-audit-2026-09-04.md`](docs/dream-dataset-audit-2026-09-04.md) is the completed field-level audit of the real DREAM package and the feasibility verdict.
+- [`dream-dataset-audit-2026-09-04.md`](docs/dream-dataset-audit-2026-09-04.md): verified findings, limitations and stage results.
+- [`data-location-register.md`](docs/data-location-register.md): exact private locations, hashes and preservation/cleanup state.
+- [`local-processing-and-cloud-storage-plan.md`](docs/local-processing-and-cloud-storage-plan.md): preparation sequence and executable checks.
+- [`dataset-field-coverage-checklist.md`](docs/dataset-field-coverage-checklist.md): field-level test specification.
+- [`source-coverage-matrix.md`](docs/source-coverage-matrix.md): source suitability and retained access evidence.
+- [`chaarted-public-field-audit.md`](docs/chaarted-public-field-audit.md): linked CHAARTED fields and limits.
+
+Update these documents rather than creating new per-step reports. Patient PDFs and extracted/transcribed records stay under `~/PDS-Restricted-Work/goal-patient/` and `~/PDS-Restricted-Work/index-patient/`, outside Git.
 
 The project continuity layer is:
 
