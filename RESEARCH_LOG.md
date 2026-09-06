@@ -212,13 +212,14 @@ This file should be updated whenever we:
 | Q-006 | Does Flatiron provide all standard blood values and reliable chemotherapy-cycle linkage, not only PSA? | Purchase/access decision |
 | Q-011 | Why do 112,167 training rows disagree numerically between `LBSTRESN` and `LBSTRESC`, and which column is authoritative? | RESOLVED 2026-09-06 by Stage 05: `LBSTRESN` is a whole-number rounding of `LBSTRESC`. Use `LBSTRESC` only. |
 | Q-012 | Given that ASCENT2 cycle-labelled rows contain only PSA, should ASCENT2 be restricted to PSA trajectories or excluded from multi-test per-cycle work? | Final trial composition |
-| Q-013 | When `LBBLFL` equal to `Y` sits on a row that also carries a `CYCLE` visit label, which record defines baseline? | Stage 07 baseline rule |
+| Q-013 | When `LBBLFL` equal to `Y` sits on a row that also carries a `CYCLE` visit label, which record defines baseline? | RESOLVED 2026-09-06 by Stage 07: the flag defines it. A cycle 1 day 1 draw at day 0 is a legitimate baseline and most CELGENE baselines are exactly that. |
 | Q-014 | Should EFC6546 cycle 1 be treated as missing for panel tests, given a median of 4 test codes per patient there against 26 at later cycles? | Cycle window for the per-cycle feature set |
 | Q-015 | When one visit label spans more than one recorded collection day, which draw represents that cycle? 1,495 of 8,512 patient-visit groups are affected. | Stage 06 repeat-measurement rule |
 | Q-016 | How should the laboratory clock (first treatment) be reconciled with the outcome clock (consent for ASCENT2 and CELGENE, randomization for EFC6546) when no per-patient offset is recoverable? | Any landmark or time-to-event analysis |
 | Q-017 | Should the discontinuation endpoint be restricted to the 1,489 patients with a non-missing `DISCONT`, and how are the 95 patients without a treatment stop day handled? | Second endpoint definition |
 | Q-018 | How are the 815 bounded results and the 543 rows whose bound was lost upstream to be handled in a trajectory? | Stage 06 value rule |
 | Q-019 | Should LDH be kept in the panel at 463 patients at cycle 2, roughly half the coverage of every other test, given its recognized prognostic value? | Final feature set |
+| Q-020 | Does EFC6546 number its first treatment day as 1 rather than 0? All 2,221 positive-day baselines are exactly day 1 and all come from that trial. | Confirming baselines precede treatment |
 
 ## Risk register
 
@@ -612,6 +613,15 @@ Historical unapproved proposal, superseded by the later same-day local-processin
 - **Verified panel coverage, patients holding a usable measurement:** roughly 1,030 patients per chemistry and haematology test at cycle 2, near 1,000 at cycle 3 and 935 at cycle 4, with PSA higher at 1,403, 1,347 and 1,247. Cycle 1 is weak at 540 to 616 because EFC6546 barely measured it, which confirms Q-014's concern with numbers.
 - **Verified weak test:** LDH reaches only 463 patients at cycle 2, less than half the coverage of every other panel test. Since LDH is a recognized prognostic marker in this disease, its inclusion is a genuine trade-off between a known signal and a halved sample.
 - **Added Q-019.** Q-015 is now answered in method: the repeat rule selects the draw closest to what the visit is meant to describe. No new decision identifier; highest existing remains D-034.
+
+### 2026-09-06: Stage 07 baselines and the completion of the authorized preparation
+
+- **Verified method:** the baseline is the source's own flagged row where one is usable, otherwise the latest usable measurement on or before the first treatment day, otherwise none. Two disagreeing flags produce no baseline rather than an arbitrary pick. This resolves Q-013 in favour of the flag, with the timing check retained as a guard.
+- **Verified and corrective:** a baseline is not the same thing as a pre-treatment visit. Most CELGENE baselines sit on the cycle 1 day 1 visit, at day 0, because that is the last draw before the first dose.
+- **Verified result:** 38,623 baselines from 46,128 patient and test combinations, with 37,647 from the flag, 976 from the fallback and only 6 abandoned to conflicting flags. Panel coverage is roughly 1,500 to 1,565 of 1,600 patients for every test except sodium at 1,085 and LDH at 954.
+- **Verified timing sanity:** median baseline day -2, and 38,551 of 38,623 within 28 days of the first dose. The 2,221 positive-day baselines are all exactly day 1 and all in EFC6546, consistent with a one-day numbering convention rather than a post-treatment measurement.
+- **Status:** the authorized preparation is complete and the pipeline stops at the integrity checkpoint. No feature has been calculated and no model has been fitted.
+- **Added Q-020.** No new decision identifier; highest existing remains D-034.
 
 ## Future update template
 
