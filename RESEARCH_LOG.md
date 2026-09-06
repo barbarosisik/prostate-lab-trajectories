@@ -215,6 +215,8 @@ This file should be updated whenever we:
 | Q-013 | When `LBBLFL` equal to `Y` sits on a row that also carries a `CYCLE` visit label, which record defines baseline? | Stage 07 baseline rule |
 | Q-014 | Should EFC6546 cycle 1 be treated as missing for panel tests, given a median of 4 test codes per patient there against 26 at later cycles? | Cycle window for the per-cycle feature set |
 | Q-015 | When one visit label spans more than one recorded collection day, which draw represents that cycle? 1,495 of 8,512 patient-visit groups are affected. | Stage 06 repeat-measurement rule |
+| Q-016 | How should the laboratory clock (first treatment) be reconciled with the outcome clock (consent for ASCENT2 and CELGENE, randomization for EFC6546) when no per-patient offset is recoverable? | Any landmark or time-to-event analysis |
+| Q-017 | Should the discontinuation endpoint be restricted to the 1,489 patients with a non-missing `DISCONT`, and how are the 95 patients without a treatment stop day handled? | Second endpoint definition |
 
 ## Risk register
 
@@ -583,6 +585,15 @@ Historical unapproved proposal, superseded by the later same-day local-processin
 - **Verified usable sample for a per-cycle panel study:** 922 patients, 403 CELGENE and 519 EFC6546, hold timing-verified cycle starts at cycles 2, 3 and 4. 726 hold cycles 1 to 4. This is the honest denominator for the planned design, against 1,600 in the roster and 1,124 in those two trials.
 - **Verified hard boundary:** the largest recorded day anywhere is 84, so the laboratory record ends at twelve weeks. Cycles 1 to 4 are complete, cycle 5 is a truncated boundary case, and no per-cycle feature may assume observation beyond day 84.
 - **Added Q-015.** No new decision identifier; highest existing remains D-034.
+
+### 2026-09-06: Stage 04 research roles and a direct inspection of the outcome fields
+
+- **Verified method:** one ordered rule set assigns every row a single purpose. A row that cannot be placed in time is excluded before its visit role is considered, because a measurement with no usable date cannot support a trajectory whatever its label says. Exclusion is recorded with a fixed reason and the row is retained, so a later question may still use it on stated grounds.
+- **Verified result:** 136,681 cycle measurements, 44,155 baseline candidates, 15,341 mid-cycle measurements, 7,135 context only and 7,130 excluded, from 210,442 rows with none deleted.
+- **Verified outcome structure:** `DEATH` blank means censored, not missing. `DISCONT` is absent for 111 patients and `ENTRT_PC` for 95, so the discontinuation endpoint has a smaller usable sample than the survival endpoint.
+- **Verified confounding risk:** death rates are 72.4, 29.0 and 17.5 per cent in EFC6546, ASCENT2 and CELGENE, tracking median follow-up of 642, 357 and 279 days. Trial must enter any pooled survival model as a stratum.
+- **Verified clock mismatch, now the leading methodological risk:** laboratory days run from first treatment while outcome days run from consent (ASCENT2, CELGENE) or randomization (EFC6546). No same-patient offset is measurable for the consent-referenced trials in the released data. EFC6546's offset is measurable at a median of 2 days.
+- **Added Q-016 and Q-017.** No new decision identifier; highest existing remains D-034.
 
 ## Future update template
 
