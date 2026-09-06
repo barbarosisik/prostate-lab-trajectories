@@ -39,12 +39,17 @@ import stage05_tests_units as stage05
 import stage06_values as stage06
 import stage07_baseline as stage07
 
-# The tests measured widely enough to form a panel every patient can share.
-CORE_PANEL = ('ALP', 'ALT', 'AST', 'CA', 'CREAT', 'HB', 'NEU', 'PLT', 'PSA', 'TBILI', 'WBC')
-
-# The two tests with materially thinner coverage, reported separately so their
-# cost to the sample size is visible rather than buried in a single total.
-SPARSE_PANEL = ('LDH', 'SODIUM')
+# Which tests form the panel is decided by measured coverage, not by a list
+# chosen in advance. Every test in the source is counted, then sorted into a
+# tier by how many patients actually hold it across the analysis window.
+#
+# The distinction that matters is between requiring a test and studying one.
+# A test in the primary tier is required of every patient, so it sets who is in
+# the study. A test in the secondary tier is still studied, but on its own
+# smaller group, so it costs no one their place. Requiring a thinly measured
+# test is what shrinks a cohort; studying it separately does not.
+PRIMARY_MIN_PATIENTS = 600
+SECONDARY_MIN_PATIENTS = 300
 
 # The cycles the timing checks showed to be well measured across two trials.
 ANALYSIS_CYCLES = (2, 3, 4)
@@ -130,15 +135,16 @@ def check_units_resolved(run: Path) -> dict[str, int]:
     return {'used_measurements': used, 'used_measurements_without_a_unit': missing}
 
 
-def count_coverage(run: Path) -> dict:
-    """Count the patients, not the rows, that the intended analysis can use.
+def test_cohorts(run: Path) -> tuple[dict[str, set], dict[int, set]]:
+    """Return, for every test in the source, the patients who can actually use it.
 
-    A row count flatters a study. What matters is how many patients hold a
-    usable measurement for every test in the panel at every cycle in the
-    window, and also hold a starting value to measure change against.
+    A patient counts for a test only if they hold a usable measurement of it at
+    every cycle in the analysis window and also hold a starting value to
+    measure change against. This is deliberately computed for all 103 test
+    codes rather than a chosen few, so the panel can be decided by evidence.
     """
     have: dict[tuple[str, int], set] = defaultdict(set)
-    per_cycle_patients: dict[int, set] = defaultdict(set)
+    per_cycle: dict[int, set] = defaultdict(set)
     for _, row in records(run / 'interim/stage06_measurements.csv', set(stage06.OUTPUT_FIELDS)):
         if row['usable_measurement'] != 'Y':
             continue
@@ -147,37 +153,54 @@ def count_coverage(run: Path) -> dict:
         cycle = int(row['cycle_number'])
         if cycle in ANALYSIS_CYCLES:
             have[(row['test_code'], cycle)].add((row['STUDYID'], row['RPT']))
-            per_cycle_patients[cycle].add((row['STUDYID'], row['RPT']))
+            per_cycle[cycle].add((row['STUDYID'], row['RPT']))
 
     baselines: dict[str, set] = defaultdict(set)
     for _, row in records(run / 'interim/stage07_baselines.csv', set(stage07.OUTPUT_FIELDS)):
         if row['baseline_value'] != '':
             baselines[row['test_code']].add((row['STUDYID'], row['RPT']))
 
-    def complete(tests, cycles):
-        """Patients holding every listed test at every listed cycle."""
-        sets = [have[(test, cycle)] for test in tests for cycle in cycles]
-        return set.intersection(*sets) if sets else set()
+    cohorts = {}
+    for code in {test for test, _ in have}:
+        across = [have[(code, cycle)] for cycle in ANALYSIS_CYCLES]
+        cohorts[code] = set.intersection(*across, baselines[code])
+    return cohorts, per_cycle
 
-    core_window = complete(CORE_PANEL, ANALYSIS_CYCLES)
-    core_baselines = set.intersection(*[baselines[t] for t in CORE_PANEL])
-    full_window = complete(CORE_PANEL + SPARSE_PANEL, ANALYSIS_CYCLES)
+
+def count_coverage(run: Path) -> dict:
+    """Sort every test into a tier by coverage and size the resulting study.
+
+    A row count flatters a study; patient counts do not. Each test is placed in
+    a tier by the size of its own usable group. The primary tier is required of
+    every patient and so defines the cohort, which is the intersection of those
+    groups and is always smaller than any one of them. The secondary tier is
+    studied on each test's own group and costs the cohort nothing, which is why
+    a thinly measured test is not the same as a discarded one.
+    """
+    cohorts, per_cycle = test_cohorts(run)
+    primary = sorted(c for c, v in cohorts.items() if len(v) >= PRIMARY_MIN_PATIENTS)
+    secondary = sorted(c for c, v in cohorts.items()
+                       if SECONDARY_MIN_PATIENTS <= len(v) < PRIMARY_MIN_PATIENTS)
+    descriptive = sorted(c for c, v in cohorts.items() if len(v) < SECONDARY_MIN_PATIENTS)
+
+    analysis_ready = set.intersection(*[cohorts[c] for c in primary]) if primary else set()
+    # What each excluded test would cost if it were required instead of studied
+    # on its own group. Reported so the trade is visible per test, not lumped.
+    cost = {code: len(analysis_ready) - len(analysis_ready & cohorts[code])
+            for code in secondary}
     return {
         'analysis_cycles': list(ANALYSIS_CYCLES),
-        'core_panel': list(CORE_PANEL),
-        'sparse_panel_reported_separately': list(SPARSE_PANEL),
+        'primary_minimum_patients': PRIMARY_MIN_PATIENTS,
+        'secondary_minimum_patients': SECONDARY_MIN_PATIENTS,
+        'tests_with_any_usable_data': len(cohorts),
+        'primary_panel': primary,
+        'secondary_panel_studied_on_their_own_groups': secondary,
+        'descriptive_only_tests': len(descriptive),
         'patients_with_any_usable_cycle_measurement': {
-            f'cycle_{c}': len(v) for c, v in sorted(per_cycle_patients.items())},
-        # Reported for every panel test and cycle, including the ones with no
-        # patients at all, so a gap in coverage is visible rather than absent.
-        'patients_per_test_per_cycle': {
-            f'{test}|cycle_{cycle}': len(have[(test, cycle)])
-            for test in CORE_PANEL + SPARSE_PANEL for cycle in ANALYSIS_CYCLES},
-        'patients_with_the_core_panel_at_every_analysis_cycle': len(core_window),
-        'patients_with_a_baseline_for_every_core_panel_test': len(core_baselines),
-        'analysis_ready_patients': len(core_window & core_baselines),
-        'patients_with_the_full_panel_at_every_analysis_cycle': len(full_window),
-        'cost_of_adding_the_sparse_tests': len(core_window) - len(full_window),
+            f'cycle_{c}': len(v) for c, v in sorted(per_cycle.items())},
+        'patients_per_test': {code: len(v) for code, v in sorted(cohorts.items())},
+        'analysis_ready_patients': len(analysis_ready),
+        'cost_in_patients_if_each_secondary_test_were_required': dict(sorted(cost.items())),
     }
 
 

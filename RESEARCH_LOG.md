@@ -220,6 +220,8 @@ This file should be updated whenever we:
 | Q-018 | How are the 815 bounded results and the 543 rows whose bound was lost upstream to be handled in a trajectory? | Stage 06 value rule |
 | Q-019 | Should LDH be kept in the panel at 463 patients at cycle 2, roughly half the coverage of every other test, given its recognized prognostic value? | RESOLVED 2026-09-06 by the integrity checkpoint: requiring LDH and sodium cuts the cohort from 706 to 278 patients. Both are excluded from the core panel and LDH becomes a secondary analysis on its own sample. |
 | Q-020 | Does EFC6546 number its first treatment day as 1 rather than 0? All 2,221 positive-day baselines are exactly day 1 and all come from that trial. | Confirming baselines precede treatment |
+| Q-021 | Are NEULE, LYMLE, MONOLE, EOSLE and BASOLE the same measurements as NEU, LYM, MONO, EOS and BASO? Their usable groups are identical at 344. | Avoiding counting one quantity twice |
+| Q-022 | With 40 tests in scope across three cycles, how is the number of candidate signals to be controlled so that chance findings are not reported as real? | Analysis plan before any modeling |
 
 ## Risk register
 
@@ -630,6 +632,15 @@ Historical unapproved proposal, superseded by the later same-day local-processin
 - **Verified decision support for Q-019:** requiring LDH and sodium alongside the core panel cuts the cohort from 706 to 278. LDH should therefore be a secondary analysis on its own sample, not a condition of entry. Q-019 is RESOLVED on that basis.
 - **Verified honesty of the cleaned dataset:** no value was edited, no unit converted, no row deleted and no baseline invented. Every exclusion carries one of five stated reasons and every retained problem is counted rather than absorbed.
 - **Status:** preparation is complete and certified. Feature construction has not begun and requires approval, and modeling remains behind its own separate gate.
+
+### 2026-09-06: The panel is derived from coverage, not asserted, after a user challenge
+
+- **Verified correction:** requiring sodium costs 2 patients, not the 428 previously attributed to it jointly with LDH. Requiring LDH alone costs 392. The earlier pairing of the two was misleading and is withdrawn.
+- **Verified principle now encoded:** requiring a test and studying a test are different decisions. Only a required test shrinks the cohort, because the cohort is the intersection of the required tests' groups. A test studied on its own group costs nothing and is not discarded.
+- **Verified design:** tests are tiered by their own usable group size. Primary at 600 or more, 18 tests, defines a cohort of 574 analysis-ready patients. Secondary between 300 and 599, 22 tests, is analysed separately. 40 of the 63 tests with usable data are therefore in scope.
+- **Verified relevance to the project's purpose:** the 7 newly required tests, albumin, glucose, potassium, magnesium, phosphorus, total protein and sodium, are all serially measured in the index patient, so the widened panel matches his record more closely than the previous eleven.
+- **Verified hazard:** NEULE, LYMLE, MONOLE, EOSLE and BASOLE each have a usable group of exactly 344, matching NEU, LYM, MONO, EOS and BASO. Almost certainly the same differential measured twice. Must be reconciled before analysis to avoid counting one quantity twice.
+- **Added Q-021 and Q-022.** Q-019 is superseded by this tiering. No new decision identifier; highest existing remains D-034.
 
 ## Future update template
 

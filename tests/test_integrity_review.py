@@ -168,17 +168,43 @@ class UnitResolutionTests(ReviewFixture):
 class CoverageTests(ReviewFixture):
     """Coverage must count patients, and must not flatter the sample."""
 
+    def wide(self, tests, patients, cycles=review.ANALYSIS_CYCLES):
+        """Write measurements and baselines covering given tests and patients."""
+        rows = []
+        line = 2
+        for patient in patients:
+            for test in tests:
+                for cycle in cycles:
+                    rows.append(self.measurement(line, test=test, unit='G/DL',
+                                                 patient=patient, cycle=str(cycle)))
+                    line += 1
+        self.rows = [r['source_row'] for r in rows]
+        self.write('extracted/training/LabValue_training.csv', ['STUDYID', 'RPT'],
+                   [{'STUDYID': 'CELGENE', 'RPT': 'INVENTED'} for _ in rows])
+        self.write_stage_tables(measurements=rows)
+        self.write('interim/stage07_baselines.csv', review.stage07.OUTPUT_FIELDS,
+                   [{'STUDYID': 'CELGENE', 'RPT': p, 'test_code': t, 'test_unit': 'G/DL',
+                     'baseline_value': '13.8', 'baseline_day': '-3',
+                     'baseline_source': review.stage07.FROM_SPONSOR_FLAG,
+                     'baseline_source_row': 2, 'flagged_rows': 1,
+                     'candidate_rows_on_or_before_first_dose': 1}
+                    for p in patients for t in tests])
+
     def test_a_patient_missing_one_panel_test_is_not_analysis_ready(self):
         coverage = review.count_coverage(self.run)
-        self.assertEqual(coverage['patients_with_the_core_panel_at_every_analysis_cycle'], 0)
         self.assertEqual(coverage['analysis_ready_patients'], 0)
+
+    def test_a_test_counts_a_patient_only_at_every_analysis_cycle(self):
+        self.wide(['HB'], ['P1'], cycles=(2, 3))
+        self.assertEqual(review.count_coverage(self.run)['patients_per_test']['HB'], 0)
+        self.wide(['HB'], ['P1'])
+        self.assertEqual(review.count_coverage(self.run)['patients_per_test']['HB'], 1)
 
     def test_only_measurements_stage06_accepted_are_counted(self):
         rejected = dict(self.measurement(2), usable_measurement='N')
         self.write_stage_tables(measurements=[rejected, self.measurement(3, test='WBC', unit='10^9/L')])
         coverage = review.count_coverage(self.run)
-        self.assertEqual(coverage['patients_per_test_per_cycle']['HB|cycle_2'], 0)
-        self.assertEqual(coverage['patients_per_test_per_cycle']['WBC|cycle_2'], 1)
+        self.assertEqual(coverage['patients_per_test'].get('HB', 0), 0)
 
     def test_a_cycle_outside_the_analysis_window_is_not_counted(self):
         self.write_stage_tables(measurements=[self.measurement(2, cycle='5'),
@@ -186,11 +212,45 @@ class CoverageTests(ReviewFixture):
         coverage = review.count_coverage(self.run)
         self.assertEqual(coverage['patients_with_any_usable_cycle_measurement'], {'cycle_2': 1})
 
-    def test_the_sparse_tests_are_reported_apart_from_the_core_panel(self):
+    def test_tiers_are_decided_by_measured_coverage_not_a_fixed_list(self):
+        wide = [f'P{n}' for n in range(review.PRIMARY_MIN_PATIENTS)]
+        narrow = wide[:review.SECONDARY_MIN_PATIENTS]
+        self.wide(['HB'], wide)
         coverage = review.count_coverage(self.run)
-        self.assertEqual(coverage['sparse_panel_reported_separately'], list(review.SPARSE_PANEL))
-        self.assertNotIn('LDH', coverage['core_panel'])
-        self.assertNotIn('SODIUM', coverage['core_panel'])
+        self.assertIn('HB', coverage['primary_panel'])
+        self.wide(['HB'], narrow)
+        coverage = review.count_coverage(self.run)
+        self.assertIn('HB', coverage['secondary_panel_studied_on_their_own_groups'])
+        self.assertNotIn('HB', coverage['primary_panel'])
+
+    def test_a_thinly_measured_test_costs_the_cohort_nothing_when_not_required(self):
+        wide = [f'P{n}' for n in range(review.PRIMARY_MIN_PATIENTS)]
+        rows, line = [], 2
+        for patient in wide:
+            for cycle in review.ANALYSIS_CYCLES:
+                rows.append(self.measurement(line, test='HB', patient=patient, cycle=str(cycle)))
+                line += 1
+        for patient in wide[:review.SECONDARY_MIN_PATIENTS]:
+            for cycle in review.ANALYSIS_CYCLES:
+                rows.append(self.measurement(line, test='LDH', patient=patient, cycle=str(cycle)))
+                line += 1
+        self.rows = [r['source_row'] for r in rows]
+        self.write('extracted/training/LabValue_training.csv', ['STUDYID', 'RPT'],
+                   [{'STUDYID': 'CELGENE', 'RPT': 'INVENTED'} for _ in rows])
+        self.write_stage_tables(measurements=rows)
+        self.write('interim/stage07_baselines.csv', review.stage07.OUTPUT_FIELDS,
+                   [{'STUDYID': 'CELGENE', 'RPT': p, 'test_code': t, 'test_unit': 'G/DL',
+                     'baseline_value': '1', 'baseline_day': '-3',
+                     'baseline_source': review.stage07.FROM_SPONSOR_FLAG,
+                     'baseline_source_row': 2, 'flagged_rows': 1,
+                     'candidate_rows_on_or_before_first_dose': 1}
+                    for t, group in (('HB', wide), ('LDH', wide[:review.SECONDARY_MIN_PATIENTS]))
+                    for p in group])
+        coverage = review.count_coverage(self.run)
+        self.assertEqual(coverage['primary_panel'], ['HB'])
+        self.assertEqual(coverage['analysis_ready_patients'], review.PRIMARY_MIN_PATIENTS)
+        self.assertEqual(coverage['cost_in_patients_if_each_secondary_test_were_required']['LDH'],
+                         review.PRIMARY_MIN_PATIENTS - review.SECONDARY_MIN_PATIENTS)
 
 
 if __name__ == '__main__':
