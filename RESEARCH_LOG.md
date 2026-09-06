@@ -210,6 +210,9 @@ This file should be updated whenever we:
 | Q-009 | Does pre-chemotherapy in the fixed research question mean before docetaxel starts, or before each docetaxel cycle? | RESOLVED 2026-09-04 by the user: tests are taken around every chemotherapy cycle so that trends across cycles can be related to survival and recovery. The per-cycle reading is confirmed and the design is feasible |
 | Q-005 | Which Vivli trials expose serial standard laboratory panels and chemotherapy-cycle dates? | External validation choice |
 | Q-006 | Does Flatiron provide all standard blood values and reliable chemotherapy-cycle linkage, not only PSA? | Purchase/access decision |
+| Q-011 | Why do 112,167 training rows disagree numerically between `LBSTRESN` and `LBSTRESC`, and which column is authoritative? | Trustworthy laboratory values before any feature |
+| Q-012 | Given that ASCENT2 cycle-labelled rows contain only PSA, should ASCENT2 be restricted to PSA trajectories or excluded from multi-test per-cycle work? | Final trial composition |
+| Q-013 | When `LBBLFL` equal to `Y` sits on a row that also carries a `CYCLE` visit label, which record defines baseline? | Stage 07 baseline rule |
 
 ## Risk register
 
@@ -553,6 +556,15 @@ Historical unapproved proposal, superseded by the later same-day local-processin
 - **Verified publication preparation:** live GitHub main is 7392d50 and dataset-audit is 4b3dae8, matching the local branch references. Added function-level documentation to the existing Stage 01 implementation without changing its behavior. Its original executed code remains preserved in the restricted bundle with its original hash; the docstring revision has a different source hash.
 - **Standing preference:** explain every production function, report reasons and error points after each stage, and keep user-facing updates TLDR. No new documentation files.
 - **Pending:** commit/push verification, current cloud reachability and subsequent cleaning execution. Do not call authorization or a planned write a completed operation.
+
+### 2026-09-06: Publication verified and pre-Stage-02 source measurements
+
+- **Verified publication:** `dataset-audit` is published at `721d84a` and confirmed against the GitHub remote with a fresh `git ls-remote`. The working tree is clean and no restricted file entered Git.
+- **Verified, aggregate only, training partition:** the unrecognized laboratory code `.` is `SODIUM`, `CHEMISTRY`, `MMOL/L` in all 6,151 of its rows and can be recovered rather than dropped. No test code carries more than one non-missing `LBSTRESU` across trials. Result formats are 194,714 numeric, 12,295 non-numeric text, 2,618 missing and 815 bounded originals, of which 540 lose their `<` or `>` bound in the standard character column. 112,167 rows disagree numerically between `LBSTRESN` and `LBSTRESC` and must be explained before values are used.
+- **Verified coverage limitation:** rows carrying a `CYCLE` visit label include only `PSA` from ASCENT2 (1,882 rows); the wider panels come from CELGENE and EFC6546 alone. A multi-test per-cycle model is therefore a two-trial design, and ASCENT2 can only contribute PSA trajectories.
+- **Verified baseline ambiguity:** `LBBLFL` equal to `Y` appears on 22,129 CELGENE, 16,101 EFC6546 and 6,143 ASCENT2 rows, and 15,639, 4,141 and 322 of those also carry a `CYCLE` visit label, so the supplied flag and the cycle labels overlap and cannot both define baseline without an explicit rule.
+- **Blocked:** private Google Cloud is unreachable from this machine, so the authorized read and write connectivity test did not run.
+- **No new decision identifier added.** Highest existing remains D-034.
 
 ## Future update template
 
