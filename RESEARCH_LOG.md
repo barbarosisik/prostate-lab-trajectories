@@ -213,6 +213,7 @@ This file should be updated whenever we:
 | Q-011 | Why do 112,167 training rows disagree numerically between `LBSTRESN` and `LBSTRESC`, and which column is authoritative? | Trustworthy laboratory values before any feature |
 | Q-012 | Given that ASCENT2 cycle-labelled rows contain only PSA, should ASCENT2 be restricted to PSA trajectories or excluded from multi-test per-cycle work? | Final trial composition |
 | Q-013 | When `LBBLFL` equal to `Y` sits on a row that also carries a `CYCLE` visit label, which record defines baseline? | Stage 07 baseline rule |
+| Q-014 | Should EFC6546 cycle 1 be treated as missing for panel tests, given a median of 4 test codes per patient there against 26 at later cycles? | Cycle window for the per-cycle feature set |
 
 ## Risk register
 
@@ -565,6 +566,14 @@ Historical unapproved proposal, superseded by the later same-day local-processin
 - **Verified baseline ambiguity:** `LBBLFL` equal to `Y` appears on 22,129 CELGENE, 16,101 EFC6546 and 6,143 ASCENT2 rows, and 15,639, 4,141 and 322 of those also carry a `CYCLE` visit label, so the supplied flag and the cycle labels overlap and cannot both define baseline without an explicit rule.
 - **Blocked:** private Google Cloud is unreachable from this machine, so the authorized read and write connectivity test did not run.
 - **No new decision identifier added.** Highest existing remains D-034.
+
+### 2026-09-06: Stage 02 visit standardization and its consequence for trial composition
+
+- **Verified method:** visit labels are translated by an exhaustive lookup table of the 29 observed (trial, label) pairs. An unenumerated, differently cased or differently spaced label is refused rather than parsed, so the source cannot change meaning without stopping the stage. Original text is retained and no laboratory value is read.
+- **Verified result:** all 210,442 training laboratory rows received exactly one disposition, zero were dropped, and per-label counts matched the audited source exactly.
+- **Verified design consequence:** a multi-test per-cycle analysis is supported by CELGENE at cycles 1 to 5 and by EFC6546 at cycles 2 to 5 only. EFC6546 cycle 1 holds a median of 4 test codes per patient against 26 later, and ASCENT2 cycle visits hold PSA alone. ASCENT2 therefore contributes PSA trajectories and a 13-code pre-enrolment baseline, not a per-cycle panel.
+- **Verified open assumption:** only CELGENE states a day within the cycle. 58,839 EFC6546 and 1,882 ASCENT2 cycle-start rows carry an assumed rather than a stated day, which Stage 03 must test against `LBDT_PC`.
+- **Added Q-014.** No new decision identifier; highest existing remains D-034.
 
 ## Future update template
 
