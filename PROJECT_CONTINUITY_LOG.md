@@ -797,6 +797,14 @@ Historical proposal only. The later same-day local-processing correction below s
 - **Verified suite:** 180 tests, all passing, including new tests asserting that tier membership follows measured coverage rather than a fixed list and that a thinly measured test costs the cohort nothing when it is studied rather than required.
 - **Exact next action:** resolve the duplicated differential codes, then present the feature plan for approval. Feature construction and modeling both remain unapproved.
 
+### 2026-09-06: Onboarding prompt rewritten for the completed preparation
+
+- **Verified action:** `NEXT_AGENT_ONBOARDING_PROMPT.md` was rewritten in place rather than duplicated, in keeping with the standing instruction to create no new documents. It now carries the user's communication requirements first, since those have been corrected most often, then the index-patient goal, the reading order, what the data is, the seven traps that cost time to rediscover, the completed stage-by-stage state, the exact next action and the live open questions.
+- **Verified traps recorded for the next agent:** the rounded `LBSTRESN` column, the clock mismatch between laboratory and outcome time, the incomparable death rates across trials, baseline not being a screening visit, the `.` code being sodium, the difference between requiring a test and studying one, and units already being harmonized.
+- **Verified next action written into the prompt:** settle Q-021 first, the five `...LE` differential codes whose usable groups are all exactly 344 and identical to their non-suffixed counterparts, with evidence from values, units and `LBSCAT` rather than assumption. Only then present a feature plan for approval. Modeling at A10 stays a separate gate.
+- **Verified Git hygiene before publishing:** `git ls-files --others --exclude-standard` returned nothing untracked, and no restricted or patient path is tracked in the repository.
+- **Exact next action:** unchanged. Reconcile the duplicated differential codes, then present the feature plan for approval.
+
 ## Session update template
 
 Append one block for every future working session:
