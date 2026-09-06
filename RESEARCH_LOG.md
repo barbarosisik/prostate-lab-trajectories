@@ -214,6 +214,7 @@ This file should be updated whenever we:
 | Q-012 | Given that ASCENT2 cycle-labelled rows contain only PSA, should ASCENT2 be restricted to PSA trajectories or excluded from multi-test per-cycle work? | Final trial composition |
 | Q-013 | When `LBBLFL` equal to `Y` sits on a row that also carries a `CYCLE` visit label, which record defines baseline? | Stage 07 baseline rule |
 | Q-014 | Should EFC6546 cycle 1 be treated as missing for panel tests, given a median of 4 test codes per patient there against 26 at later cycles? | Cycle window for the per-cycle feature set |
+| Q-015 | When one visit label spans more than one recorded collection day, which draw represents that cycle? 1,495 of 8,512 patient-visit groups are affected. | Stage 06 repeat-measurement rule |
 
 ## Risk register
 
@@ -574,6 +575,14 @@ Historical unapproved proposal, superseded by the later same-day local-processin
 - **Verified design consequence:** a multi-test per-cycle analysis is supported by CELGENE at cycles 1 to 5 and by EFC6546 at cycles 2 to 5 only. EFC6546 cycle 1 holds a median of 4 test codes per patient against 26 later, and ASCENT2 cycle visits hold PSA alone. ASCENT2 therefore contributes PSA trajectories and a 13-code pre-enrolment baseline, not a per-cycle panel.
 - **Verified open assumption:** only CELGENE states a day within the cycle. 58,839 EFC6546 and 1,882 ASCENT2 cycle-start rows carry an assumed rather than a stated day, which Stage 03 must test against `LBDT_PC`.
 - **Added Q-014.** No new decision identifier; highest existing remains D-034.
+
+### 2026-09-06: Stage 03 timing verification and the realistic per-cycle sample
+
+- **Verified method:** the schedule used for checking was derived from the source rather than assumed. Cycle-start median days are 0, 21, 42, 63 and 84 in all three trials independently, giving an observed 21 day cycle, applied only as a check with a stated 10 day tolerance. A second check, that a patient's later cycle is never recorded on or before an earlier one, uses no schedule assumption at all.
+- **Verified result:** zero cycle order violations across 1,600 patients, and a median deviation of 0 days in every trial and cycle bar one. The Stage 02 labels and the recorded dates agree. Q-014's sibling concern, that 60,721 cycle-start rows carried an assumed rather than a stated day, is resolved in favour of the labels.
+- **Verified usable sample for a per-cycle panel study:** 922 patients, 403 CELGENE and 519 EFC6546, hold timing-verified cycle starts at cycles 2, 3 and 4. 726 hold cycles 1 to 4. This is the honest denominator for the planned design, against 1,600 in the roster and 1,124 in those two trials.
+- **Verified hard boundary:** the largest recorded day anywhere is 84, so the laboratory record ends at twelve weeks. Cycles 1 to 4 are complete, cycle 5 is a truncated boundary case, and no per-cycle feature may assume observation beyond day 84.
+- **Added Q-015.** No new decision identifier; highest existing remains D-034.
 
 ## Future update template
 
