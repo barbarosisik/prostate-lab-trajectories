@@ -45,6 +45,18 @@ All paths below are relative to the registered run. The roster retains all 1,600
 
 **Verified source-format findings:** MedHistory, PriorMed and VitalSign training CSVs are not UTF-8. Stage 01 parses bytes reversibly as Latin-1 while requiring ASCII keys; free-text encoding remains unresolved. Evaluation DEATH/LKADT_P fields use `.` missing markers for all 470 patients. Training DEATH uses YES and empty cells; those codes remain unchanged.
 
+## Stage 02 to 06 outputs and provenance
+
+All files below sit under the registered restricted run root, are mode 600, were written with exclusive creation so no earlier output could be overwritten, and passed an exact CSV read-back. `stage06_measurements.csv` is the first preparation output that contains laboratory values, so it is patient-level restricted data and must never enter Git or leave the run root.
+
+| File | Size and SHA-256 | Contents |
+|---|---|---|
+| `interim/stage02_visit_index.csv` | 12,045,462 bytes; `c3ab83097f991092c19f522ca09cfa15d27c87a2e5e75e16ce1f333078e3f0ae` | Visit label translation keyed by source row. Contains no laboratory value. |
+| `interim/stage03_timing_flags.csv` | 18,968,836 bytes; `b6bc1c87df1e7003fab5d5ff2f5386329b0c44ff15ded3543c276898859e871f` | Timing verdicts against the recorded collection day. Contains no laboratory value. |
+| `interim/stage04_analysis_roles.csv` | 16,522,691 bytes; `dcbc4b870d5ed70ba5671f214be6a732eba7b301ba904a4b9fb4e939088f0488` | One research purpose and, where excluded, one reason per row. Contains no laboratory value. |
+| `interim/stage05_test_catalog.csv` | 7,504 bytes; `078651fa00f5c4eedce5086c90ac40c6296776e068acb7c241f7a82fa11c4b04` | Test-level catalogue of 103 codes with names, units and format counts. Aggregate only, no patient row. |
+| `interim/stage06_measurements.csv` | 20,834,185 bytes; `f30b122a3a88f996762f5287b0d53f86e2b0e40f031a414a710abc5bd7be601b` | Patient-level measurements with value kind, analysis value, retained bounds and repeat status. RESTRICTED. |
+
 ## Input CSV SHA-256 verification
 
 | Path relative to run | SHA-256 |

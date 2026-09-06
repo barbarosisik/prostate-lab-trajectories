@@ -218,6 +218,7 @@ This file should be updated whenever we:
 | Q-016 | How should the laboratory clock (first treatment) be reconciled with the outcome clock (consent for ASCENT2 and CELGENE, randomization for EFC6546) when no per-patient offset is recoverable? | Any landmark or time-to-event analysis |
 | Q-017 | Should the discontinuation endpoint be restricted to the 1,489 patients with a non-missing `DISCONT`, and how are the 95 patients without a treatment stop day handled? | Second endpoint definition |
 | Q-018 | How are the 815 bounded results and the 543 rows whose bound was lost upstream to be handled in a trajectory? | Stage 06 value rule |
+| Q-019 | Should LDH be kept in the panel at 463 patients at cycle 2, roughly half the coverage of every other test, given its recognized prognostic value? | Final feature set |
 
 ## Risk register
 
@@ -603,6 +604,14 @@ Historical unapproved proposal, superseded by the later same-day local-processin
 - **Verified:** the code `.` is SODIUM and is recovered from its test name alone, never from the size of its result.
 - **Verified caution:** 543 rows lost a `<` or `>` bound between the original and standardized columns and must not be read as exact values. A further 815 rows retain their bound and need an explicit rule at Stage 06.
 - **Added Q-018.** No new decision identifier; highest existing remains D-034.
+
+### 2026-09-06: Stage 06 value classification, repeat rules and real panel coverage
+
+- **Verified method:** four kinds of entry are kept apart, since an absent cell, an uninterpretable text entry, a bounded result and an ordinary number are four different statements and none of the first three is a zero. Bounds are retained with direction and limit and yield no analysis value. Repeats are settled by an explicit rule per purpose, and a same-day conflict is left unresolved rather than decided arbitrarily.
+- **Verified result:** 175,308 usable measurements from 210,442 rows, with none deleted and no value altered. 606 rows remain unresolved same-day conflicts.
+- **Verified panel coverage, patients holding a usable measurement:** roughly 1,030 patients per chemistry and haematology test at cycle 2, near 1,000 at cycle 3 and 935 at cycle 4, with PSA higher at 1,403, 1,347 and 1,247. Cycle 1 is weak at 540 to 616 because EFC6546 barely measured it, which confirms Q-014's concern with numbers.
+- **Verified weak test:** LDH reaches only 463 patients at cycle 2, less than half the coverage of every other panel test. Since LDH is a recognized prognostic marker in this disease, its inclusion is a genuine trade-off between a known signal and a halved sample.
+- **Added Q-019.** Q-015 is now answered in method: the repeat rule selects the draw closest to what the visit is meant to describe. No new decision identifier; highest existing remains D-034.
 
 ## Future update template
 
