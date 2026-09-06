@@ -218,7 +218,7 @@ This file should be updated whenever we:
 | Q-016 | How should the laboratory clock (first treatment) be reconciled with the outcome clock (consent for ASCENT2 and CELGENE, randomization for EFC6546) when no per-patient offset is recoverable? | Any landmark or time-to-event analysis |
 | Q-017 | Should the discontinuation endpoint be restricted to the 1,489 patients with a non-missing `DISCONT`, and how are the 95 patients without a treatment stop day handled? | Second endpoint definition |
 | Q-018 | How are the 815 bounded results and the 543 rows whose bound was lost upstream to be handled in a trajectory? | Stage 06 value rule |
-| Q-019 | Should LDH be kept in the panel at 463 patients at cycle 2, roughly half the coverage of every other test, given its recognized prognostic value? | Final feature set |
+| Q-019 | Should LDH be kept in the panel at 463 patients at cycle 2, roughly half the coverage of every other test, given its recognized prognostic value? | RESOLVED 2026-09-06 by the integrity checkpoint: requiring LDH and sodium cuts the cohort from 706 to 278 patients. Both are excluded from the core panel and LDH becomes a secondary analysis on its own sample. |
 | Q-020 | Does EFC6546 number its first treatment day as 1 rather than 0? All 2,221 positive-day baselines are exactly day 1 and all come from that trial. | Confirming baselines precede treatment |
 
 ## Risk register
@@ -622,6 +622,14 @@ Historical unapproved proposal, superseded by the later same-day local-processin
 - **Verified timing sanity:** median baseline day -2, and 38,551 of 38,623 within 28 days of the first dose. The 2,221 positive-day baselines are all exactly day 1 and all in EFC6546, consistent with a one-day numbering convention rather than a post-treatment measurement.
 - **Status:** the authorized preparation is complete and the pipeline stops at the integrity checkpoint. No feature has been calculated and no model has been fitted.
 - **Added Q-020.** No new decision identifier; highest existing remains D-034.
+
+### 2026-09-06: Integrity checkpoint passed and the true sample size established
+
+- **Verified reconciliation:** 210,442 source rows appear exactly once in every stage output, all 1,600 measured patients are in the roster, and there are zero unit conflicts across 175,308 used measurements. The 2,829 blank units are urine pH and specific gravity, which are dimensionless, and neither is in the panel.
+- **Verified sample size, counted in patients rather than rows: 663 analysis-ready patients.** These hold a usable measurement for all eleven core panel tests at each of cycles 2, 3 and 4, plus a baseline for every one. Before the baseline requirement the figure is 706, and 1,443 patients hold a complete set of core baselines.
+- **Verified decision support for Q-019:** requiring LDH and sodium alongside the core panel cuts the cohort from 706 to 278. LDH should therefore be a secondary analysis on its own sample, not a condition of entry. Q-019 is RESOLVED on that basis.
+- **Verified honesty of the cleaned dataset:** no value was edited, no unit converted, no row deleted and no baseline invented. Every exclusion carries one of five stated reasons and every retained problem is counted rather than absorbed.
+- **Status:** preparation is complete and certified. Feature construction has not begun and requires approval, and modeling remains behind its own separate gate.
 
 ## Future update template
 
