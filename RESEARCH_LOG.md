@@ -210,13 +210,14 @@ This file should be updated whenever we:
 | Q-009 | Does pre-chemotherapy in the fixed research question mean before docetaxel starts, or before each docetaxel cycle? | RESOLVED 2026-09-04 by the user: tests are taken around every chemotherapy cycle so that trends across cycles can be related to survival and recovery. The per-cycle reading is confirmed and the design is feasible |
 | Q-005 | Which Vivli trials expose serial standard laboratory panels and chemotherapy-cycle dates? | External validation choice |
 | Q-006 | Does Flatiron provide all standard blood values and reliable chemotherapy-cycle linkage, not only PSA? | Purchase/access decision |
-| Q-011 | Why do 112,167 training rows disagree numerically between `LBSTRESN` and `LBSTRESC`, and which column is authoritative? | Trustworthy laboratory values before any feature |
+| Q-011 | Why do 112,167 training rows disagree numerically between `LBSTRESN` and `LBSTRESC`, and which column is authoritative? | RESOLVED 2026-09-06 by Stage 05: `LBSTRESN` is a whole-number rounding of `LBSTRESC`. Use `LBSTRESC` only. |
 | Q-012 | Given that ASCENT2 cycle-labelled rows contain only PSA, should ASCENT2 be restricted to PSA trajectories or excluded from multi-test per-cycle work? | Final trial composition |
 | Q-013 | When `LBBLFL` equal to `Y` sits on a row that also carries a `CYCLE` visit label, which record defines baseline? | Stage 07 baseline rule |
 | Q-014 | Should EFC6546 cycle 1 be treated as missing for panel tests, given a median of 4 test codes per patient there against 26 at later cycles? | Cycle window for the per-cycle feature set |
 | Q-015 | When one visit label spans more than one recorded collection day, which draw represents that cycle? 1,495 of 8,512 patient-visit groups are affected. | Stage 06 repeat-measurement rule |
 | Q-016 | How should the laboratory clock (first treatment) be reconciled with the outcome clock (consent for ASCENT2 and CELGENE, randomization for EFC6546) when no per-patient offset is recoverable? | Any landmark or time-to-event analysis |
 | Q-017 | Should the discontinuation endpoint be restricted to the 1,489 patients with a non-missing `DISCONT`, and how are the 95 patients without a treatment stop day handled? | Second endpoint definition |
+| Q-018 | How are the 815 bounded results and the 543 rows whose bound was lost upstream to be handled in a trajectory? | Stage 06 value rule |
 
 ## Risk register
 
@@ -594,6 +595,14 @@ Historical unapproved proposal, superseded by the later same-day local-processin
 - **Verified confounding risk:** death rates are 72.4, 29.0 and 17.5 per cent in EFC6546, ASCENT2 and CELGENE, tracking median follow-up of 642, 357 and 279 days. Trial must enter any pooled survival model as a stratum.
 - **Verified clock mismatch, now the leading methodological risk:** laboratory days run from first treatment while outcome days run from consent (ASCENT2, CELGENE) or randomization (EFC6546). No same-patient offset is measurable for the consent-referenced trials in the released data. EFC6546's offset is measurable at a median of 2 days.
 - **Added Q-016 and Q-017.** No new decision identifier; highest existing remains D-034.
+
+### 2026-09-06: Stage 05 settles the value column and closes the unit question
+
+- **Verified and decisive:** `LBSTRESN` is a whole-number rounding of `LBSTRESC` throughout this source. All 194,814 of its parsable values are integers and 99.8 per cent of the 112,167 disagreements are reproduced exactly by rounding to the nearest integer. Q-011 is therefore RESOLVED: `LBSTRESC` is authoritative and `LBSTRESN` must never be used, because rounding to whole numbers destroys creatinine, bilirubin, potassium, calcium and neutrophil counts, whose entire clinical ranges span only a few units.
+- **Verified:** 103 test codes, each with exactly one name and exactly one standardized unit across all three trials. No unit conversion is required or performed. The 42 codes with several original units were already harmonized by the sponsors into `LBSTRESU`.
+- **Verified:** the code `.` is SODIUM and is recovered from its test name alone, never from the size of its result.
+- **Verified caution:** 543 rows lost a `<` or `>` bound between the original and standardized columns and must not be read as exact values. A further 815 rows retain their bound and need an explicit rule at Stage 06.
+- **Added Q-018.** No new decision identifier; highest existing remains D-034.
 
 ## Future update template
 
