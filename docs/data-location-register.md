@@ -58,6 +58,10 @@ All files below sit under the registered restricted run root, are mode 600, were
 | `interim/stage07_baselines.csv` | 3,295,284 bytes; `dee1f9b05cb7deca6138548fa821b374bbdc29c1748cfec125f34468064910d4` | One starting value per patient and test, with the evidence it rests on. RESTRICTED. |
 | `interim/stage06_measurements.csv` | 20,834,185 bytes; `f30b122a3a88f996762f5287b0d53f86e2b0e40f031a414a710abc5bd7be601b` | Patient-level measurements with value kind, analysis value, retained bounds and repeat status. RESTRICTED. |
 
+## Differential reconciliation, 2026-09-07
+
+`src/preparation/differential_reconciliation.py`, SHA-256 `c2c4247c046514c8989019a46edce57554075a61dd041f8ba9c73ed0d5f96b9e`, answers open question Q-021 and writes no file. It reads the Stage 05 catalogue and the Stage 06 measurements, reports aggregates only, and modifies nothing, so it adds no restricted artifact to preserve or delete. Its verdict is that the five `...LE` codes are shares of the white cell count in per cent rather than duplicates of the counts in `10^9/L`, and that each share is derived from its own count and `WBC`.
+
 ## Input CSV SHA-256 verification
 
 | Path relative to run | SHA-256 |

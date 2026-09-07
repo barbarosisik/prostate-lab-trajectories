@@ -1,6 +1,6 @@
 # Next agent onboarding
 
-Updated 2026-09-06 after the authorized preparation Stages 01 to 07 and the integrity checkpoint were completed. Read this file first, then the records listed below, before doing any research work.
+Updated 2026-09-07 after the differential reconciliation closed Q-021 and the user approved the feature plan, D-037, on the landmark cohort design. Read this file first, then the records listed below, before doing any research work.
 
 ## 0. How to talk to this user
 
@@ -36,7 +36,7 @@ The new draw being "before cycle 6" is inferred, not confirmed. Counting blood-t
 
 1. `AGENTS.md`
 2. `PROJECT_CONTINUITY_LOG.md`, the Current snapshot and the A0 to A10 tracker first, then the dated history from the bottom up
-3. `RESEARCH_LOG.md`, current snapshot, decision register and open questions. Historical identifiers D-021 to D-026 collide from parallel sessions; qualify them by date. The highest existing identifier is **D-034**; check before adding a new one.
+3. `RESEARCH_LOG.md`, current snapshot, decision register and open questions. Historical identifiers D-021 to D-026 collide from parallel sessions; qualify them by date. The highest existing identifier is **D-037**; check before adding a new one.
 4. `docs/dream-dataset-audit-2026-09-04.md`
 5. `docs/data-location-register.md`, which carries every output path and SHA-256
 6. `docs/local-processing-and-cloud-storage-plan.md` and `README.md`
@@ -115,19 +115,20 @@ Tests are tiered by their own usable group, meaning patients holding that test a
 
 ## 7. The exact next action
 
-**Do this first, before anything else, and do not skip to modeling.**
+**Q-021 is closed and D-037 was approved on 2026-09-07. The next action is to build the per-cycle landmark feature tables.**
 
-**Step 1, reconcile the duplicated differential codes.** `NEULE`, `LYMLE`, `MONOLE`, `EOSLE` and `BASOLE` each have a usable group of **exactly 344**, identical to `NEU`, `LYM`, `MONO`, `EOS` and `BASO`. They are very probably the same white cell differential recorded twice under a second code, one set possibly as a percentage and the other as an absolute count. This is open question **Q-021**.
+**Step 1, done 2026-09-07.** The five `...LE` codes are not duplicates. Each pair is one cell type in two forms: a count of cells in `10^9/L` and that cell type's share of all white cells in `%`. All 14,380 paired readings reproduce `100 * count / WBC` within 1.0 percentage point, worst case 0.45, and the five counts total the white cell count while the five shares total a hundred. Both forms are kept. Because a share is fully determined by its count and `WBC`, `DERIVED_FROM` in `src/preparation/differential_reconciliation.py` records that dependency, and no feature may use all three as independent evidence. A recorded but unacted-on option: 75 readings hold a usable `NEULE` where Stage 06 left `NEU` contested, and the share plus `WBC` could settle those. That would be a data decision and needs its own approval.
 
-How to settle it, with evidence rather than assumption: for the same patient, test pair and visit, compare the two codes' standardized values, units and `LBSCAT`. If one is a percentage and the other an absolute count, they are different quantities and both may be kept, with the percentage clearly named. If they are the same quantity, keep one code and record which, because counting a single measurement twice would make it appear to corroborate itself in any model. Report the evidence either way. Write the check as documented functions with invented-data tests, in the established pattern, and update both root logs.
+**Step 2, presented and APPROVED 2026-09-07 as D-037.** Asked to choose between the landmark cohort and the certified 574-patient intersection, the user chose the landmark design. Build on it. Modeling at A10 is still a separate gate and may not be inferred from this approval. What the approved plan says and why:
 
-**Step 2, then present a feature plan for approval. Do not build features before the user approves the plan.** The plan must state:
-
-- Which features per test per cycle. The obvious candidates are the value itself, the change from baseline and the percentage change from baseline, but justify the choice rather than assuming it.
-- How the timing restriction works. A prediction made at cycle 2 may use only information available by cycle 2. It may not use a cycle 4 measurement, and it may not require that the patient survived to reach cycle 4.
-- How non-random missingness is handled. A patient whose later tests are missing may be missing them because they were becoming unwell. 63 patients have a last known alive day of 84 or less, which is inside the same twelve-week window the laboratory record covers. These must be counted explicitly.
-- How the number of candidate signals is controlled. With 40 tests, three cycles and several change measures there are hundreds of candidates, and at a 5 per cent threshold roughly one in twenty will look real by chance alone. This is open question **Q-022**.
-- How findings will be checked. Leave-one-trial-out across the three DREAM trials, with the pipeline frozen before the final run. Do not use the index patient or a held-out trial to tune cleaning or model choices.
+- **Cohort.** Build a separate landmark cohort for each of cycles 2, 3 and 4, rather than the single 574-patient cohort that requires all 18 primary tests at all three cycles. The intersection design silently requires staying on treatment for 63 days and keeps only 6 of the 197 recorded discontinuations, against 39 at cycle 2, 25 at cycle 3 and 7 at cycle 4. Landmark sizes are 439, 786, 782 and 735 at cycles 1 to 4, all larger than 574, and the cycle-2 cohort matches the roster on death rate, 43.1 against 41.4 per cent.
+- **Features per test at landmark cycle k:** the value at cycle k, the change from baseline to cycle k, and from cycle 3 onward one fitted slope across baseline to cycle k. 36 candidates at cycle 2, 54 at each of cycles 3 and 4, 144 in total. Cycle 1 is not used as a previous-cycle reference because EFC6546 cycle 1 is nearly empty.
+- **Timing restriction.** Each landmark uses only data recorded up to its own cycle, follow-up starts at that cycle's day, and no patient is required to survive or remain on treatment beyond it.
+- **Missingness, counted not worked around.** All 476 ASCENT2 patients are excluded from every multi-test cohort at every cycle, because that trial records only PSA at cycle visits; this resolves Q-012. A further 168 roster patients have no usable cycle-2 measurement at all and are the sickest group, 87 of them discontinued and 32 last known alive within 84 days. No per-cycle design can include them.
+- **Endpoints at the cycle-2 landmark:** overall survival with 339 deaths, usable. `DISCONT` with 39 events and 96 missing, exploratory only, which bears on Q-017. `ENDTRS_C` as a reason for stopping, 307 progression, 122 adverse event, 260 possible adverse event, 96 miscellaneous, 1 completed, categorical and undated.
+- **Trial as a stratum, not a covariate to ignore.** In the intersection cohort CELGENE shows 11.1 per cent deaths at median last-known day 280 against EFC6546 at 70.0 per cent and 730 days.
+- **Candidate-signal control, Q-022:** one primary endpoint and one primary landmark giving 36 primary candidates, Benjamini-Hochberg false discovery rate at 5 per cent within each family, every other combination labelled exploratory, and a primary finding required to hold in CELGENE and EFC6546 separately.
+- **Validation and its weakness:** leave-one-trial-out is only two-fold for the primary panel, since ASCENT2 contributes nobody. ASCENT2 supplies a genuine third trial for PSA alone, 367 patients at the cycle-2 landmark. Freeze the pipeline before reading any index-patient value and never tune on him.
 
 Modeling itself is tracker step **A10** and needs its own separate approval. Do not infer it from the preparation approval.
 
@@ -167,7 +168,7 @@ Record new output files in `docs/data-location-register.md` with size and SHA-25
 | Q-017 | Whether the discontinuation endpoint is restricted to the 1,489 patients with a non-missing `DISCONT`, and how the 95 without a stop day are handled |
 | Q-018 | How the 745 bounded results and the 543 rows whose bound was lost upstream are handled in a trajectory |
 | Q-020 | Whether EFC6546 numbers its first treatment day as 1 rather than 0. All 2,221 positive-day baselines are exactly day 1 and all from that trial |
-| Q-021 | Whether the five `...LE` differential codes duplicate `NEU`, `LYM`, `MONO`, `EOS`, `BASO`. **This is the next task.** |
+| Q-021 | RESOLVED 2026-09-07 by `differential_reconciliation.py`. The `...LE` codes are each cell type's share of the white cell count in `%`, not a duplicate of the count in `10^9/L`. All 14,380 paired readings reproduce `100 * count / WBC` within 1.0 percentage point. Both kept, nothing dropped, and `DERIVED_FROM` records each share as a function of its count and `WBC`. |
 | Q-022 | How the number of candidate signals is controlled so chance findings are not reported as real |
 
 Two tracks remain active. Develop the method on DREAM. Separately, the user searches Project Data Sphere first for a hormone-sensitive docetaxel trial matching the measured panel. Do not start a dbGaP application. Institutional affiliation is still unanswered. CHAARTED is expected to confirm PSA findings only.
