@@ -12,15 +12,17 @@ This file should be updated whenever we:
 
 ## Current snapshot
 
-**Last updated:** 2026-09-06
+**Last updated:** 2026-10-09
 
-**Verified:** A5 audit complete and preparation Stage 01 explicitly authorized and completed under D-034. All 1,600 training patients retained, zero duplicate core keys and zero unmatched joins across 412,575 event rows. All 18 source CSVs verified against the original archive; the roster passed exact read-back. Twenty-one tests passed after fixing byte-encoding and missing-marker assumptions.
+**Verified:** preparation stages 01 to 07, the integrity checkpoint and the differential reconciliation are complete, and all 203 tests pass on this Mac when re-run on 2026-10-09. D-037, D-038 and D-039 are approved. Pinned analysis packages (numpy, pandas, scipy, lifelines, scikit-survival, statsmodels, matplotlib) were installed and verified on 2026-10-09; R is not installed. No feature table and no model exists yet.
 
-**Pending:** Stage 02 cycle-label harmonization, followed by the remaining preparation checks and integrity checkpoint before features. Stage 01 approval does not authorize modeling. Preserve D-003 and the two-track direction: DREAM methods cohort plus PDS-first search for a hormone-sensitive docetaxel source; no dbGaP application now.
+**Proposed, awaiting approval:** D-040, the combined-model predictor list and the prediction horizon, written out in `PAPER_PLAN.md`. Published-threshold replications wait for it.
+
+**Next:** D-039 level 1 and D-038 layer 1. Preserve D-003 and the two-track direction: DREAM is the castration-resistant methods cohort and never the index patient's prognosis; PDS-first search for a hormone-sensitive docetaxel source; no dbGaP application.
 
 **Verified patient-data handling:** the user-supplied latest panel was transcribed into a private four-page PDF and structured data outside Git. All 58 current-result rows passed PDF text read-back checks and the rendered pages were inspected. The original latest PDF is unavailable. Cycle numbering is inferred only and a missing unit remains unresolved. The index patient is the application case, not independent model validation.
 
-**Verified documentation policy:** six essential docs remain after five tracked duplicates were consolidated and removed locally. No new research documentation files were created. Changes and new code/tests remain uncommitted; no publication authorization was supplied. See the data register for current preservation and cleanup evidence.
+**Verified documentation policy:** six essential docs remain after five tracked duplicates were consolidated and removed locally. No new research documentation files were created. Code, tests and these records are published on `dataset-audit` at `84693bd`, verified against the remote on 2026-10-08. See the data register for current preservation and cleanup evidence.
 
 ## Fixed research question
 
@@ -98,6 +100,24 @@ This file should be updated whenever we:
 | ID | Date | Decision | Reason | Status |
 |---|---|---|---|---|
 | D-037 | 2026-09-07 | Build features on a separate landmark cohort for each of cycles 2, 3 and 4 rather than on the single intersection cohort that requires all three. Each landmark uses only data recorded up to its own cycle, follow-up starts at that cycle's day, and no patient is required to survive or stay on treatment beyond it. Primary endpoint is overall survival at the cycle-2 landmark, 786 patients and 339 deaths, with trial as a stratum. Treatment discontinuation is reported as exploratory only. | The intersection design requires a patient to hold all 18 primary tests at cycles 2, 3 and 4, which silently selects for staying on treatment for at least 63 days. It keeps only 6 of the 197 recorded discontinuations, against 39 at the cycle-2 landmark, so it removes almost all of the very event a tolerance analysis needs. The landmark design is also larger, 786 against 574, and matches the full roster on death rate, 43.1 per cent against 41.4 per cent, and on median last-known day, 392 against 387. | APPROVED by the user 2026-09-07: landmark per cycle. Feature construction is authorized on this design; modeling at A10 remains a separate gate |
+
+### Proposed analysis plan, 2026-10-08
+
+| ID | Date | Decision | Reason | Status |
+|---|---|---|---|---|
+| D-038 | 2026-10-08 | A10 analysis plan for DREAM in layers. **Layer 1**, landmark tables under D-037 with four refinements: (a) one fixed landmark day per cycle on the first-treatment clock, proposed as the scheduled day plus the Stage 03 tolerance, days 31, 52 and 73, using only data observed by that day; (b) outcome days moved onto the first-treatment clock, with the measured offset for EFC6546 and an assumed offset over a stated grid for ASCENT2 and CELGENE; (c) baseline in every model, so value at cycle k and change from baseline become one added-value test per laboratory test, 18 primary tests at the cycle-2 landmark rather than 36, under Benjamini-Yekutieli control; (d) skewed tests on the log scale, never percentage change. **Layer 2**, one prespecified combined model of at most 11 to 14 parameters compared with a baseline-only model by Uno's C, time-dependent AUC, Brier score and calibration, with bootstrap optimism correction as the primary internal validation and two-fold leave-one-trial-out as a transportability check. **Layer 3**, later: landmark supermodel, mixed-model history summaries, joint models. **Index patient**: reference change values from EFLM within-person variation and descriptive conditional centiles only; no model output until validated in a hormone-sensitive source. | Riley et al. 2019 caps a combined model at 9 to 25 parameters for 786 patients, 11 to 14 at realistic R2cs, recomputed locally; 36 candidates would need 1,975 to 3,057 patients. Tennant et al. 2022 states that change adjusted for baseline is mathematically identical to follow-up adjusted for baseline, checked in full text. Gomon et al. 2024 requires strict landmarking and Hernan et al. 2016 aligned time zero. PCWG3 and Thuret et al. 2008 make PSA change before 12 weeks unreliable as response, and DREAM ends at day 84. Sources LIT-023 to LIT-052. | APPROVED by the user 2026-10-09, together with installing pinned analysis packages under `~/tools`; analysis order follows D-039. No feature built and no model fitted yet |
+
+### Analysis order, 2026-10-09
+
+| ID | Date | Decision | Reason | Status |
+|---|---|---|---|---|
+| D-039 | 2026-10-09 | Order every analysis from general to specific. Level 1: everyone in a source, starting with all 1,600 DREAM patients on their starting values, including the 168 sickest and all of ASCENT2. Level 2: each test on its own group, everyone holding that test at the checkpoint, so PSA spans three trials. Level 3: the complete-panel landmark cohorts for the combined model of D-038. Level 4: subgroups and other disease settings, including hormone-sensitive sources once found, with disease setting entered as a stratum and its interaction tested. Level 5: the index patient last. Within D-003, everyone means every metastatic patient receiving chemotherapy, of either hormone status. | The user directed on 2026-10-09 that castration-resistant patients and everyone available be analysed first, with the stage-matched specification as one of the later tests. Running general levels first also shows what each narrowing step removes. D-005's choice of DREAM as the first source is unchanged; its narrow-first order no longer governs analysis sequencing. | APPROVED by the user 2026-10-09. Widening beyond men on chemotherapy deferred by the user on 2026-10-09 until first results show how much the scope limits the work |
+
+### Proposed prespecification, 2026-10-09
+
+| ID | Date | Decision | Reason | Status |
+|---|---|---|---|---|
+| D-040 | 2026-10-09 | Prespecify, before any DREAM laboratory-outcome association is examined: (a) the D-038 layer 3 combined model uses PSA, ALP, HB, ALB and NEU, each as starting value plus checkpoint value, so Model A has 5 parameters and Model B 10, with trial as a stratum; SODIUM is the first reserve; PSA, ALP and NEU on the log scale, HB and ALB linear; LDH, ECOG and the differential share codes stay out of the primary model, ECOG entering both models as a sensitivity analysis; (b) for layer 2, log scale wherever starting values are clearly right-skewed, judged from baselines only; (c) the Q-024 horizon is 180 days after each checkpoint, with 365 days as sensitivity; (d) published-threshold replications (Petrylak, Armstrong, Sonpavde, Salfi) are exploratory and run only after this entry is approved. Full detail in `PAPER_PLAN.md`. | Each chosen test has on-treatment or baseline prognostic evidence in LIT-007, LIT-010 to LIT-013, LIT-019, LIT-041, LIT-043, LIT-044 and LIT-047. Ten parameters sit inside the central Riley budget of 11.18 but above the pessimistic 9.26, so no more are added. Follow-up was checked in aggregate only: 70.0 per cent of CELGENE patients are followed to day 211 (cycle-2 checkpoint plus 180) and 25.7 per cent to day 396 (plus 365), so a one-year horizon would rest mostly on EFC6546. | PROPOSED 2026-10-09, awaiting user approval |
 
 
 ## Master plan
@@ -228,13 +248,15 @@ This file should be updated whenever we:
 | Q-013 | When `LBBLFL` equal to `Y` sits on a row that also carries a `CYCLE` visit label, which record defines baseline? | RESOLVED 2026-09-06 by Stage 07: the flag defines it. A cycle 1 day 1 draw at day 0 is a legitimate baseline and most CELGENE baselines are exactly that. |
 | Q-014 | Should EFC6546 cycle 1 be treated as missing for panel tests, given a median of 4 test codes per patient there against 26 at later cycles? | Cycle window for the per-cycle feature set |
 | Q-015 | When one visit label spans more than one recorded collection day, which draw represents that cycle? 1,495 of 8,512 patient-visit groups are affected. | Stage 06 repeat-measurement rule |
-| Q-016 | How should the laboratory clock (first treatment) be reconciled with the outcome clock (consent for ASCENT2 and CELGENE, randomization for EFC6546) when no per-patient offset is recoverable? | Any landmark or time-to-event analysis |
+| Q-016 | How should the laboratory clock (first treatment) be reconciled with the outcome clock (consent for ASCENT2 and CELGENE, randomization for EFC6546) when no per-patient offset is recoverable? | Any landmark or time-to-event analysis. 2026-10-08: Guinney et al. 2017 says DREAM survival runs from randomisation, which conflicts with the CoreTable reference fields; the dataset's own fields stay authoritative pending a dictionary re-read. Proposed handling in D-038: treat the offset as a bias parameter (Lash et al. 2014), measured for EFC6546, and a grid of each patient's lower bound, 14, 28 and 42 days elsewhere. Inferred effect: hazard ratios and within-trial C barely move; absolute survival shifts by roughly 1 to 5 percentage points |
 | Q-017 | Should the discontinuation endpoint be restricted to the 1,489 patients with a non-missing `DISCONT`, and how are the 95 patients without a treatment stop day handled? | Second endpoint definition |
 | Q-018 | How are the 815 bounded results and the 543 rows whose bound was lost upstream to be handled in a trajectory? | Stage 06 value rule |
 | Q-019 | Should LDH be kept in the panel at 463 patients at cycle 2, roughly half the coverage of every other test, given its recognized prognostic value? | RESOLVED 2026-09-06 by the integrity checkpoint: requiring LDH and sodium cuts the cohort from 706 to 278 patients. Both are excluded from the core panel and LDH becomes a secondary analysis on its own sample. |
 | Q-020 | Does EFC6546 number its first treatment day as 1 rather than 0? All 2,221 positive-day baselines are exactly day 1 and all come from that trial. | Confirming baselines precede treatment |
 | Q-021 | Are NEULE, LYMLE, MONOLE, EOSLE and BASOLE the same measurements as NEU, LYM, MONO, EOS and BASO? Their usable groups are identical at 344. | RESOLVED 2026-09-07 by `differential_reconciliation.py`: they are not the same measurement. The base code is a count of cells in `10^9/L` and the `...LE` code is that cell type's share of all white cells in `%`. Every one of the 14,380 paired readings reproduces `100 * count / WBC` to within 1.0 percentage point, worst case 0.45. Both are kept and neither is dropped, but each share is recorded in `DERIVED_FROM` as a function of its count and `WBC`, so the three are two independent numbers, not three. |
-| Q-022 | With 40 tests in scope across three cycles, how is the number of candidate signals to be controlled so that chance findings are not reported as real? | Analysis plan before any modeling |
+| Q-022 | With 40 tests in scope across three cycles, how is the number of candidate signals to be controlled so that chance findings are not reported as real? | Analysis plan before any modeling. Proposed answer in D-038: 18 added-value tests at the cycle-2 landmark under Benjamini-Yekutieli, every other combination exploratory |
+| Q-023 | What analytical imprecision (CVA) does each of the index patient's laboratories report for each panel test? | His reference change values; until supplied, any flag is provisional |
+| Q-024 | Which prediction window and evaluation horizon? Both must sit inside CELGENE follow-up, median 279 days, and be fixed before any laboratory-outcome association is examined | D-038 layers 1 and 2. Proposed answer in D-040: 180 days after each checkpoint, 365 days as sensitivity |
 
 ## Risk register
 
@@ -682,6 +704,37 @@ Historical unapproved proposal, superseded by the later same-day local-processin
 - **Proposed validation, with its weakness stated.** Leave-one-trial-out has only two trials for the primary panel, so it is a two-fold check: train on CELGENE and test on EFC6546, then the reverse, reporting both. The pipeline is frozen before any index-patient value is read, and is never tuned on him. No DREAM survival figure is reported as his prognosis, since DREAM is castration-resistant and he is hormone-sensitive.
 - **Added D-037, and the user approved it the same day.** Asked to choose between the landmark cohort and the certified 574-patient intersection, the user chose the landmark design, so feature construction is authorized on it. No feature has been built yet. Highest existing decision identifier is D-037.
 - **Bears on Q-012, Q-016, Q-017 and Q-022;** none is closed by a proposal alone.
+
+### 2026-10-08 - Verified literature review and the A10 analysis plan proposed
+
+- **Verified onboarding:** all memories, both root logs, the onboarding prompt and the mandatory documents read; 203 tests pass on this Mac. September chat transcripts were lost to the 30-day retention, so these records are the only memory.
+- **Verified method:** five research questions were planned, then answered from sources opened on 2026-10-08: architecture, prediction-model rigor, time-zero bias and dropout, prostate clinical evidence, and single-patient interpretation. Thirty catalog rows were added as LIT-023 to LIT-052. The sample-size and reference-change arithmetic was recomputed locally, and ten load-bearing sources were re-checked independently. One claim was first marked as failing that check, a 30 per cent PSA fall at 2 months as a surrogate; on 2026-10-09 the full text confirmed it, and the error came from an automated abstract summary.
+- **Verified findings that change the plan:** the combined-model budget is 11 to 14 parameters; value and change are one test once baseline is included; screening one feature at a time still spends the parameter budget; Harrell's C depends on censoring, so Uno's C is needed; landmarks must be fixed days with strict use of earlier data; neither DREAM paper used on-treatment values; DREAM's own discontinuation challenge scored a precision-recall AUC of 0.088 to 0.178 against 0.104 for random guessing.
+- **Verified hormone-sensitive context for the index patient, association only:** CHAARTED median survival 60.4 months when PSA reached 0.2 ng/mL or below at 7 months against 22.2 months above 4 ng/mL; ARASENS hazard ratio 0.71 per doubling of the PSA decline rate. These are group results, not his prognosis.
+- **Decisions:** D-038 proposed, then approved by the user on 2026-10-09. Q-016 and Q-022 updated; Q-023 and Q-024 added.
+- **Next:** user decision on D-038 and on installing pinned analysis packages. Building the feature tables remains authorized under D-037.
+
+### 2026-10-09 - D-038 approved and the analysis ordered from general to specific
+
+- **Verified approvals:** the user approved D-038, the pinned package installation and longer chat retention, and asked for analyses to run from general to specific, recorded as D-039. Highest identifiers are now D-039 and Q-024.
+- **Verified context for D-039:** median overall survival was 18.9 months with 3-weekly docetaxel in castration-resistant disease (Tannock et al. 2004, PMID 15470213) against 57.6 months with hormone therapy plus docetaxel in hormone-sensitive disease (Kyriakopoulos et al. 2018, PMID 29384722). Disease setting must therefore enter any pooled analysis as a stratum and be tested for interaction, never ignored.
+- **Next:** deep reading of the studies behind the A10 table into `literature/similar_results/`, then layer 1 under D-037 and D-038.
+
+### 2026-10-09 - Analysis environment installed and verified
+
+- **Verified:** 35 pinned, hash-checked wheel packages installed in `~/tools/venv-pds-audit` under the D-038 approval; versions in the data register. A Cox fit on 20,000 invented patients recovered a true coefficient of 0.7 as 0.685 (SE 0.01); Uno's C from scikit-survival ran on invented data; 203 project tests pass.
+- **Constraint found:** lifelines 0.30.3 requires pandas below 3.0, so pandas stays at 2.3.3.
+- **Decisions:** none new. Highest identifiers remain D-039 and Q-024.
+- **Next:** D-039 level 1 and D-038 layer 1, in a new `src/analysis/` stage with documented functions and invented-data tests.
+
+### 2026-10-09 - Paper plan written, combined-model predictors proposed, DREAM placed in published groups
+
+- **User decisions:** keep the D-003 scope of men on chemotherapy and revisit after first results; create a document saying what the paper will look for. `PAPER_PLAN.md` was created at the repository root on that explicit request.
+- **Verified gap:** no earlier record named the combined-model tests. D-038 fixed only the budget of 11 to 14 parameters and the rule to choose from the literature before outcomes. D-040 now proposes the list.
+- **Verified descriptive comparison, aggregate, no death field read:** a 30 per cent or larger PSA fall from start is reached by 56.7, 64.5 and 67.2 per cent of eligible DREAM patients by days 52, 73 and 84 (971 of 1,444 by day 84), against 76 per cent by 3 months in Petrylak's docetaxel arm. 734 of 1,526 patients with a starting ALP (48.1 per cent) meet Sonpavde's entry rule of bone metastases and ALP 120 U/L or more; 178 of 527 with two later values (33.8 per cent) are back below 120 by day 84, against 26.5 per cent by day 90 in Sonpavde. On Salfi's warning signs by day 84: ALP rise 4.3 per cent, albumin below 40 g/L 47.1 per cent (24.3 already at start), sodium 135 or less 13.4 per cent (8.9 already at start). Hussain, Harshman and Saad cannot be reproduced: no DREAM value exists after day 84.
+- **Error points:** computed by an exploratory scratch script outside the repository, not by tested pipeline code; layer-1 code must reproduce these numbers. The lowest-value rule favours patients with more draws. ASCENT2 has no on-treatment ALP, albumin or sodium. Sonpavde's normalization timing is not defined in its abstract; the latest value by day 84 was used.
+- **Decisions:** D-039 status annotated with the scope deferral; D-040 proposed. Highest identifiers are D-040 and Q-024.
+- **Next:** user approval of D-040; then the survival side of the replications and D-039 level 1.
 
 ## Future update template
 

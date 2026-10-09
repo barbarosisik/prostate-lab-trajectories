@@ -92,6 +92,7 @@ The project continuity layer is:
 - [`PROJECT_CONTINUITY_LOG.md`](PROJECT_CONTINUITY_LOG.md), the operational memory, reminder queue, current status and exact execution plan.
 - [`NEXT_AGENT_ONBOARDING_PROMPT.md`](NEXT_AGENT_ONBOARDING_PROMPT.md), the ready-to-paste prompt for the next agent.
 - [`RESEARCH_LOG.md`](RESEARCH_LOG.md), the formal research decisions, phase plan and dated scientific progress.
+- [`PAPER_PLAN.md`](PAPER_PLAN.md), what the paper will test, the model parameters, and what the data cannot support.
 - [`data-location-register.md`](docs/data-location-register.md), exact local/cloud locations, run versions, upload verification and cleanup state.
 - [`local-processing-and-cloud-storage-plan.md`](docs/local-processing-and-cloud-storage-plan.md), the proposed local audit workflow and stage approval gates.
 

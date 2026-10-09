@@ -8,15 +8,15 @@ The project exists to interpret the blood-test trends of one real index patient 
 
 His PDFs live at `/Users/barbarosisik/PDS-Restricted-Work/goal-patient/`; extracted and transcribed data live at `/Users/barbarosisik/PDS-Restricted-Work/index-patient/`. These persistent locations must be checked before research and kept OUTSIDE Git. The latest derived report is `2026-09-05-laboratory-transcription.pdf`, reconstructed from user-pasted text and not verified against its original PDF. Never move, commit or publish these records. His panel guides coverage and timing; one application patient does not independently validate outcome models.
 
-## Current direction, 2026-09-06
+## Current direction, 2026-10-09
 
 Two tracks run in parallel, decision D-030.
 
-**Track 1, active now.** Develop the whole method on the DREAM package, which is the methods cohort. It is downloaded, checksum-verified and fully audited at aggregate level. Stages A0R through A5 are complete. The user explicitly approved preparation Stage 01 on 2026-09-06; it is implemented and verified. The user has now authorized continuing preparation stages 02 to 07 sequentially toward cleaned data. A10 modeling remains separate. Explain what was done, why it matters and remaining errors after every step.
+**Track 1, active now.** Develop the whole method on the DREAM package, which is the methods cohort. Preparation stages 01 to 07, the integrity checkpoint and the differential reconciliation are complete; 203 tests pass. The landmark design D-037 and the A10 analysis plan D-038 are approved, and every analysis runs from general to specific under D-039: everyone first, then each test on its own group, then the full-panel landmark cohorts, then subgroups and other disease settings, and the index patient last. Pinned analysis packages may be installed under `~/tools`. Explain what was done, why it matters and remaining errors after every step.
 
-**Track 2.** Do NOT start a dbGaP application. Search the Project Data Sphere catalogue first for a hormone-sensitive metastatic prostate cancer trial with docetaxel, decision D-032, because that account already works. CHAARTED now routes through dbGaP, which needs an institutional Signing Official, and its submission D8 is prostate-specific antigen only, so it cannot validate the twelve-test panel, decision D-033.
+**Track 2.** Do NOT start a dbGaP application. Search the Project Data Sphere catalogue first for a hormone-sensitive metastatic prostate cancer trial with docetaxel, decision D-032, because that account already works. CHAARTED now routes through dbGaP, which needs an institutional Signing Official, and its submission D8 is prostate-specific antigen only, so it cannot validate the full panel, decision D-033.
 
-The index patient is hormone-sensitive while DREAM is entirely castration-resistant. Never present a DREAM-derived survival figure as his prognosis.
+The index patient is hormone-sensitive while DREAM is entirely castration-resistant. Never present a DREAM-derived survival figure as his prognosis. Chat transcripts are deleted locally after the retention period, so the root logs and `NEXT_AGENT_ONBOARDING_PROMPT.md` are the only durable memory.
 
 ## Machine and storage
 
@@ -29,7 +29,7 @@ Restricted data is currently present locally, so the cleanup obligation at A8 is
 - Answer in TLDR form: action first, numbered, no preamble or closing pleasantries.
 - Explain clinical terms in plain language at first use. The user is technically fluent but has no clinical training.
 - Be critical about data and never overclaim. Lead with what a dataset cannot support, and use counts rather than adjectives.
-- **Create no new log, status, register or report files.** Exactly six necessary documents remain in `docs/` after user-authorized consolidation. Update them and the existing root records. This does not prohibit explicitly requested private patient artifacts or necessary code/tests.
+- **Create no new log, status, register or report files.** Exactly six necessary documents remain in `docs/` after user-authorized consolidation, plus `PAPER_PLAN.md` at the root, created at the user's explicit request on 2026-10-09; keep it current. Update them and the existing root records. This does not prohibit explicitly requested private patient artifacts or necessary code/tests.
 - Document each production function with its purpose, inputs/outputs and important errors or constraints.
 - Explain the reason alongside every action. Use persistent records for memory; never promise flawless research or unconditional recall.
 - Update `PROJECT_CONTINUITY_LOG.md` and `RESEARCH_LOG.md` as part of the work, without being asked. Check the highest existing `D-0xx` before adding one, because parallel sessions have collided on identifiers before.
