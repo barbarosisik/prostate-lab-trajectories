@@ -106,6 +106,8 @@ Python 3.12.8: `/Library/Frameworks/Python.framework/Versions/3.12/bin/python3.1
 
 PDF creation dependencies installed and verified 2026-09-06: reportlab 5.0.1, pypdfium2 5.13.0, Pillow 12.3.0 and charset-normalizer 3.5.1. Existing pypdf 6.16.2 handles text read-back. Poppler was not installed; local PDFium rendered the pages. The PDF operation marker ran successfully with the existing application-bundled Node runtime; no system Node installation was required.
 
+Analysis packages installed and verified 2026-10-09 under the D-038 approval: numpy 2.5.3, pandas 2.3.3, scipy 1.18.1, lifelines 0.30.3, scikit-survival 0.28.0, scikit-learn 1.9.1, statsmodels 0.15.0 and matplotlib 3.11.2, plus 27 dependencies, 35 packages in all. Every one was a prebuilt wheel installed with `--only-binary=:all: --require-hashes` from a reviewed dry run, so no package ran build code and each download matched its published SHA-256. `pip check` reported no broken requirements, a Cox fit on 20,000 invented patients recovered a true coefficient of 0.7 as 0.685 (SE 0.01), and all 203 project tests still pass. The full freeze, 42 lines, replaced the requirements file above. R remains uninstalled.
+
 Google Cloud CLI 583.0.0 remains under `~/tools/google-cloud-sdk`. Set `CLOUDSDK_PYTHON` to the Python 3.12 path above. Do not print credentials or place tooling inside restricted data folders.
 
 ## Preservation and cleanup status
